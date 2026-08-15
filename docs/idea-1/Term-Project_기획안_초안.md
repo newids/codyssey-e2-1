@@ -1,6 +1,6 @@
 # 코디세이 AI 올인원 2기 Term-Project 기획안 (초안)
 
-> `docs/1_Term_Project_.hwpx` 양식 대응 축약본 (2쪽 이내 기준). 상세 근거는 `기획서_초안_v0.1.md`.
+> `docs/양식/1_Term_Project_.hwpx` 양식 대응 축약본 (2쪽 이내 기준). 상세 근거는 `기획서_초안_v0.1.md` (같은 폴더). 웹 발행본: https://newids.github.io/codyssey-e2-1/
 
 | 항목 | 내용 |
 |---|---|
