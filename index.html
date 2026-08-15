@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>금융 코디세이 — Term-Project 기획안</title>
+<meta name="description" content="전 국민 금융역량 AI 동료학습 플랫폼 — 코디세이 AI 올인원 2기 Term-Project 기획안 축약본">
+<style>
+  :root {
+    --paper: oklch(97.5% 0.006 85);
+    --ink: oklch(24% 0.015 260);
+    --ink-soft: oklch(42% 0.012 260);
+    --accent: oklch(48% 0.13 250);
+    --accent-soft: oklch(48% 0.13 250 / 0.08);
+    --rule: oklch(24% 0.015 260 / 0.14);
+    --card: oklch(99.2% 0.003 85);
+    --danger: oklch(52% 0.17 25);
+
+    --text-base: clamp(1rem, 0.94rem + 0.3vw, 1.0625rem);
+    --text-hero: clamp(2.2rem, 1.2rem + 4.5vw, 4.2rem);
+    --text-section: clamp(1.35rem, 1.15rem + 1vw, 1.9rem);
+    --space-section: clamp(3.5rem, 2.5rem + 4vw, 6.5rem);
+
+    --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+      "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", system-ui, sans-serif;
+    --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: 1.75;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
+  .wrap { max-width: 46rem; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 2.5rem); }
+
+  /* ---------- masthead ---------- */
+  header.masthead { padding: clamp(3rem, 8vw, 6rem) 0 0; }
+
+  .kicker {
+    display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; align-items: baseline;
+    font-size: .8125rem; letter-spacing: .08em; color: var(--ink-soft);
+    text-transform: uppercase;
+    border-top: 3px solid var(--ink);
+    padding-top: .75rem;
+  }
+  .kicker strong { color: var(--accent); font-weight: 700; }
+
+  h1 {
+    font-size: var(--text-hero);
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    font-weight: 800;
+    margin: 1.5rem 0 0;
+  }
+  h1 .sub {
+    display: block;
+    font-size: clamp(1rem, .85rem + .8vw, 1.35rem);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink-soft);
+    margin-top: .9rem;
+    line-height: 1.5;
+  }
+
+  .meta-grid {
+    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+    border-top: 1px solid var(--rule);
+  }
+  .meta-grid > div {
+    padding: .8rem .25rem .9rem 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: .9rem;
+  }
+  .meta-grid dt { font-size: .72rem; letter-spacing: .1em; color: var(--ink-soft); text-transform: uppercase; margin-bottom: .2rem; }
+  .meta-grid dd { font-weight: 600; }
+  .todo { color: var(--ink-soft); font-weight: 400; font-style: italic; }
+
+  /* ---------- sections ---------- */
+  section { margin-top: var(--space-section); }
+
+  .sec-head { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1.5rem; }
+  .sec-num {
+    font-family: var(--font-mono);
+    font-size: .85rem;
+    color: var(--accent);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  h2 {
+    font-size: var(--text-section);
+    letter-spacing: -0.02em;
+    font-weight: 750;
+    line-height: 1.25;
+  }
+
+  p + p { margin-top: 1em; }
+  section p strong { font-weight: 700; }
+  em { font-style: normal; background: linear-gradient(transparent 62%, var(--accent-soft) 62%); }
+
+  /* ---------- stat band ---------- */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border-block: 1px solid var(--rule);
+    margin: 2rem 0;
+  }
+  .stat { background: var(--paper); padding: 1.1rem .9rem 1.2rem; }
+  .stat .n {
+    font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.3rem);
+    font-weight: 800; letter-spacing: -0.03em; line-height: 1.1;
+    color: var(--accent);
+  }
+  .stat.bad .n { color: var(--danger); }
+  .stat .l { font-size: .82rem; color: var(--ink-soft); margin-top: .45rem; line-height: 1.5; }
+  .stat .s { font-size: .72rem; color: var(--ink-soft); opacity: .75; margin-top: .3rem; }
+
+  /* ---------- mission cards ---------- */
+  .missions { display: grid; gap: .75rem; margin: 1.75rem 0; }
+  .mission {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 .5rem .5rem 0;
+    padding: 1rem 1.25rem;
+  }
+  .mission b { display: block; font-size: .78rem; letter-spacing: .08em; color: var(--accent); text-transform: uppercase; margin-bottom: .25rem; }
+
+  /* ---------- sub blocks ---------- */
+  h3 {
+    font-size: 1.05rem; font-weight: 750; letter-spacing: -0.01em;
+    margin: 2.25rem 0 .6rem;
+    display: flex; align-items: center; gap: .6rem;
+  }
+  h3::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+
+  ul.tight { list-style: none; margin: .75rem 0; }
+  ul.tight li { padding: .35rem 0 .35rem 1.4rem; position: relative; }
+  ul.tight li::before {
+    content: "—"; position: absolute; left: 0; color: var(--accent); font-weight: 700;
+  }
+
+  /* ---------- tables ---------- */
+  .tbl-scroll { overflow-x: auto; margin: 1.25rem 0; }
+  table { border-collapse: collapse; width: 100%; font-size: .9rem; min-width: 30rem; }
+  th, td { text-align: left; padding: .6rem .75rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th { font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); border-bottom: 2px solid var(--ink); }
+  td:first-child { font-weight: 650; white-space: nowrap; }
+
+  /* ---------- principle chips ---------- */
+  .chips { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0 .25rem; }
+  .chip {
+    font-size: .8rem; font-weight: 600;
+    background: var(--accent-soft); color: var(--accent);
+    border-radius: 999px; padding: .3rem .85rem;
+  }
+
+  /* ---------- footer ---------- */
+  footer {
+    margin-top: var(--space-section);
+    border-top: 3px solid var(--ink);
+    padding: 1.5rem 0 4rem;
+    font-size: .82rem; color: var(--ink-soft); line-height: 1.9;
+  }
+  footer a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-soft); }
+  footer a:hover, footer a:focus-visible { border-bottom-color: var(--accent); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    section { animation: rise .5s ease-out both; }
+    @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <p class="kicker"><strong>Term-Project 기획안</strong><span>코디세이 AI 올인원 2기</span><span>2026.08</span></p>
+  <h1>금융 코디세이
+    <span class="sub">전 국민 금융역량 AI 동료학습 플랫폼 — 강의 대신 실전 미션, AI 코치, 세대 간 동료 멘토링</span>
+  </h1>
+  <dl class="meta-grid">
+    <div><dt>도메인</dt><dd>금융 × 교육</dd></div>
+    <div><dt>팀명</dt><dd class="todo">미정</dd></div>
+    <div><dt>팀장</dt><dd class="todo">미정</dd></div>
+    <div><dt>킬러 기능</dt><dd>적응형 사기방어 훈련</dd></div>
+  </dl>
+</header>
+
+<section aria-labelledby="s1">
+  <div class="sec-head"><span class="sec-num">01</span><h2 id="s1">기획의도 — 필요한 건 강의가 아니라 훈련이다</h2></div>
+
+  <div class="stats">
+    <div class="stat bad"><div class="n">65.7점</div><div class="l">성인 금융이해력 — 직전 조사 66.5점에서 하락</div><div class="s">한국은행·금융감독원, 2024</div></div>
+    <div class="stat bad"><div class="n">3,116억</div><div class="l">2025년 1분기 보이스피싱 피해액 (전년 동기의 2.2배)</div><div class="s">경찰청 국수본</div></div>
+    <div class="stat"><div class="n">65.6%</div><div class="l">취약계층 디지털 '역량' 수준 — 접근 96.5%, 활용 80.0%보다 한참 낮다</div><div class="s">NIA, 2024 디지털정보격차 실태조사</div></div>
+  </div>
+
+  <p>금융 문해력은 오르기는커녕 내려가고 있고, 사기 피해는 폭증하고 있다. 디지털 격차의 본질은 기기 보급이 아니라 <em>역량</em>이다 — 기기는 손에 있는데 쓸 줄 모른다. 획일적인 강의식 금융교육이 실패해 온 이유다.</p>
+  <p>우리가 코디세이에서 직접 경험한 학습 방식 — 강의 없이 실전 과제를 수행하고, 동료가 평가하고, 각자의 속도를 존중하는 <strong>PBL·P2P 모델</strong> — 을 금융역량 교육에 그대로 이식한다. <em>"코디세이에서 배운 방식으로, 이 방식이 필요한 국민에게."</em></p>
+</section>
+
+<section aria-labelledby="s2">
+  <div class="sec-head"><span class="sec-num">02</span><h2 id="s2">프로젝트 내용</h2></div>
+
+  <h3>서비스 구조 — 강의 없음, 전부 미션</h3>
+  <div class="missions">
+    <div class="mission"><b>Mission A · 실습</b>모의 뱅킹 환경에서 계좌이체 완수하기 — 실수해도 잃는 돈이 없는 샌드박스</div>
+    <div class="mission"><b>Mission B · 판별</b>실제 사례 기반 문자 3개 중 진짜 사기 골라내기 — 오답이면 "무엇을 보고 알 수 있었는지" AI가 해설</div>
+    <div class="mission"><b>Mission C · 실전</b>내가 받을 수 있는 지원금 1개 찾아 신청서 작성하기 — 학습이 곧 실익이 되는 설계</div>
+  </div>
+  <p>AI 코치가 온보딩에서 <strong>문해 수준을 진단</strong>해 설명의 난이도·어휘·형식을 자동 조절한다. 같은 내용도 20대에게는 요점 카드로, 70대에게는 큰 글씨·음성·한 번에 한 단계로. 막히면 답 대신 힌트를 준다 — 코디세이의 자기주도 원칙. 그리고 디지털에 능숙한 청년이 고령층의 <strong>동료 멘토</strong>가 되는 세대 간 페어링이 AI가 못 채우는 정서적 신뢰를 채운다.</p>
+
+  <h3>킬러 기능 — 전 연령 적응형 사기방어 훈련</h3>
+  <div class="stats">
+    <div class="stat"><div class="n">30.6%</div><div class="l">60대 이상 피해 비중 — 단일 연령대 1위</div><div class="s">경찰청, 2025.9 국회 제출자료</div></div>
+    <div class="stat"><div class="n">52%</div><div class="l">기관사칭형 피해자 중 30대 이하 비중</div><div class="s">경찰청, 2025</div></div>
+    <div class="stat"><div class="n">51%</div><div class="l">전체 피해 중 기관사칭형 비중 — 수법 고도화의 진앙</div><div class="s">경찰청, 2025</div></div>
+  </div>
+  <p>고령층만의 문제가 아니다. 그래서 연령 타겟팅이 아닌 <em>적응형 UX</em>로 간다: 세그먼트별 취약 패턴(고령층은 권위 순응형 기관사칭, 청년층은 악성앱·명의도용)을 반영한 판별 훈련을 제공하고, 같은 경고도 사람에 맞게 다르게 전달한다.</p>
+
+  <h3>왜 AI여야 하는가</h3>
+  <ul class="tight">
+    <li>학습자마다 문해 수준·속도가 달라 획일 강의가 실패해 온 영역 — 수준을 진단하고 설명을 실시간 조정하는 적응형 학습은 <strong>AI로만 스케일된다</strong></li>
+    <li>생성형 AI로 매일 변형되는 사기 수법은 규칙 기반으로 대응 불가 — <strong>LLM 패턴 분석이 필수</strong>, 규칙 기반은 이중 안전망으로 병행</li>
+    <li>약관·통지문을 상대의 어휘 수준으로 다시 쓰는 쉬운말 번역은 검색이 아니라 <strong>생성 과제</strong></li>
+  </ul>
+  <p>금융위 AI 7대 원칙 대응 — 판별 근거를 항상 함께 제시하고, 확신도가 낮으면 사람과의 상의를 유도하며, 개인 금융정보를 저장하지 않는다.</p>
+  <div class="chips"><span class="chip">설명가능성</span><span class="chip">보조수단성</span><span class="chip">신뢰성</span><span class="chip">보안성</span></div>
+
+  <h3>MVP 범위</h3>
+  <p>웹앱 1종, 위 미션 3종 데모. 공공데이터 활용: 보조금24 API(행안부), 보이스피싱지킴이 공개 사례(금감원), 디지털정보격차 raw data(NIA). 핵심 시연 장면은 <em>같은 사기 경고가 60대와 20대에게 다르게 전달되는 화면 비교</em> — 적응형 UX를 3분 안에 증명한다.</p>
+</section>
+
+<section aria-labelledby="s3">
+  <div class="sec-head"><span class="sec-num">03</span><h2 id="s3">역할분담</h2></div>
+  <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>역할</th><th>담당</th><th>범위</th></tr></thead>
+      <tbody>
+        <tr><td>기획·데이터</td><td class="todo">미정</td><td>미션 설계, 사기 사례 데이터셋 구축(금감원 보이스피싱지킴이 공개 사례)</td></tr>
+        <tr><td>AI</td><td class="todo">미정</td><td>문해 수준 진단·적응형 프롬프트 설계, 사기판별 엔진</td></tr>
+        <tr><td>프론트엔드</td><td class="todo">미정</td><td>모의 뱅킹 샌드박스 UI, 미션 3종 데모</td></tr>
+        <tr><td>백엔드·연동</td><td class="todo">미정</td><td>보조금24 API 연동, 미션 상태 관리</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section aria-labelledby="s4">
+  <div class="sec-head"><span class="sec-num">04</span><h2 id="s4">기대효과 및 활용방안</h2></div>
+  <ul class="tight">
+    <li><strong>개인</strong> — 수료증이 아닌 실행 능력: 이체를 해 봤고, 사기를 골라내 봤고, 지원금을 신청해 본 사람을 만든다</li>
+    <li><strong>사회</strong> — 전 연령 사기 피해(2025년 1–7월 누적 7,766억 원, 경찰청 국수본) 예방 훈련의 전국 인프라</li>
+    <li><strong>확산</strong> — 운영 중인 중장년 AI 교육 커뮤니티(4050 AI Cafe) 베타 검증 → 디지털배움터 커리큘럼 공급(B2G) → 지역 캠퍼스 연계</li>
+    <li><strong>정책 정합성</strong> — AI for All(교육부, 2025.11.10)·포용금융 전략 추진단(금융위, 2026.5 구성 발표 후 분과 가동 중) 기조와 직결</li>
+  </ul>
+</section>
+
+<footer>
+  <p>통계 출처: 한국은행·금융감독원 「2024 전국민 금융이해력 조사」 · 경찰청 국가수사본부 2025년 발표 · NIA 「2024 디지털정보격차 실태조사」 — 전 항목 팩트체크 완료 (PROJECT_BRIEF v1.0 기준).</p>
+  <p>금융 코디세이 · 코디세이 AI 올인원 2기 Term-Project 기획안 축약본 · 2026-08-15 초안 · <a href="https://github.com/newids/codyssey-e2-1">github.com/newids/codyssey-e2-1</a></p>
+</footer>
+
+</div>
+</body>
+</html>
