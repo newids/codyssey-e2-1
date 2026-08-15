@@ -39,6 +39,11 @@
    - [x] 적응형 프롬프트 템플릿 + run_compare.py + golden 기준 문안
    - [ ] 사용자 수동: data.go.kr API 활용신청(자동승인), NIA XLSX 브라우저 다운로드 (자동 수집은 봇 차단으로 중단 — 캡차 페이지 접근 금지)
    - [ ] API 키로 run_compare.py 실행 → golden 대비 출력 검증
+6. [x] MVP W2: 판별 퀴즈 웹 구현 완료 (2026-08-16) — `mvp/web/` (React+Vite)
+   - 배포: https://newids.github.io/codyssey-e2-1/app/ (완전 정적 — 해설은 데이터셋 clues의 클라이언트 적응형 렌더링, LLM 호출 없음)
+   - 온보딩 진단 3문항 → 프로파일(localStorage) → 3라운드 퀴즈 → 적응형 해설(단계별/카드) → 결과
+   - 단위 테스트 10개 통과(vitest), JS 56KB gzip(예산 80KB 내), 브라우저 클릭 스루 검증 완료
+   - 기획안 페이지에 데모 링크 버튼 추가됨
 
 ## 연관 자산
 - 4050 AI Cafe (4050aicafe.kr): 운영 중인 AI 교육 커뮤니티. 기획서의 "실행력 증빙" 및 초기 베타 테스터 풀로 활용 가능. 중장년 트랙의 콘텐츠 원형 보유.
