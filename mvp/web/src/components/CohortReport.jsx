@@ -11,7 +11,7 @@ export default function CohortReport({ onBack }) {
       <p className="synthetic-badge" role="status">
         {report.badge} — 실제 사용자 기록이 아닙니다
       </p>
-      <h2>기관 리포트 미리보기</h2>
+      <h2>기관 대응역량 진단 리포트 (미리보기)</h2>
       <p className="muted">
         {report.cohort.name} · {report.cohort.period} · 참여 {report.size}명
       </p>

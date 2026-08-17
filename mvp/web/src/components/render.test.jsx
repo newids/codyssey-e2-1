@@ -32,6 +32,10 @@ describe('정적 렌더 스모크', () => {
     expect(html).toContain('시작하기');
   });
 
+  test('앱 헤더는 대응역량 훈련 프로토타입으로 표기한다 — B2G 노출 표면', () => {
+    expect(renderToStaticMarkup(<App />)).toContain('금융 코디세이 · 대응역량 훈련 프로토타입');
+  });
+
   test('사전 수칙 화면은 4개 수칙과 건너뛰기를 제공한다', () => {
     const html = renderToStaticMarkup(
       <Briefing profile={profile} round={1} onDone={() => {}} onSkip={() => {}} />,
@@ -57,6 +61,8 @@ describe('정적 렌더 스모크', () => {
     expect(html).toContain('건너뜀');
     expect(html).toContain('측정 중');
     expect(html).toContain(SHARE_DISCLAIMER);
+    // 리포트 진입 버튼만 B2G 표기를 쓴다 — 같은 화면의 학습자 문안은 쉬운 말 유지
+    expect(html).toContain('기관 대응역량 진단 리포트 (예시 데이터)');
   });
 
   test('퀴즈 화면은 회차·라운드와 문자 목록을 그린다', () => {
@@ -69,8 +75,9 @@ describe('정적 렌더 스모크', () => {
     expect(html).toContain('이걸로 제출하기');
   });
 
-  test('기관 리포트 화면은 합성 데이터 배지와 표본 미달 행을 노출한다', () => {
+  test('기관 대응역량 진단 리포트 화면은 합성 데이터 배지와 표본 미달 행을 노출한다', () => {
     const html = renderToStaticMarkup(<CohortReport onBack={() => {}} />);
+    expect(html).toContain('기관 대응역량 진단 리포트 (미리보기)');
     expect(html).toContain(SYNTHETIC_BADGE);
     expect(html).toContain('표본 미달');
   });

@@ -66,7 +66,7 @@ export default function App() {
 
   return (
     <main>
-      <p className="kicker">금융 코디세이 · 모의사기 훈련 프로토타입</p>
+      <p className="kicker">금융 코디세이 · 대응역량 훈련 프로토타입</p>
       {phase === 'intro' && (
         <section className="fade-in">
           <h1>사기 문자, 골라낼 수 있을까요?</h1>
