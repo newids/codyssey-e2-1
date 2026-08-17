@@ -3,14 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>금융 코디세이 — AI 모의사기 훈련 서비스</title>
+<title>금융 코디세이(가칭) — AI 모의사기 훈련 서비스</title>
 <meta name="description" content="당신이 어떤 미끼에 약한지 AI가 찾아내고, 그 미끼만 골라 예고 없이 반복해서 던지는 모의사기 훈련 서비스 — AI Fintech 텀 프로젝트 기획안">
 <meta name="color-scheme" content="light">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>">
-<!--
-  내용 원천: docs/idea-1/Term-Project_기획안_v1.md (정본) — 수치·주장·표현 글자 단위 일치.
-  ※ 팀원 표기는 이니셜 플레이스홀더다. 팀 확정 후 실명으로 기입할 것(발표자료 R&R과 동일 인물·역할명).
--->
 <style>
   :root {
     --paper: oklch(97.5% 0.006 85);
@@ -96,7 +92,6 @@
   }
   .meta-grid dt { font-size: .72rem; letter-spacing: .1em; color: var(--ink-soft); text-transform: uppercase; margin-bottom: .2rem; }
   .meta-grid dd { font-weight: 600; }
-  .todo { color: var(--ink-soft); font-weight: 400; font-style: italic; }
 
   /* ---------- CTA ---------- */
   .cta-row { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.9rem; }
@@ -181,7 +176,7 @@
   .card b { display: block; font-size: .78rem; letter-spacing: .08em; color: var(--accent); text-transform: uppercase; margin-bottom: .25rem; }
 
   /* ---------- 훈련 루프 ---------- */
-  .loop { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: 1rem; margin: 1.5rem 0 .5rem; }
+  .loop { display: grid; grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr)); gap: 1rem; margin: 1.5rem 0 .5rem; }
   .loop .step { border-top: 3px solid var(--accent); padding-top: .55rem; }
   .loop .step .k { font-family: var(--font-mono); font-size: .75rem; color: var(--accent); font-weight: 700; }
   .loop .step .t { font-weight: 750; line-height: 1.35; margin-top: .1rem; }
@@ -196,6 +191,7 @@
   .band.ai { border-left: 4px solid var(--accent); background: var(--accent-soft); }
   .band.ai > b { color: var(--accent); }
   .band p { font-size: .88rem; line-height: 1.6; }
+  .flow { text-align: center; font-family: var(--font-mono); font-size: .78rem; color: var(--ink-soft); }
 
   /* ---------- 강조 박스 ---------- */
   .callout {
@@ -214,13 +210,19 @@
   th { font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); border-bottom: 2px solid var(--ink); }
   td:first-child { font-weight: 650; }
 
-  /* ---------- chips ---------- */
-  .chips { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0 .25rem; }
-  .chip {
-    font-size: .8rem; font-weight: 600;
-    background: var(--accent-soft); color: var(--accent);
-    border-radius: 999px; padding: .3rem .85rem;
+  /* ---------- 부록 링크 카드 ---------- */
+  .linkcards { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: .75rem; margin: 1.5rem 0; }
+  .linkcard {
+    display: block; text-decoration: none; color: var(--ink);
+    background: var(--card); border: 1px solid var(--rule); border-radius: .6rem;
+    padding: 1rem 1.15rem;
+    transition: border-color .18s ease, transform .18s ease;
   }
+  .linkcard:hover, .linkcard:focus-visible { border-color: var(--accent); transform: translateY(-2px); }
+  .linkcard:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+  .linkcard b { display: block; font-weight: 750; letter-spacing: -0.01em; }
+  .linkcard span { display: block; font-size: .82rem; color: var(--ink-soft); line-height: 1.55; margin-top: .25rem; }
+  .linkcard b::after { content: " ↗"; color: var(--accent); font-size: .85em; }
 
   .src { font-size: .78rem; color: var(--ink-soft); line-height: 1.7; margin-top: 1rem; }
 
@@ -239,8 +241,8 @@
     @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
   }
   @media (prefers-reduced-motion: reduce) {
-    .cta { transition: none; }
-    .cta:hover { transform: none; }
+    .cta, .linkcard { transition: none; }
+    .cta:hover, .linkcard:hover { transform: none; }
   }
 </style>
 </head>
@@ -256,16 +258,15 @@
 
   <dl class="meta-grid">
     <div><dt>도메인</dt><dd>AI Fintech</dd></div>
-    <div><dt>팀명</dt><dd class="todo">팀 확정 후 기입</dd></div>
-    <div><dt>팀장</dt><dd class="todo">팀 확정 후 기입</dd></div>
+    <div><dt>팀명</dt><dd>포디세이(Podyssey) [가칭]</dd></div>
     <div><dt>서비스명</dt><dd>가칭 · 리브랜딩 검토</dd></div>
   </dl>
 
   <div class="cta-row">
-    <a class="cta" href="app/">🛡️ 판단형 미션 1차 프로토타입(정적)</a>
+    <a class="cta" href="app/">🛡️ 판단형 미션 실습 프로토타입(정적)</a>
     <a class="cta ghost" href="deck/">발표자료 보기</a>
   </div>
-  <p class="cta-note"><strong>구현 범위</strong> — 프로토타입의 구현 범위는 결정론 코어(C1 상태기계·C2 규칙 정답 판정)와 판단형 미션 UI, 고정 문항 데이터셋까지다. <strong>A1 프로파일링·A3 시나리오 생성기·A5 음성은 설계 단계이며 미구현</strong>이고, 다음 구현 대상이 A1·A3다.</p>
+  <p class="cta-note"><strong>구현 범위</strong> — 대응 수칙 사전 교육, 규칙 기반 채점, 자극 유형별 취약도 지수 실계산과 회차 간 개선폭 표시까지 동작한다. <strong>취약 자극 유형 진단(AI)·시나리오 자동 생성·음성 출력은 설계 단계이며 미구현</strong>이고, 다음 구현 대상이 그 셋이다.</p>
 </header>
 
 <main>
@@ -280,12 +281,12 @@
   <div class="stats">
     <div class="stat"><div class="n">65.6%</div><div class="l">취약계층 디지털 <strong>역량</strong> — 접근 96.5%·활용 80.0%인데 역량만 낮다. 고령층은 71.4%로 계층 중 최저</div><div class="s">NIA, 2024 디지털정보격차 실태조사</div></div>
     <div class="stat bad"><div class="n">65.7점</div><div class="l">성인 금융이해력 — 직전 조사(66.5점) 대비 <strong>하락</strong></div><div class="s">한은·금감원, 2024</div></div>
-    <div class="stat bad"><div class="n">7,766억</div><div class="l">2025년 1–7월 누적 피해액(원) — <strong>하루 약 36.6억 원</strong></div><div class="s">경찰청 국수본</div></div>
+    <div class="stat bad"><div class="n">7,766억</div><div class="l">2025년 1–7월 누적 피해액(원) — <strong>하루 약 36.6억 원</strong>(누적 피해액 ÷ 일수 환산치)</div><div class="s">경찰청 국수본</div></div>
   </div>
 
   <ul class="tight">
     <li>기기는 있는데 <em>판단을 못 한다</em> — 격차의 본질은 접근이 아니라 역량이다.</li>
-    <li>금융이해력 지표는 내려갔고, 같은 기간 피해액은 위와 같다.</li>
+    <li>금융이해력 지표는 내려갔고, 피해액은 위와 같다.</li>
     <li>1회성 수강은 사기가 문을 두드리는 순간에 작동하지 않는다 — 필요한 것은 <strong>반복되는, 예고 없는 훈련</strong>이다.</li>
   </ul>
 
@@ -304,7 +305,7 @@
       <tbody>
         <tr><td><strong>1군 60대+</strong></td><td>단일 연령대 <strong>30.6%로 1위</strong>(2025.9)</td><td>디지털정보화 <strong>71.4%</strong>, 최저(NIA 2024)</td><td>권위 순응 — "진짜 검찰인가"</td></tr>
         <tr><td><strong>2군 20·30대</strong></td><td><strong>10.5%/9.1%</strong>(2024년 말, 4%대→상승), 기관사칭 피해자 <strong>52%가 30대 이하</strong>(2025)</td><td>별도 지표 없음 — 자극 유형 집중도</td><td>악성앱·명의도용 — "링크가 안전한가"</td></tr>
-        <tr><td>3군 50대</td><td>50대 이상 <strong>53%</strong>(2025 1분기, 2023년 32%)</td><td>미확인(V11)</td><td>투자 리딩방·대출 빙자</td></tr>
+        <tr><td>3군 50대</td><td>50대 이상 <strong>53%</strong>(2025 1분기, 2023년 32%)</td><td>연령별 금융이해력 분해 지표는 공개되지 않음</td><td>투자 리딩방·대출 빙자</td></tr>
       </tbody>
     </table>
   </div>
@@ -317,31 +318,34 @@
 
   <p><strong>한 문장 정의.</strong> 금융 코디세이(가칭)는 <strong>당신이 어떤 미끼에 약한지 AI가 찾아내고, 그 미끼만 골라 예고 없이 반복해서 던지는 모의사기 훈련 서비스</strong>다.</p>
 
-  <h3>핵심 기능 — 훈련 루프</h3>
+  <h3>핵심 기능 — 훈련 루프 5단계</h3>
   <div class="loop">
-    <div class="step"><div class="k">01</div><div class="t">진단</div><p>취약 자극 유형 판별</p></div>
-    <div class="step"><div class="k">02</div><div class="t">집중 노출</div><p>변형 시나리오를 예고 없이 반복 발송</p></div>
-    <div class="step"><div class="k">03</div><div class="t">재측정</div><p>취약도 재평가</p></div>
-    <div class="step"><div class="k">04</div><div class="t">프로필 갱신</div><p>다시 01로 순환</p></div>
+    <div class="step"><div class="k">01</div><div class="t">대응 수칙</div><p>3분 학습</p></div>
+    <div class="step"><div class="k">02</div><div class="t">진단</div><p>취약 자극 유형 판별</p></div>
+    <div class="step"><div class="k">03</div><div class="t">기습 노출</div><p>변형 시나리오를 예고 없이 반복</p></div>
+    <div class="step"><div class="k">04</div><div class="t">실패 해부</div><p>걸린 지점을 되짚기</p></div>
+    <div class="step"><div class="k">05</div><div class="t">재측정</div><p>취약도 재평가 → 프로필 갱신</p></div>
   </div>
-  <p class="loop-back">└─ 진단 → 집중 노출 → 재측정 → 프로필 갱신 → 진단 …</p>
+  <p class="loop-back">└─ 대응 수칙 → 진단 → 기습 노출 → 실패 해부 → 재측정 → 프로필 갱신 → 진단 …</p>
 
-  <p>3대 설계 제약은 ① <strong>3분 이내</strong> ② <strong>예고 없이</strong>(앱 내 모의 수신함, 실발송 없음) ③ <strong>가상 격리</strong>(실계좌·실개인정보와 분리)다. 미션은 판단형(주력)·행동형(온보딩)·생활해결형(진입 훅) 3분류이며, 기관사칭형이 전체 피해의 51%(경찰청, 2025)이므로 판단형의 기관사칭 비중을 40% 이상으로 둔다.</p>
+  <p>훈련은 <strong>대응 수칙 3분 학습</strong>에서 시작한다 — 수칙을 모르는 상태의 실패는 학습이 아니라 좌절이고, 훈련 전후 비교의 기준선도 오염되기 때문이다. 예고 없이 도착하는 것은 <strong>개별 시나리오의 시점</strong>이지 훈련 참여 사실이나 대응 수칙이 아니다.</p>
+
+  <p>3대 설계 제약은 ① <strong>3분 이내</strong> ② <strong>예고 없이</strong>(앱 내 모의 수신함, 실발송 없음) ③ <strong>가상 격리</strong>(실계좌·실개인정보와 분리)다. 미션은 판단형(주력)·행동형(대응 수칙 사전 교육 + 모의 이체)·생활해결형(진입 훅) 3분류이며, 기관사칭형이 전체 피해의 51%(경찰청, 2025)이므로 판단형의 기관사칭 비중을 40% 이상으로 둔다.</p>
 
   <div class="callout">
     <b class="h">에스컬레이션</b>
-    <p>같은 자극 유형에 3회 이상 반복 피격되면 사람 상담으로 연결한다. 연결 대상은 <strong>도입 기관이 이미 운영 중인 상담·교육 인력</strong>이며, 우리는 트리거 조건과 인계 리포트(취약 자극 유형·반복 횟수)만 제공한다.</p>
+    <p>같은 자극 유형에 3회 이상 반복 피격되면 사람 상담으로 연결한다. 연결 대상은 <strong>도입 기관이 이미 운영 중인 상담·교육 인력</strong>이며, 우리는 트리거 조건과 인계 리포트(취약 자극 유형·반복 횟수)만 제공한다. 사용자끼리 서로를 가르치는 동료 간 상호 교육은 채택하지 않았다 — 검증되지 않은 대응법이 사람을 통해 퍼지는 경로가 되기 때문이며, 사람의 개입이 필요한 지점은 도입 기관의 상담·교육 인력으로 연결해 해결한다.</p>
   </div>
 
   <h3>차별점</h3>
   <div class="cards">
     <div class="card">
       <b>① 국가가 이미 쓰는 방법의 미적용 영역</b>
-      국가는 이미 기업 임직원 25만 명 규모로 모의훈련을 집행 중이며, 재참여 기업이 신규 참여보다 빠르게 대응해 반복 훈련의 효과도 확인됐다(과기정통부·KISA 2026 상반기 사이버 위기대응 모의훈련 중 <strong>디도스 대응</strong> 부문 / 아시아투데이 2026.6.26 보도).
+      국가는 이미 기업 임직원 25만 명 규모로 모의훈련을 집행 중이며, 재참여 기업이 신규 참여보다 빠르게 대응해 반복 훈련의 효과도 확인됐다(과기정통부·KISA, 2026 상반기 — 디도스 대응 훈련).
     </div>
     <div class="card">
       <b>② 경쟁 서비스와의 차이</b>
-      금융감독원 금융교육포털은 금융 지식을 전달하고, 시티즌코난은 이미 설치된 악성 앱을 사후에 탐지하며, 은행 FDS는 거래 시점에 이를 차단한다. <strong>차이는 콘텐츠가 아니라 개입 시점과 반복 구조, 그리고 개인화다.</strong>
+      금융감독원 금융교육포털은 금융 지식을 전달하고, 시티즌코난은 이미 설치된 악성 앱을 사후에 탐지하며, 은행 FDS는 거래 시점에 이를 차단한다. 가장 근접한 사례는 은행 고객 채널의 체험형 시뮬레이션(우리은행 '하마터면', 2025.9)이며, 이용자별 취약 유형 진단·주기 반복 여부는 공개 자료에서 확인되지 않았다. <strong>차이는 콘텐츠가 아니라 개입 시점과 반복 구조, 그리고 개인화다.</strong>
     </div>
   </div>
 </section>
@@ -353,13 +357,13 @@
 
   <div class="tbl-scroll">
     <table>
-      <thead><tr><th>ID</th><th>컴포넌트</th><th>적용 기술</th><th>왜 이 기술인가</th></tr></thead>
+      <thead><tr><th>ID</th><th>명칭</th><th>적용 기술</th><th>왜 이 기술인가</th></tr></thead>
       <tbody>
-        <tr><td><strong>A1</strong></td><td>취약 자극 프로파일링</td><td>LLM few-shot 분류 + 규칙 가중 스코어링</td><td>라벨링된 국내 데이터가 없어 지도학습 불가</td></tr>
-        <tr><td><strong>A2</strong></td><td>적응 라우터</td><td>난이도는 LLM, <strong>훈련 선택은 결정론 규칙</strong></td><td>선택은 감사·재현 대상 — 거버넌스 대응</td></tr>
-        <tr><td><strong>A3</strong></td><td>시나리오 생성기</td><td>LLM + 슬롯 제약 템플릿 생성</td><td>고정 문항은 소진된다. 무한 변형이 성립 조건</td></tr>
-        <tr><td><strong>A4</strong></td><td>RAG 판별·근거 해설</td><td>임베딩 검색 + LLM 근거 생성, <strong>규칙 필터 병행</strong></td><td>실사례 근거로 환각 차단 — 신뢰성 논거</td></tr>
-        <tr><td><strong>A5</strong></td><td>쉬운말 변환·음성</td><td>LLM 재작성 + Web Speech API</td><td>어휘 재작성은 매칭이 아니라 생성</td></tr>
+        <tr><td><strong>A1</strong></td><td><strong>취약 자극 유형 진단</strong></td><td>LLM few-shot 분류 + 규칙 가중 스코어링</td><td>라벨 데이터 부재 — 지도학습 불가</td></tr>
+        <tr><td><strong>A2</strong></td><td><strong>설명 난이도·다음 훈련 선택</strong></td><td>난이도는 LLM, <strong>훈련 선택은 결정론 규칙</strong></td><td>선택은 감사 대상 — 규칙 고정</td></tr>
+        <tr><td><strong>A3</strong></td><td><strong>훈련 시나리오 자동 생성</strong></td><td>LLM + 슬롯 제약 템플릿 생성</td><td>고정 문항은 반복에서 소진</td></tr>
+        <tr><td><strong>A4</strong></td><td><strong>판별 결과에 실제 사례 근거를 함께 제시</strong></td><td>임베딩 검색(RAG) + 근거 생성, <strong>규칙 필터 병행</strong></td><td>실사례 근거로 환각 차단</td></tr>
+        <tr><td><strong>A5</strong></td><td><strong>쉬운 말 재작성·음성 안내</strong></td><td>LLM 재작성 + Web Speech API</td><td>어휘 재작성은 생성 과제</td></tr>
       </tbody>
     </table>
   </div>
@@ -368,37 +372,41 @@
 <section aria-labelledby="s5">
   <div class="sec-head"><span class="sec-num">05</span><h2 id="s5">시스템 구성</h2></div>
 
-  <p><strong>구조.</strong> 사용자 접점(모의 수신함·판별 입력창·실패 해부 화면·음성/스포트라이트 UI)의 <strong>반응 로그(가명처리)</strong> 가 <strong>결정론 코어</strong>에 쌓이고, 코어가 <strong>AI 레이어</strong>를 호출한다.</p>
-
   <div class="arch">
+    <div class="band">
+      <b>사용자 접점</b>
+      <p>모의 수신함 · 판별 입력창 · 실패 해부 · 음성/스포트라이트 UI</p>
+    </div>
+    <p class="flow">│ 반응 로그(가명처리) ▼ &nbsp;&nbsp; ▲ 출력 │</p>
     <div class="band core">
       <b>결정론 코어 — AI 적용 대상이 아니다</b>
-      <p>C1 상태기계 · C2 규칙 정답 판정 · C3 스케줄러 · C4 프로필 저장소 · C5 안전 가드 · C6 감사 로그</p>
+      <p>훈련 진행 관리 · 규칙 기반 채점 · 반복 훈련 일정 관리 · 가명처리 프로필 저장 · 안전 가드 · 판정 이력 기록(감사)</p>
     </div>
+    <p class="flow">│ 호출 ▼ &nbsp;&nbsp; ▲ 결과 │</p>
     <div class="band ai">
-      <b>AI 레이어 — §04 표 5행과 1:1 대응</b>
-      <p>A1 프로파일링 · A2 적응 라우터 · A3 시나리오 생성기 · A4 RAG 판별·근거 · A5 쉬운말·음성</p>
+      <b>AI 레이어 — 앞 절 표 5행과 1:1</b>
+      <p>취약 자극 유형 진단 · 설명 난이도·다음 훈련 선택 · 훈련 시나리오 자동 생성 · 실제 사례 근거 제시 · 쉬운 말 재작성·음성 안내</p>
     </div>
     <div class="band">
-      <b>데이터 흐름</b>
-      <p>공공(경찰청 피해현황·보이스피싱 사례·보조금24·NIA) → 코퍼스·임베딩 인덱스 → 프로필 → 집계 리포트</p>
+      <b>데이터</b>
+      <p>공공(경찰청 피해현황 · 공개 사례 · 보조금24 · NIA) → 시나리오 코퍼스·임베딩 인덱스 → 가명처리 프로필 → 집계 리포트</p>
     </div>
   </div>
 
   <div class="callout">
     <b class="h">개인정보</b>
-    <p>취약성 프로파일은 <strong>훈련 목적으로만</strong> 수집하며, 항목·목적·보유 기간 고지 후 <strong>명시적 동의</strong>가 있을 때만 저장한다(목적 외 이용·제3자 제공 금지). 저장 시점부터 <strong>가명처리</strong>하고(C4), 기관 리포트는 <strong>집계 단위로만</strong> 산출한다. 에스컬레이션은 <strong>별도 동의 시에만</strong> 작동하며 전달 정보는 <strong>취약 자극 유형·반복 횟수로 한정</strong>한다.</p>
+    <p>취약성 프로파일은 <strong>훈련 목적으로만</strong> 수집하며, 항목·목적·보유 기간 고지 후 <strong>명시적 동의</strong>가 있을 때만 저장한다(목적 외 이용·제3자 제공 금지). 저장 시점부터 <strong>가명처리</strong>하고, 기관 리포트는 <strong>집계 단위로만</strong> 산출한다. 에스컬레이션은 <strong>별도 동의 시에만</strong> 작동하며 전달 정보는 <strong>취약 자극 유형·반복 횟수로 한정</strong>한다.</p>
   </div>
 
-  <h3>금융위 AI 활용 7대 원칙 대응</h3>
+  <h3>금융위원회 AI 활용 7대 원칙 대응</h3>
   <ul class="tight">
-    <li><strong>거버넌스</strong> = C6 감사 로그</li>
-    <li><strong>합법성</strong> = 공공데이터·공개 사례만, 실발송 배제 (<strong>법적 검토 미완 = "설계 원칙 수립" 단계</strong>)</li>
-    <li><strong>보조수단성</strong> = 반복 피격 시 사람 상담</li>
-    <li><strong>신뢰성</strong> = A4 RAG 근거 상시 제시</li>
-    <li><strong>금융안정성</strong> = 쓰기 접근 없는 가상 격리</li>
-    <li><strong>신의성실</strong> = 상품 판매·중개 없음</li>
-    <li><strong>보안성</strong> = 가명처리·개인 금융정보 비수집</li>
+    <li><strong>거버넌스</strong> = 모든 판정 이력을 기록해 추적 가능</li>
+    <li><strong>합법성</strong> = 공공데이터·공개 사례만 활용, 모의 문자 실발송 배제(법적 검토는 진행 예정)</li>
+    <li><strong>보조수단성</strong> = 반복 피격 시 사람 상담 연결</li>
+    <li><strong>신뢰성</strong> = 판별 결과에 실제 사례 근거를 항상 함께 제시</li>
+    <li><strong>금융안정성</strong> = 실제 금융시스템에 쓰기 접근 없는 가상 격리</li>
+    <li><strong>신의성실</strong> = 금융상품 판매·중개 없음</li>
+    <li><strong>보안성</strong> = 프로필 가명처리·개인 금융정보 비수집</li>
   </ul>
 </section>
 
@@ -409,30 +417,32 @@
     <table>
       <thead><tr><th>목표 지표</th><th>측정 방법</th><th>벤치마크</th></tr></thead>
       <tbody>
-        <tr><td><strong>피격률(클릭·정보입력) 감소</strong></td><td>1회차 대비 N회차 비교</td><td>KISA 첨부 클릭률 12.7%(2026 상반기)</td></tr>
-        <tr><td><strong>취약 자극 유형별 취약도 변화</strong></td><td>A1 재측정값 시계열 비교</td><td>자체 기준선(선례 없음)</td></tr>
+        <tr><td><strong>피격률(클릭·정보입력) 감소</strong></td><td>1회차 대비 N회차 비교</td><td>자체 기준선(1회차 값) — 외부 훈련 수치와 직접 비교하지 않음</td></tr>
+        <tr><td><strong>취약 자극 유형별 취약도 변화</strong></td><td>유형 진단 재측정값의 시계열 비교</td><td>자체 기준선(선례 없음)</td></tr>
         <tr><td><strong>반복 참여 효과</strong></td><td>재참여자 vs 신규 참여자 비교</td><td>KISA 디도스 훈련 재참여 우위</td></tr>
       </tbody>
     </table>
   </div>
 
-  <p><strong>사용자 관점.</strong> 강의를 들은 사람이 아니라 실제로 걸려 보고 그 이유를 아는 사람이 남는다.</p>
+  <p><strong>사용자 관점.</strong> 실제로 걸려 보고 그 이유를 아는 사람이 남는다.</p>
 
-  <p><strong>비즈니스 관점.</strong> 시민에게 훈련은 무료이고, <strong>기관에는 "훈련이 됐다"는 측정치를 판다.</strong> 상품은 콘텐츠가 아니라 <strong>집계 리포트</strong>(지역·기관 단위 취약도 변화)다. <strong>현행 공공 금융교육 사업의 표준 실적 지표는 수강 인원과 이수율이며, 훈련 전후 행동 변화를 지표로 요구하는 사업은 확인되지 않았다.</strong> 수익원은 B2G 훈련 공급(기관 보유 기기 탑재)·성과 리포트·B2B 제휴다.</p>
+  <p><strong>비즈니스 관점.</strong> 시민에게 훈련은 무료이고, <strong>기관에는 "훈련이 됐다"는 측정치를 판다.</strong> 상품은 콘텐츠가 아니라 <strong>집계 리포트</strong>(지역·기관 단위 취약도 변화)다. 집계 리포트의 핵심 값은 <strong>취약도 지수</strong>다 — 자극 유형별로 <code>피격 횟수 ÷ 발송 횟수</code>를 최근 회차에 가중해 산출하고, 기관·지역 단위로는 소속 사용자 지수의 평균과 <strong>1회차 대비 개선폭</strong>을 제공한다. 지수는 생성형 AI가 아니라 <strong>규칙 기반 채점 결과로만 계산</strong>해 재현·감사가 가능하며, 최소 인원에 미달하는 소규모 집단은 재식별 방지를 위해 산출하지 않는다. <strong>현행 공공 금융교육 사업의 표준 실적 지표는 수강 인원과 이수율이며, 훈련 전후 행동 변화를 지표로 요구하는 사업은 확인되지 않았다.</strong> 수익원은 B2G 훈련 공급(기관 보유 기기 탑재)·성과 리포트·B2B 제휴다.</p>
 </section>
 
 <section aria-labelledby="s7">
   <div class="sec-head"><span class="sec-num">07</span><h2 id="s7">향후 발전 방향</h2></div>
 
-  <p><strong>확산 순서 = 타겟 매트릭스 순서</strong>(1군→2군→3군→4군). 단 <em>확산 우선순위 ≠ 검증 착수 순서</em>다 — 진입 가능한 공공 교육사업이 40~64세에 집중돼 <strong>1차 베타는 3군+1군 하단(50~64세)</strong> 으로 시작한다. 서울시50플러스재단(시민제안형 교육과정)·서울시평생학습포털이 <strong>연계 검토 대상</strong>이며, <strong>진입 절차·심사 요건은 미확인이고 협의·확정된 바 없다.</strong></p>
+  <p><strong>확산 순서 = 타겟 매트릭스 순서</strong>(1군→2군→3군→4군). 단 진입 가능한 공공 교육사업이 40~64세에 집중돼 <strong>1차 베타는 50~64세</strong>로 시작한다 — <em>확산 우선순위와 검증 착수 순서는 다르다.</em> 서울시50플러스재단(시민제안형 교육과정)·서울시평생학습포털이 <strong>연계 검토 대상</strong>이며, <strong>진입 절차·심사 요건은 미확인이고 협의·확정된 바 없다.</strong></p>
+
+  <p><strong>개인 확산 채널.</strong> 훈련을 마친 사용자가 <strong>자신의 취약 자극 유형 카드</strong>를 가족·지인에게 보내 초대한다 — 전달되는 것은 서비스 경험이지 금융 판단이 아니며, B2G 단일 채널 의존을 완화한다.</p>
 
   <div class="callout warn">
     <b class="h">현 단계 산출물</b>
-    <p>설계 검증용 1차 산출물로 <strong>판단형 미션 프로토타입</strong>(결정론 코어 C1·C2 + 고정 문항 데이터셋), <strong>경찰청 피해현황 원천 데이터</strong>, <strong>적응형 프롬프트 명세·세대별 골든 출력 샘플 2종</strong>을 확보했다. <strong>A1 프로파일링·A3 시나리오 생성기·A5 음성은 설계 단계이며 미구현</strong>이고, 다음 구현 대상이 A1·A3다. 공방 학습(self-play)은 연구 과제로 범위 밖이다.</p>
+    <p>설계 검증용 <strong>판단형 미션 실습 프로토타입(정적)</strong> 에서 대응 수칙 사전 교육, 규칙 기반 채점, 자극 유형별 취약도 지수 실계산과 회차 간 개선폭 표시가 동작하며, 경찰청 피해현황 원천 데이터와 적응형 프롬프트 명세·골든 출력 샘플을 함께 보유한다. <strong>취약 자극 유형 진단(AI)·시나리오 자동 생성·음성 출력은 설계 단계이며 미구현</strong>이고, 다음 구현 대상이 그 셋이다. 공방 학습(self-play)은 연구 과제로 범위 밖이다.</p>
   </div>
 
   <div class="cta-row">
-    <a class="cta" href="app/">🛡️ 판단형 미션 1차 프로토타입(정적)</a>
+    <a class="cta" href="app/">🛡️ 판단형 미션 실습 프로토타입(정적)</a>
     <a class="cta ghost" href="deck/">발표자료 보기</a>
   </div>
 </section>
@@ -442,35 +452,45 @@
 
   <div class="tbl-scroll">
     <table>
-      <thead><tr><th>역할</th><th>담당 영역</th><th>기여 내용</th></tr></thead>
+      <thead><tr><th>역할 (담당)</th><th>담당 영역</th><th>기여 내용</th></tr></thead>
       <tbody>
-        <tr><td><strong>기획 총괄</strong></td><td>문제 정의·전략·정합성</td><td>문제 프레임 확정, 도메인 방어 논리</td></tr>
-        <tr><td><strong>AI 설계</strong></td><td>AI 컴포넌트·아키텍처</td><td>A1–A5 명세, 코어와 AI 레이어의 경계 설계</td></tr>
-        <tr><td><strong>데이터 · 시나리오</strong></td><td>근거 통계·훈련 데이터</td><td>타겟 매트릭스, <strong>미션 3분류</strong>, 시나리오 데이터셋</td></tr>
-        <tr><td><strong>서비스 · UX</strong></td><td>사용자 경험·안전 설계</td><td>훈련 루프·3대 제약, 접근성, 개인정보 원칙</td></tr>
-        <tr><td><strong>사업화 · 발표</strong></td><td>수익 논리·확산·발표</td><td>지불자 정의, 공공 경로 조사, <strong>기대효과 측정 설계</strong></td></tr>
+        <tr><td><strong>기획 총괄</strong> (JHKim)</td><td>문제 정의·전략·정합성</td><td>문제 프레임("지식-행동 전이 실패") 확정, 도메인 방어 논리, B2G 지불자 구조</td></tr>
+        <tr><td><strong>AI 설계</strong> (YRHeo)</td><td>AI 컴포넌트·아키텍처</td><td>컴포넌트 명세, 결정론 코어와 AI 레이어의 경계 설계, <strong>미션 3분류</strong></td></tr>
+        <tr><td><strong>데이터 · 시나리오</strong> (YWKim)</td><td>근거 통계·훈련 데이터</td><td>타겟 매트릭스 2축, 시나리오 데이터셋 구성비, 기대효과 측정 설계</td></tr>
+        <tr><td><strong>서비스 · UX</strong> (SHkim)</td><td>사용자 경험·안전 설계</td><td>훈련 루프 5단계와 3대 제약, 실패 해부 화면, 접근성, 개인정보 원칙</td></tr>
+        <tr><td><strong>사업화 · 발표</strong> (JSChoi)</td><td>수익 논리·확산·발표</td><td>3층 유인 구조와 참여 유인 타당성, 공공 경로 조사, 현실성 검증, 발표 구성</td></tr>
       </tbody>
     </table>
   </div>
 
-  <p>담당자는 <span class="todo">[팀 확정 후 기입]</span> — 5인 전원이 기획에 기여했고, 발표자료 R&amp;R과 동일 인물·역할명으로 표기한다.</p>
+  <p>5인 전원이 기획에 기여했으며, 발표자료의 역할 분담도 동일 인물·역할명으로 표기한다.</p>
+</section>
 
-  <ul class="tight">
-    <li><strong>JHKim</strong> 문제 재정의·B2G 지불자 구조</li>
-    <li><strong>JSChoi</strong> 현실성 검증 14건·참여 유인 타당성</li>
-    <li><strong>SHkim</strong> 모의 피싱 훈련·접근성 UX</li>
-    <li><strong>YRHeo</strong> 미션 3분류·AI 역할 경계</li>
-    <li><strong>YWKim</strong> 타겟 매트릭스·기대효과 측정 설계</li>
-  </ul>
-  <p class="src">※ 위 표기는 이니셜 플레이스홀더다 — <strong>팀 확정 후 실명 기입</strong>.</p>
+<section aria-labelledby="s9">
+  <div class="sec-head"><span class="sec-num">09</span><h2 id="s9">상세 자료</h2></div>
+
+  <div class="linkcards">
+    <a class="linkcard" href="부록_용어와_아키텍처.html">
+      <b>용어·아키텍처 부록</b>
+      <span>용어집, AI 레이어 5개·결정론 코어 6개 컴포넌트 명세, 상세 아키텍처, 7대 원칙 대응표, 취약도 지수 산식</span>
+    </a>
+    <a class="linkcard" href="부록_출처.html">
+      <b>인용 출처 전체</b>
+      <span>본문에 인용한 모든 통계의 기관·기준 시점·원문 주소</span>
+    </a>
+    <a class="linkcard" href="부록_경쟁서비스_조사.html">
+      <b>경쟁 서비스 조사</b>
+      <span>개입 시점 · 개인화 단위 · 반복 · 무엇을 지키는가 4개 축의 비교 근거</span>
+    </a>
+  </div>
 </section>
 
 </main>
 
 <footer>
-  <p><strong>금융 코디세이(가칭)</strong> — AI 모의사기 훈련 서비스 · AI Fintech 텀 프로젝트 기획안</p>
-  <p><a href="app/">판단형 미션 1차 프로토타입(정적)</a> · <a href="deck/">발표자료</a></p>
-  <p>주요 출처: 경찰청 국수본 · NIA 2024 디지털정보격차 실태조사 · 한국은행·금융감독원 2024 전국민 금융이해력 조사 · 과기정통부·한국인터넷진흥원(KISA) 2026 상반기 사이버 위기대응 모의훈련(아시아투데이 2026.6.26 보도)</p>
+  <p><strong>금융 코디세이(가칭)</strong> — AI 모의사기 훈련 서비스 · AI Fintech 텀 프로젝트 기획안 · 팀 포디세이(Podyssey) [가칭]</p>
+  <p><a href="app/">판단형 미션 실습 프로토타입(정적)</a> · <a href="deck/">발표자료</a> · <a href="부록_인덱스.html">상세 자료 모음</a></p>
+  <p>주요 출처: 경찰청 국수본 · NIA 2024 디지털정보격차 실태조사 · 한국은행·금융감독원 2024 전국민 금융이해력 조사 · 과학기술정보통신부·한국인터넷진흥원(KISA) 2026 상반기 사이버 위기대응 모의훈련</p>
 </footer>
 
 </div>

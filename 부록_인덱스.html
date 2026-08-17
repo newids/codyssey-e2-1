@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>상세 자료 — 금융 코디세이(가칭) 부록 모음</title>
+<meta name="description" content="AI 모의사기 훈련 서비스 기획안의 상세 자료 — 용어·아키텍처 부록, 인용 출처 전체, 경쟁 서비스 조사">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>">
+<style>
+  :root {
+    --paper: oklch(97.5% 0.006 85);
+    --ink: oklch(24% 0.015 260);
+    --ink-soft: oklch(42% 0.012 260);
+    --accent: oklch(48% 0.13 250);
+    --accent-soft: oklch(48% 0.13 250 / 0.08);
+    --rule: oklch(24% 0.015 260 / 0.14);
+    --card: oklch(99.2% 0.003 85);
+    --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+      "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", system-ui, sans-serif;
+    --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--paper); color: var(--ink);
+    font-family: var(--font-sans); font-size: clamp(1rem, .94rem + .3vw, 1.0625rem);
+    line-height: 1.75; word-break: keep-all; overflow-wrap: break-word;
+  }
+  .wrap { max-width: 42rem; margin: 0 auto; padding: clamp(3rem, 8vw, 5.5rem) clamp(1.25rem, 5vw, 2.5rem) 4rem; }
+  .kicker {
+    display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; align-items: baseline;
+    font-size: .8125rem; letter-spacing: .08em; color: var(--ink-soft);
+    text-transform: uppercase; border-top: 3px solid var(--ink); padding-top: .75rem;
+  }
+  .kicker strong { color: var(--accent); font-weight: 700; }
+  h1 {
+    font-size: clamp(1.9rem, 1.2rem + 3vw, 3rem); line-height: 1.15;
+    letter-spacing: -0.03em; font-weight: 800; margin: 1.4rem 0 .9rem;
+  }
+  .lead { color: var(--ink-soft); }
+  .cards { display: grid; gap: .85rem; margin: 2.5rem 0 2rem; }
+  .cardlink {
+    display: block; text-decoration: none; color: var(--ink);
+    background: var(--card); border: 1px solid var(--rule);
+    border-left: 4px solid var(--accent); border-radius: 0 .6rem .6rem 0;
+    padding: 1.05rem 1.25rem;
+    transition: border-color .18s ease, transform .18s ease;
+  }
+  .cardlink:hover, .cardlink:focus-visible { border-color: var(--accent); transform: translateY(-2px); }
+  .cardlink:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+  .cardlink .n { font-family: var(--font-mono); font-size: .75rem; font-weight: 700; color: var(--accent); letter-spacing: .08em; }
+  .cardlink b { display: block; font-size: 1.08rem; font-weight: 750; letter-spacing: -0.01em; margin-top: .1rem; }
+  .cardlink b::after { content: " ↗"; color: var(--accent); font-size: .8em; }
+  .cardlink span { display: block; font-size: .88rem; color: var(--ink-soft); line-height: 1.6; margin-top: .35rem; }
+  .row { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.5rem; }
+  .btn {
+    display: inline-block; text-decoration: none; font-weight: 700; font-size: .92rem;
+    color: var(--accent); border: 1px solid var(--accent); border-radius: .55rem;
+    padding: .6rem 1.15rem; transition: background .18s ease;
+  }
+  .btn:hover { background: var(--accent-soft); }
+  .btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+  footer { margin-top: 3rem; border-top: 1px solid var(--rule); padding-top: 1.2rem; font-size: .8rem; color: var(--ink-soft); line-height: 1.85; }
+  @media (prefers-reduced-motion: reduce) { .cardlink { transition: none; } .cardlink:hover { transform: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="kicker"><strong>AI Fintech · 텀 프로젝트 기획안</strong><span>상세 자료</span></p>
+  <h1>상세 자료 — 부록 모음</h1>
+  <p class="lead">금융 코디세이(가칭) — AI 모의사기 훈련 서비스. 기획서 본문이 자연어로 축약한 설계·근거·조사 자료를 세 문서로 나눠 두었다.</p>
+
+  <div class="cards">
+    <a class="cardlink" href="부록_용어와_아키텍처.html">
+      <span class="n">부록 A</span>
+      <b>용어·아키텍처</b>
+      <span>용어집, AI 레이어 5개·결정론 코어 6개 컴포넌트 명세, 상세 아키텍처, 금융위 7대 원칙 대응표, 미션 3분류, 취약도 지수 상세 산식</span>
+    </a>
+    <a class="cardlink" href="부록_출처.html">
+      <span class="n">부록 B</span>
+      <b>인용 출처 전체</b>
+      <span>본문에 인용한 모든 통계의 기관·자료명·기준 시점·원문 주소. 원문 대조가 끝나지 않은 항목은 그 상태를 함께 표기</span>
+    </a>
+    <a class="cardlink" href="부록_경쟁서비스_조사.html">
+      <span class="n">부록 C</span>
+      <b>경쟁 서비스 조사</b>
+      <span>국내 공공 교육·탐지 차단·체험형 훈련·기업 모의훈련과 해외 사례를, 개입 시점 · 개인화 단위 · 반복 · 무엇을 지키는가 4개 축으로 비교</span>
+    </a>
+  </div>
+
+  <div class="row">
+    <a class="btn" href="./">기획안 본문</a>
+    <a class="btn" href="app/">판단형 미션 실습 프로토타입(정적)</a>
+    <a class="btn" href="deck/">발표자료</a>
+  </div>
+
+  <footer>
+    <p>금융 코디세이(가칭) — AI 모의사기 훈련 서비스 · 팀 포디세이(Podyssey) [가칭] · 서비스명은 가칭이며 추후 리브랜딩을 검토한다.</p>
+  </footer>
+</div>
+</body>
+</html>
