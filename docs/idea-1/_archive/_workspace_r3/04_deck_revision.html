@@ -108,8 +108,6 @@
     flex: none;
   }
   .kicker .n { font-family: var(--font-mono); color: var(--ink-soft); font-weight: 400; }
-  /* 우산(비전) 명칭 — 표지 kicker 지정석 */
-  .kicker .umbrella { display: inline-block; margin-top: 4px; color: var(--ink); font-weight: 800; }
   h1 { font-size: var(--title-size); line-height: 1.08; letter-spacing: -0.03em; font-weight: 800; }
   h2 { font-size: var(--h2-size); line-height: 1.18; letter-spacing: -0.02em; font-weight: 780; }
   .sub { color: var(--ink-soft); font-size: 18px; line-height: 1.48; }
@@ -255,7 +253,7 @@
 <!-- 1 / 10 표지 -->
 <section class="slide" aria-label="표지">
  <div class="stage motif">
-  <p class="kicker"><span>AI Fintech · 텀 프로젝트 · 팀 포디세이(Fodyssey) [가칭]<br><span class="umbrella">전 국민 금융역량 인프라 구상 — 1단계 사업</span></span><span class="n">01 / 10</span></p>
+  <p class="kicker"><span>AI Fintech · 텀 프로젝트 · 팀 포디세이(Fodyssey) [가칭]</span><span class="n">01 / 10</span></p>
   <h1>아는 것과,<br>당하지 않는 것은 다르다</h1>
   <p class="sub">금융 코디세이(가칭) — <em>금융사기 대응역량 훈련 체계</em><br>당신이 어떤 미끼에 약한지 AI가 찾아내고, 그 미끼만 골라 예고 없이 반복해서 던진다.</p>
   <p class="muted"><strong>정식 명칭</strong> — AI 기반 전기통신금융사기 대응역량 훈련 체계 · <strong>시민 대상 상시 모의훈련</strong></p>
@@ -292,7 +290,6 @@
     <div class="stat void"><div class="n">없음</div><div class="l">이 훈련의 시민 대상 트랙 — 참여 대상은 "민간기업 전체"로 한정돼 있고, 이에 대응하는 시민 대상 상시 모의훈련 프로그램은 확인되지 않는다</div></div>
   </div>
   <p class="sub"><strong class="hit">모의훈련이 효과적이라는 판단은 국가가 이미 내렸고 예산도 집행 중이다. 다만 그 혜택이 기업 임직원에게만 간다.</strong> 정작 건당 평균 <strong>5,301만 원</strong>(2025년 1분기, 경찰청)을 잃는 개인에게는 같은 훈련이 없다.</p>
-  <div class="chips"><span class="chip">금융위 — 생애주기별 금융교육으로 금융역량 강화, 고령층 금융피해 예방 교육 집중(2025.12)</span></div>
   <p class="muted"><strong>반복이 듣는다는 근거도 같은 발표에 있다</strong> — 디도스 대응 훈련에서 재참여 기업은 평균 20분 만에 탐지·대응을 완료했고, 신규 참여 기업은 그 <strong>3배 이상</strong>이 걸렸다.</p>
   <p class="foot">출처: 과학기술정보통신부·한국인터넷진흥원(KISA), 2026년 상반기 사이버 위기대응 모의훈련 결과(훈련기간 2026.5.11–5.22, 발표 2026.6.26) — 아시아투데이 2026.6.26 보도. · 건당 평균 피해액은 2025년 1분기 기준으로 앞 장의 누적 피해액(1–7월)과 기준 기간이 다르다. · 재참여 우위 수치는 <strong>디도스 대응 훈련</strong> 지표다.</p>
  </div>
@@ -396,7 +393,6 @@
       </div>
     </div>
   </div>
-  <div class="chips"><span class="chip plainbg">단일 진입점(API 게이트웨이) · 외부 데이터는 프록시 경유 조회 전용</span></div>
   <p class="sub"><strong>왜 AI여야 하는가</strong> — ① 사기 수법은 생성형 AI로 매일 변형된다. 고정 규칙·고정 문항으로는 훈련이 성립하지 않는다. ② 무엇에 약한지는 사람마다 다르고, 그 진단을 전 국민에게 1:1로 붙일 수 없다. ③ 같은 경고를 상대의 어휘로 다시 쓰는 일은 검색이 아니라 생성이다.</p>
   <p class="foot"><strong>데이터</strong> — 공공: 보이스피싱 공개 사례·경찰청 연령별 피해현황·보조금24·NIA 격차조사 / 파생: 시나리오 코퍼스 → 임베딩 인덱스 / 사용자: 반응 로그(가명처리) → 프로필 → 대응역량 리포트. · <strong>개인정보</strong> — 훈련 목적 한정 수집·명시적 동의 / 저장 시 가명처리 / 기관 리포트는 집계 단위만 / 전문 상담 연계는 별도 동의 시 취약 유형·횟수만 전달(원문 미전달). · <strong>규칙 기반 채점에는 생성 모델이 개입하지 않으며</strong>, 반복 훈련 일정 관리는 간격 반복 큐로 구현한다. · 위 표의 기호는 컴포넌트 식별용이며, 상세 명세는 마지막 장의 상세 자료에 있다.</p>
  </div>
@@ -432,9 +428,8 @@
     <div class="card"><b>기관 — 구매자</b><p>금융교육·디지털역량 사업의 이행 실적, 그리고 지금은 지표로 요구되지 않는 <strong>"교육 효과"를 훈련 전후 수치로</strong> 제출할 수 있게 된다.</p></div>
     <div class="card"><b>사회 — 정책</b><p>피해 절감. 2025년 1–7월 누적 7,766억 원(경찰청)의 일부만 줄여도 사업 규모를 상회한다. 절감률 추정치는 근거 확보 전까지 제시하지 않는다.</p></div>
   </div>
-  <p class="sub">실제 상품은 콘텐츠가 아니라 <em>기관 대응역량 진단 리포트</em>다 — 우리 지역 60대의 기관사칭 취약도가 3개월 전 대비 얼마나 내려갔는가. <strong>기관에게 금융역량 강화는 이미 부여된 임무이며, 우리가 파는 것은 새 임무가 아니라 그 임무의 측정 수단이다.</strong></p>
+  <p class="sub">실제 상품은 콘텐츠가 아니라 <em>기관 대응역량 진단 리포트</em>다 — 우리 지역 60대의 기관사칭 취약도가 3개월 전 대비 얼마나 내려갔는가. <strong>현행 공공 금융교육 사업의 표준 실적 지표는 수강 인원과 이수율이며, 훈련 전후 행동 변화를 지표로 요구하는 사업은 확인되지 않았다.</strong></p>
   <p class="metric"><b>취약도 지수</b> = 자극 유형별 피격률(최근 회차 가중) · 기관 단위는 평균과 1회차 대비 개선폭 · <b>규칙 기반 계산이라 감사 가능</b> · 최소 인원 미달 집단은 미산출</p>
-  <div class="chips"><span class="badge">금융역량 인프라 로드맵</span><span class="chip plainbg">① 사기 대응역량 훈련 (현 단계)</span><span class="chip plainbg">② 금융역량 프로필 통합</span><span class="chip plainbg">③ 생애주기 금융과업</span><span class="chip plainbg">④ 공공 교육 인프라 연계</span><span class="chip plainbg">⑤ 전 국민 금융역량 인프라</span></div>
   <p class="muted"><strong>금융위원회 AI 활용 7대 원칙 대응</strong> — 거버넌스=모든 판정 이력을 기록해 추적 가능 / 합법성=공공데이터·공개 사례만 활용, 모의 문자 실발송 배제 / 보조수단성=반복 피격 시 전문 상담 연계 / 신뢰성=판별 결과에 실제 사례 근거를 항상 함께 제시 / 금융안정성=실제 금융시스템에 쓰기 접근 없는 가상 격리 / 신의성실=금융상품 판매·중개 없음 / 보안성=프로필 가명처리·개인 금융정보 비수집</p>
   <p class="foot"><strong>진입 경로(연계 검토 대상)</strong> — 서울시50플러스재단 시민제안형 교육과정 · 서울시평생학습포털/서울런4050 · 4050 인생디자인학교 · 디지털배움터. 진입 절차·심사 요건은 미확인이며 협의·확정된 바 없다. 1차 베타는 진입 가능한 사업이 40~64세에 집중돼 있어 <strong>3군(50대)+1군 하단(60~64세)</strong>부터 실측한다. 개인 확산은 훈련 결과 공유 카드로만 한다(전달되는 것은 서비스 경험이지 금융 판단이 아니다).</p>
  </div>
