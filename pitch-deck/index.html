@@ -3,17 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>금융 코디세이 — 개인 맞춤형 금융학습 플랫폼 | 발표자료 (10p)</title>
+<title>금융 코디세이 — 개인 맞춤형 금융학습 플랫폼 | 발표자료 (표지·목차 + 본문 10p)</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧭</text></svg>">
 <!--
+  파일: docs/idea-1/_workspace/10_deck_v3.html (v3 — 표지 + 목차 + 본문 10장 = 총 12장)
+  이전본: docs/idea-1/_workspace/07_deck_v2_통합서사.html (감사 추적용 보존, 수정 금지)
+
   내용 근거(SSOT): docs/idea-1/_workspace/input_통합기획안_2026-08-18.md (사용자 제공 확정 통합 서사, 2026-08-18)
-  형식 근거: docs/Mission-e2-1.md (발표자료 10p 이내, PPT 또는 PDF) / .claude/skills/deck-production/SKILL.md (브랜드 토큰)
-  디자인 참조: docs/idea-1/pitch-deck.html (토큰·컴포넌트만 계승, 내용은 미계승)
+  형식 근거: docs/Mission-e2-1.md (발표자료 10p 이내) / .claude/skills/deck-production/SKILL.md (브랜드 토큰·검증 절차)
+  다이어그램: docs/idea-1/_workspace/diagram/system_architecture.svg 를 인라인 삽입 (외부 참조 없음)
 
-  [TODO] 팀명·팀원 실명 — 슬라이드 01, 10의 역할명 옆 자리에 확정 시 기입. 기획서 §9와 동일 인물이어야 한다.
-  [TODO] 슬라이드 08 수치 라벨 — '목표치/내부 추정' 표기는 출처 확보 시 근거 병기로 교체.
+  페이지 계산: 표지·목차는 번호 없음, 본문만 01/10 ~ 10/10 으로 표기.
 
-  PDF 변환: 브라우저 인쇄 → 용지 여백 '없음', 배경 그래픽 켜기 → 슬라이드 1장 = 1페이지(16:9).
+  [TODO] 팀원 실명 — 본문 09/10(팀 역할 분담)의 [TODO: 성명] 5칸. 기획서 §9와 동일 인물·동일 역할명이어야 한다.
+  [TODO] 본문 07/10 수치 라벨 — '목표치/내부 추정' 표기는 외부 출처 확보 시 근거 병기로 교체.
+
+  PDF 변환: 브라우저 인쇄 → 용지 여백 '없음', 배경 그래픽 켜기 → 슬라이드 1장 = 1페이지(16:9), 총 12페이지.
 -->
 <style>
   :root {
@@ -32,6 +37,7 @@
     --card: oklch(99.2% 0.003 85);
     --rule: oklch(24% 0.015 260 / 0.14);
     --shade: oklch(24% 0.015 260 / 0.045);
+    --slate: #0f172a;
 
     --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
       "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", system-ui, sans-serif;
@@ -184,7 +190,6 @@
   .row.ok .col .bignum { color: var(--ok); }
   .row .col .bignum + p { margin-top: 4px; }
 
-
   /* ---------- 클로징 밴드 ---------- */
   .band {
     background: var(--ink); color: oklch(97% 0.005 85); border-radius: 12px; padding: 16px 22px 18px;
@@ -192,6 +197,9 @@
   .band b { display: block; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: oklch(80% 0.06 250); margin-bottom: 6px; }
   .band p { font-size: 16.5px; line-height: 1.5; }
   .band em { background: none; color: oklch(85% 0.11 250); }
+  .band.big { padding: 26px 32px 30px; }
+  .band.big p { font-size: 22px; line-height: 1.62; }
+  .band.big p + p { margin-top: 12px; }
 
   /* ---------- 커버 ---------- */
   .cover { justify-content: center; gap: 0; }
@@ -206,6 +214,42 @@
   }
   .cover .meta div { font-size: 13.5px; color: var(--ink-soft); }
   .cover .meta dt { font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); font-weight: 700; margin-bottom: 3px; }
+
+  /* ---------- 목차 ---------- */
+  .toc-list {
+    flex: 1 1 auto; min-height: 0;
+    list-style: none; display: grid; grid-template-columns: 1fr 1fr;
+    grid-auto-flow: column; grid-template-rows: repeat(5, 1fr);
+    column-gap: 44px; row-gap: 0;
+  }
+  .toc-list li {
+    display: flex; align-items: center; gap: 16px;
+    padding: 6px 4px 6px 0; border-bottom: 1px solid var(--rule);
+  }
+  .toc-list li:nth-child(5n) { border-bottom: none; }
+  .toc-list li .i {
+    font-family: var(--font-mono); font-size: 15px; font-weight: 700; color: var(--accent);
+    letter-spacing: 0.04em; flex: 0 0 auto;
+  }
+  .toc-list li b { font-size: 20px; font-weight: 780; letter-spacing: -0.025em; flex: 0 0 auto; }
+  .toc-list li span.d { font-size: 13.5px; color: var(--ink-faint); line-height: 1.4; }
+
+  /* ---------- 시스템 구성: 블루프린트 패널 ---------- */
+  .slide.diagram { padding: 30px 40px 32px; gap: 10px; }
+  .dhead { display: flex; align-items: baseline; justify-content: space-between; gap: 28px; }
+  .dhead h2 { font-size: 30px; flex: 0 0 auto; }
+  .dhead p { font-size: 14px; line-height: 1.45; color: var(--ink-soft); text-align: right; max-width: 620px; }
+  .dhead p strong { color: var(--ink); font-weight: 700; }
+  .blueprint { flex: 1 1 auto; min-height: 0; display: flex; justify-content: center; align-items: stretch; }
+  .bp-panel {
+    height: 100%; background: var(--slate); border-radius: 16px; padding: 10px;
+    display: flex; box-shadow: 0 16px 38px oklch(24% 0.015 260 / 0.3);
+  }
+  .bp-panel svg { height: 100%; width: auto; max-width: 100%; display: block; border-radius: 8px; }
+  #sys-arch text {
+    font-family: "Pretendard Variable", Pretendard, -apple-system, "Apple SD Gothic Neo",
+      "Noto Sans KR", system-ui, sans-serif;
+  }
 
   /* ---------- 화면 크롬(내비게이션) ---------- */
   .chrome { position: fixed; z-index: 20; }
@@ -231,9 +275,9 @@
     .slide, .chrome.bar > i { transition: none; }
   }
 
-  /* ---------- 인쇄: 슬라이드 1장 = PDF 1페이지 (16:9) ---------- */
+  /* ---------- 인쇄: 슬라이드 1장 = PDF 1페이지 (16:9 · 960pt × 540pt = 1280px × 720px) ---------- */
   @media print {
-    @page { size: 1280px 720px; margin: 0; }
+    @page { size: 960pt 540pt; margin: 0; }
     html, body { background: #fff; height: auto; overflow: visible; }
     .stage { position: static; display: block; }
     .deck { width: 1280px; height: auto; transform: none; }
@@ -254,7 +298,7 @@
 <div class="stage">
   <div class="deck" id="deck">
 
-  <!-- ===== 01 표지 — 심는 문장: 이 서비스는 콘텐츠가 아니라 진단–연결 구조다 ===== -->
+  <!-- ===== 표지 — 심는 문장: 이 서비스는 콘텐츠가 아니라 진단–연결 구조다 ===== -->
   <section class="slide cover is-active" aria-label="표지">
     <p class="brandline">AI Fintech · 텀 프로젝트 아이디어톤</p>
     <p class="name">금융 코디세이 <span style="font-weight:500; color:var(--ink-faint);">(가칭)</span></p>
@@ -269,15 +313,34 @@
     </div>
     <div class="meta">
       <div><dt>도메인</dt>AI Fintech</div>
-      <div><dt>팀</dt>[TODO: 팀명] · 5인</div>
+      <div><dt>팀</dt>TEAM 6 · 5인</div>
       <div style="flex:1 1 auto;"><dt>역할 구성</dt>기획 총괄 · 시장·사례 조사 · AI 기술 조사 · 금융·데이터 조사 · 서비스 설계·발표</div>
     </div>
     <p class="note" style="margin-top:14px;">※ 서비스명은 가칭이며 추후 리브랜딩을 검토한다. 팀원 실명은 확정 후 기입한다.</p>
   </section>
 
-  <!-- ===== 02 문제 정의 — 심는 문장: 콘텐츠는 넘치는데 "내게 무엇이 부족한지"를 알려주는 진단이 없다 ===== -->
+  <!-- ===== 목차 — 심는 문장: 문제에서 시작해 팀과 제안으로 닫는 10장이다 ===== -->
+  <section class="slide" aria-label="목차">
+    <p class="kicker"><span>목차</span><span class="n">CONTENTS</span></p>
+    <h2>발표 순서 <span class="thin">— 본문 10장</span></h2>
+    <ol class="toc-list">
+      <li><span class="i">01</span><b>문제 정의</b><span class="d">콘텐츠는 있지만, 진단이 없다</span></li>
+      <li><span class="i">02</span><b>타겟 사용자</b><span class="d">전 국민이 대상, 그러나 순서가 있다</span></li>
+      <li><span class="i">03</span><b>서비스 개요</b><span class="d">미션을 수행하면, 역량이 보인다</span></li>
+      <li><span class="i">04</span><b>AI 기술 적용 방안</b><span class="d">3대 핵심 기능, 단계적 고도화</span></li>
+      <li><span class="i">05</span><b>예상 시스템 구성</b><span class="d">AI를 쓰는 곳과, 쓰지 않는 곳</span></li>
+      <li><span class="i">06</span><b>비즈니스 모델</b><span class="d">기관이 지불하고, 취약계층은 무료</span></li>
+      <li><span class="i">07</span><b>기대 효과</b><span class="d">사용자에게는 역량을, 기관에는 지표를</span></li>
+      <li><span class="i">08</span><b>향후 발전 방향</b><span class="d">실증 → 세그먼트 확장 → 교육 인프라</span></li>
+      <li><span class="i">09</span><b>팀 역할 분담</b><span class="d">다섯 영역의 조사·설계</span></li>
+      <li><span class="i">10</span><b>핵심 제안</b><span class="d">흩어진 금융교육을, 하나의 학습 여정으로</span></li>
+    </ol>
+    <p class="note closing">본문 10장은 <strong>문제 → 대상 → 서비스 → 기술 → 시스템 → 사업 → 효과 → 확장 → 팀 → 제안</strong> 순으로 구성했다.</p>
+  </section>
+
+  <!-- ===== 본문 01/10 문제 정의 — 심는 문장: 콘텐츠는 넘치는데 "내게 무엇이 부족한지"를 알려주는 진단이 없다 ===== -->
   <section class="slide" aria-label="문제 정의">
-    <p class="kicker"><span>문제 정의</span><span class="n">02 / 10</span></p>
+    <p class="kicker"><span>문제 정의</span><span class="n">01 / 10</span></p>
     <h2>콘텐츠는 있지만, <span class="thin">진단이 없다</span></h2>
     <div class="stats">
       <div class="stat bad"><div class="n">65.7점</div><div class="l">성인 금융이해력 — 하락 추세<span class="src">한국은행·금융감독원, 2024</span></div></div>
@@ -305,9 +368,9 @@
     <p class="lead closing">사람 강사가 모든 사용자를 1:1로 관찰·지도할 수는 없다 — 이 <em>개인화를 대규모로 구현하는 수단이 AI</em>다.</p>
   </section>
 
-  <!-- ===== 03 타겟 사용자 — 심는 문장: 연령으로 나누되, 개인화는 행동 데이터로 한다 ===== -->
+  <!-- ===== 본문 02/10 타겟 사용자 — 심는 문장: 연령으로 나누되, 개인화는 행동 데이터로 한다 ===== -->
   <section class="slide" aria-label="타겟 사용자">
-    <p class="kicker"><span>타겟 사용자</span><span class="n">03 / 10</span></p>
+    <p class="kicker"><span>타겟 사용자</span><span class="n">02 / 10</span></p>
     <h2>전 국민이 대상, <span class="thin">그러나 순서가 있다</span></h2>
     <p class="lead">생애주기별 금융과업을 가진 전 국민이 대상이나, 다음 우선순위로 타겟을 설정하고 추진한다.</p>
     <table class="airy">
@@ -342,9 +405,9 @@
     </div>
   </section>
 
-  <!-- ===== 04 서비스 개요 — 심는 문장: 미션 수행 데이터가 역량 프로필이 되고, 그 프로필이 다음 학습을 부른다 ===== -->
+  <!-- ===== 본문 03/10 서비스 개요 — 심는 문장: 미션 수행 데이터가 역량 프로필이 되고, 그 프로필이 다음 학습을 부른다 ===== -->
   <section class="slide" aria-label="서비스 개요">
-    <p class="kicker"><span>서비스 개요</span><span class="n">04 / 10</span></p>
+    <p class="kicker"><span>서비스 개요</span><span class="n">03 / 10</span></p>
     <h2>미션을 수행하면, <span class="thin">역량이 보인다</span></h2>
     <div class="flow">
       <div class="node"><div class="k">STEP 01</div><div class="t">금융 미션 수행</div><p>실제 금융과업을 앱에서 수행</p></div>
@@ -377,9 +440,9 @@
     <p class="lead closing"><strong>차별점</strong> — 기존 금융교육과 달리 개별 콘텐츠 제공에 그치지 않고, <em>미션 수행 결과를 금융역량 프로필로 연결</em>해 사용자의 취약 영역에 맞는 학습을 제공한다.</p>
   </section>
 
-  <!-- ===== 05 AI 기술 적용 — 심는 문장: 규칙 기반으로 시작하되 데이터가 쌓이면 학습 기반으로 고도화한다 ===== -->
+  <!-- ===== 본문 04/10 AI 기술 적용 — 심는 문장: 규칙 기반으로 시작하되 데이터가 쌓이면 학습 기반으로 고도화한다 ===== -->
   <section class="slide" aria-label="AI 기술 적용 방안">
-    <p class="kicker"><span>AI 기술 적용 방안</span><span class="n">05 / 10</span></p>
+    <p class="kicker"><span>AI 기술 적용 방안</span><span class="n">04 / 10</span></p>
     <h2>3대 핵심 기능, <span class="thin">단계적 고도화 경로</span></h2>
     <table>
       <thead><tr><th style="width:20%">핵심 기능</th><th style="width:30%">적용 기술</th><th>기술 설명</th></tr></thead>
@@ -414,93 +477,156 @@
     </div>
   </section>
 
-  <!-- ===== 06 시스템 구성 — 심는 문장: AI를 쓰는 곳과 쓰지 않는 곳이 구분돼 있다 ===== -->
-  <section class="slide" aria-label="예상 시스템 구성">
-    <p class="kicker"><span>예상 시스템 구성</span><span class="n">06 / 10</span></p>
-    <h2>AI를 쓰는 곳과, <span class="thin">쓰지 않는 곳</span></h2>
-    <svg viewBox="0 0 1152 336" width="100%" role="img" aria-label="시스템 구성도: 사용자 앱에서 API 게이트웨이와 API 서버를 거쳐 AI 모델 레이어로 요청이 전달되고, 데이터 파이프라인이 프록시를 경유해 외부 데이터를 조회한 뒤 AI 검증·정제를 거쳐 데이터베이스에 적재된다.">
-      <defs>
-        <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-          <path d="M0,0 L10,5 L0,10 z" fill="oklch(42% 0.012 260)"/>
-        </marker>
-        <marker id="ahs" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-          <path d="M0,0 L10,5 L0,10 z" fill="oklch(48% 0.13 250)"/>
-        </marker>
-      </defs>
-      <g font-family="var(--font-sans)">
-        <!-- 레인 1: 요청 흐름 -->
-        <text x="0" y="12" font-size="12" font-weight="700" fill="oklch(55% 0.01 260)" letter-spacing="1.4">요청 흐름</text>
-        <g>
-          <rect x="0" y="26" width="184" height="104" rx="10" fill="oklch(99.2% 0.003 85)" stroke="oklch(24% 0.015 260 / 0.28)"/>
-          <text x="92" y="66" text-anchor="middle" font-size="17" font-weight="750" fill="oklch(24% 0.015 260)">사용자 앱</text>
-          <text x="92" y="88" text-anchor="middle" font-size="13" fill="oklch(42% 0.012 260)">Mobile / Web</text>
-          <text x="92" y="108" text-anchor="middle" font-size="12" fill="oklch(55% 0.01 260)">미션 수행 · 학습</text>
-        </g>
-        <line x1="188" y1="78" x2="222" y2="78" stroke="oklch(42% 0.012 260)" stroke-width="1.6" marker-end="url(#ah)"/>
-        <g>
-          <rect x="226" y="26" width="150" height="104" rx="10" fill="oklch(99.2% 0.003 85)" stroke="oklch(24% 0.015 260 / 0.28)"/>
-          <text x="301" y="72" text-anchor="middle" font-size="17" font-weight="750" fill="oklch(24% 0.015 260)">API G/W</text>
-          <text x="301" y="94" text-anchor="middle" font-size="12" fill="oklch(55% 0.01 260)">인증 · 라우팅</text>
-        </g>
-        <line x1="380" y1="78" x2="414" y2="78" stroke="oklch(42% 0.012 260)" stroke-width="1.6" marker-end="url(#ah)"/>
-        <g>
-          <rect x="418" y="26" width="222" height="104" rx="10" fill="oklch(99.2% 0.003 85)" stroke="oklch(24% 0.015 260 / 0.45)" stroke-width="1.6"/>
-          <rect x="418" y="26" width="222" height="5" rx="2.5" fill="oklch(24% 0.015 260)"/>
-          <text x="529" y="58" text-anchor="middle" font-size="17" font-weight="750" fill="oklch(24% 0.015 260)">API 서버 (Backend)</text>
-          <text x="529" y="80" text-anchor="middle" font-size="12.5" fill="oklch(42% 0.012 260)">미션 요청 · 정답 판정</text>
-          <text x="529" y="98" text-anchor="middle" font-size="12.5" fill="oklch(42% 0.012 260)">학습 결과 처리</text>
-          <text x="529" y="119" text-anchor="middle" font-size="11.5" font-weight="700" fill="oklch(55% 0.01 260)" letter-spacing="0.8">AI 미적용 — 결정론 처리</text>
-        </g>
-        <line x1="644" y1="78" x2="686" y2="78" stroke="oklch(48% 0.13 250)" stroke-width="1.8" marker-end="url(#ahs)" marker-start="url(#ahs)"/>
-        <g>
-          <rect x="690" y="26" width="462" height="104" rx="10" fill="oklch(48% 0.13 250 / 0.09)" stroke="oklch(48% 0.13 250 / 0.5)" stroke-width="1.6"/>
-          <rect x="690" y="26" width="462" height="5" rx="2.5" fill="oklch(48% 0.13 250)"/>
-          <text x="712" y="56" font-size="17" font-weight="750" fill="oklch(38% 0.12 250)">AI 모델 레이어</text>
-          <text x="712" y="80" font-size="13" fill="oklch(24% 0.015 260)">· Instruction LLM + Context Prompting — 실시간 안내·피드백 생성</text>
-          <text x="712" y="99" font-size="13" fill="oklch(24% 0.015 260)">· RAG (Embedding 검색) — 공식 금융자료 근거 제시</text>
-          <text x="712" y="118" font-size="13" fill="oklch(24% 0.015 260)">· 역량 스코어링 · 학습경로 추천</text>
-        </g>
-        <!-- API 서버 → DB -->
-        <path d="M529,134 L529,168 L780,168 L780,196" fill="none" stroke="oklch(42% 0.012 260)" stroke-width="1.6" marker-end="url(#ah)"/>
-        <text x="545" y="162" font-size="11.5" fill="oklch(55% 0.01 260)">학습 결과 · 역량 프로필 저장</text>
+  <!-- ===== 본문 05/10 예상 시스템 구성 — 심는 문장: AI를 쓰는 곳과 쓰지 않는 곳이 구분돼 있다 ===== -->
+  <section class="slide diagram" aria-label="예상 시스템 구성">
+    <p class="kicker"><span>예상 시스템 구성</span><span class="n">05 / 10</span></p>
+    <div class="dhead">
+      <h2>AI를 쓰는 곳과, <span class="thin">쓰지 않는 곳</span></h2>
+      <p><strong>정답 판정·학습 결과는 API 서버(결정론)</strong>가 처리하고, AI는 <strong>실시간 안내·피드백</strong>과 <strong>외부 데이터 적재 전 검증</strong>에만 관여한다.</p>
+    </div>
+    <div class="blueprint">
+      <div class="bp-panel">
+<svg id="sys-arch" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 660" role="img" aria-label="예상 시스템 구성도: 사용자 앱에서 API 게이트웨이와 API 서버를 거쳐 AI 모델로 요청이 전달되고 실시간 안내·피드백이 앱으로 회신된다. 별도 레인에서 데이터 파이프라인이 프록시를 경유해 외부 공공·금융 데이터를 조회한 뒤 AI 검증·정제를 거쳐 DB에 적재한다.">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+    </pattern>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#64748b"/>
+    </marker>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#60a5fa"/>
+    </marker>
+    <marker id="arrow-rose" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polyline points="0 0, 10 3.5, 0 7" fill="none" stroke="#fb7185" stroke-width="1.5"/>
+    </marker>
+    <marker id="arrow-violet" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#a78bfa"/>
+    </marker>
+  </defs>
 
-        <!-- 레인 2: 외부 데이터 -->
-        <text x="0" y="186" font-size="12" font-weight="700" fill="oklch(55% 0.01 260)" letter-spacing="1.4">외부 데이터 파이프라인</text>
-        <g>
-          <rect x="0" y="200" width="176" height="96" rx="10" fill="oklch(99.2% 0.003 85)" stroke="oklch(24% 0.015 260 / 0.28)" stroke-dasharray="5 4"/>
-          <text x="88" y="240" text-anchor="middle" font-size="15" font-weight="750" fill="oklch(24% 0.015 260)">외부 데이터</text>
-          <text x="88" y="261" text-anchor="middle" font-size="12" fill="oklch(42% 0.012 260)">공공·금융 공식자료</text>
-        </g>
-        <line x1="180" y1="248" x2="212" y2="248" stroke="oklch(42% 0.012 260)" stroke-width="1.6" marker-end="url(#ah)" marker-start="url(#ah)"/>
-        <g>
-          <rect x="216" y="200" width="136" height="96" rx="10" fill="oklch(99.2% 0.003 85)" stroke="oklch(24% 0.015 260 / 0.28)"/>
-          <text x="284" y="243" text-anchor="middle" font-size="15" font-weight="750" fill="oklch(24% 0.015 260)">프록시</text>
-          <text x="284" y="264" text-anchor="middle" font-size="11.5" fill="oklch(52% 0.17 25)">조회 요청만 송신</text>
-        </g>
-        <line x1="356" y1="248" x2="388" y2="248" stroke="oklch(42% 0.012 260)" stroke-width="1.6" marker-end="url(#ah)" marker-start="url(#ah)"/>
-        <g>
-          <rect x="392" y="200" width="182" height="96" rx="10" fill="oklch(99.2% 0.003 85)" stroke="oklch(24% 0.015 260 / 0.28)"/>
-          <text x="483" y="243" text-anchor="middle" font-size="15" font-weight="750" fill="oklch(24% 0.015 260)">데이터 파이프라인</text>
-          <text x="483" y="264" text-anchor="middle" font-size="11.5" fill="oklch(42% 0.012 260)">수집 · 적재 스케줄</text>
-        </g>
-        <line x1="578" y1="248" x2="686" y2="248" stroke="oklch(48% 0.13 250)" stroke-width="1.8" marker-end="url(#ahs)"/>
-        <rect x="586" y="234" width="96" height="24" rx="12" fill="oklch(48% 0.13 250)"/>
-        <text x="634" y="250" text-anchor="middle" font-size="11.5" font-weight="700" fill="oklch(99% 0 0)">AI 검증·정제</text>
-        <g>
-          <rect x="690" y="200" width="462" height="96" rx="10" fill="oklch(24% 0.015 260 / 0.045)" stroke="oklch(24% 0.015 260 / 0.28)"/>
-          <text x="712" y="236" font-size="16" font-weight="750" fill="oklch(24% 0.015 260)">Database</text>
-          <text x="712" y="262" font-size="12.5" fill="oklch(42% 0.012 260)">미션·학습 이력 · 금융역량 프로필 · 검증된 외부 금융정보</text>
-          <text x="712" y="281" font-size="11.5" fill="oklch(55% 0.01 260)">RAG 임베딩 인덱스 원천</text>
-        </g>
-      </g>
-    </svg>
-    <div class="spacer"></div>
-    <p class="note closing"><strong>설계 원칙</strong> — 정답 판정·학습 결과 집계처럼 <strong>재현·감사되어야 하는 처리는 API 서버(AI 미적용)</strong>에서 수행하고, AI는 안내·피드백 생성과 개인화에만 관여한다. 외부 데이터는 프록시를 경유해 <strong>조회 요청만</strong> 송신하며, AI 검증·정제를 거친 뒤 DB에 적재한다.</p>
+  <!-- 1. background -->
+  <rect width="100%" height="100%" fill="#0f172a"/>
+  <rect width="100%" height="100%" fill="url(#grid)"/>
+
+  <!-- 2. region boundaries -->
+  <rect x="30" y="82" width="1120" height="252" rx="12" fill="none" stroke="#fbbf24" stroke-width="1" stroke-dasharray="8,4"/>
+  <text x="42" y="100" fill="#fbbf24" font-size="9" font-weight="600">요청 흐름 — 미션 수행과 학습 제공</text>
+  <rect x="30" y="376" width="1120" height="150" rx="12" fill="none" stroke="#fbbf24" stroke-width="1" stroke-dasharray="8,4"/>
+  <text x="42" y="394" fill="#fbbf24" font-size="9" font-weight="600">외부 데이터 파이프라인 — 조회·검증·적재</text>
+
+  <!-- 3. arrows -->
+  <!-- request lane: app → gw → api → ai -->
+  <line x1="230" y1="174" x2="308" y2="174" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="470" y1="174" x2="548" y2="174" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="750" y1="174" x2="838" y2="174" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="269" y="164" fill="#94a3b8" font-size="8" text-anchor="middle">미션 요청</text>
+  <text x="509" y="164" fill="#94a3b8" font-size="8" text-anchor="middle">인증·라우팅</text>
+  <text x="794" y="164" fill="#94a3b8" font-size="8" text-anchor="middle">컨텍스트 전달</text>
+  <!-- return feedback: ai model → user app (dashed, over the top) -->
+  <path d="M 980,142 L 980,118 L 145,118 L 145,142" fill="none" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#arrow-blue)"/>
+  <text x="562" y="112" fill="#60a5fa" font-size="8" text-anchor="middle">실시간 안내·피드백 생성 (AI 적용)</text>
+  <!-- api server ↔ db -->
+  <line x1="650" y1="206" x2="650" y2="236" stroke="#a78bfa" stroke-width="1.5" marker-end="url(#arrow-violet)"/>
+  <text x="662" y="226" fill="#94a3b8" font-size="8">판정 결과·학습 이력 기록</text>
+  <!-- pipeline lane: request (dashed, right→left, upper) / data (solid, left→right, lower) -->
+  <line x1="330" y1="438" x2="264" y2="438" stroke="#fb7185" stroke-width="1.2" stroke-dasharray="4,4" marker-end="url(#arrow-rose)"/>
+  <line x1="570" y1="438" x2="504" y2="438" stroke="#fb7185" stroke-width="1.2" stroke-dasharray="4,4" marker-end="url(#arrow-rose)"/>
+  <text x="297" y="430" fill="#fb7185" font-size="8" text-anchor="middle">조회 요청</text>
+  <text x="537" y="430" fill="#fb7185" font-size="8" text-anchor="middle">요청만 송신</text>
+  <line x1="264" y1="472" x2="328" y2="472" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="504" y1="472" x2="568" y2="472" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="754" y1="455" x2="818" y2="455" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="296" y="486" fill="#94a3b8" font-size="8" text-anchor="middle">조회 응답</text>
+  <text x="536" y="486" fill="#94a3b8" font-size="8" text-anchor="middle">원천 데이터</text>
+  <text x="786" y="447" fill="#94a3b8" font-size="8" text-anchor="middle">적재 전 검증</text>
+  <!-- verified data up to DB -->
+  <path d="M 910,425 L 910,272 L 716,272" fill="none" stroke="#a78bfa" stroke-width="1.5" marker-end="url(#arrow-violet)"/>
+  <text x="924" y="330" fill="#a78bfa" font-size="8">검증·정제 후 적재</text>
+
+  <!-- 4. mask layer -->
+  <rect x="60" y="142" width="170" height="64" rx="6" fill="#0f172a"/>
+  <rect x="310" y="142" width="160" height="64" rx="6" fill="#0f172a"/>
+  <rect x="550" y="142" width="200" height="64" rx="6" fill="#0f172a"/>
+  <rect x="840" y="142" width="280" height="64" rx="6" fill="#0f172a"/>
+  <rect x="60" y="425" width="204" height="60" rx="6" fill="#0f172a"/>
+  <rect x="330" y="425" width="174" height="60" rx="6" fill="#0f172a"/>
+  <rect x="570" y="425" width="184" height="60" rx="6" fill="#0f172a"/>
+  <rect x="820" y="425" width="180" height="60" rx="6" fill="#0f172a"/>
+
+  <!-- 5. component boxes -->
+  <!-- 사용자 앱 -->
+  <rect x="60" y="142" width="170" height="64" rx="6" fill="rgba(8,51,68,0.4)" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="145" y="168" fill="white" font-size="12" font-weight="600" text-anchor="middle">사용자 앱</text>
+  <text x="145" y="186" fill="#94a3b8" font-size="9" text-anchor="middle">금융 미션 수행 · 학습</text>
+  <!-- API G/W -->
+  <rect x="310" y="142" width="160" height="64" rx="6" fill="rgba(30,41,59,0.5)" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="390" y="168" fill="white" font-size="12" font-weight="600" text-anchor="middle">API G/W</text>
+  <text x="390" y="186" fill="#94a3b8" font-size="9" text-anchor="middle">인증 · 라우팅</text>
+  <!-- API 서버 -->
+  <rect x="550" y="142" width="200" height="64" rx="6" fill="rgba(6,78,59,0.4)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="650" y="164" fill="white" font-size="12" font-weight="600" text-anchor="middle">API 서버</text>
+  <text x="650" y="180" fill="#94a3b8" font-size="9" text-anchor="middle">정답 판정 · 학습 결과 처리</text>
+  <text x="650" y="196" fill="#34d399" font-size="8" font-weight="600" text-anchor="middle">AI 미적용 — 결정론 처리</text>
+  <!-- AI 모델 -->
+  <rect x="840" y="142" width="280" height="64" rx="6" fill="rgba(59,130,246,0.3)" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="980" y="164" fill="white" font-size="12" font-weight="600" text-anchor="middle">AI 모델</text>
+  <text x="980" y="180" fill="#94a3b8" font-size="9" text-anchor="middle">Instruction LLM + Context Prompting + RAG</text>
+  <text x="980" y="196" fill="#60a5fa" font-size="8" font-weight="600" text-anchor="middle">AI 적용 — 실시간 안내·피드백</text>
+  <!-- DB cylinder -->
+  <g>
+    <rect x="590" y="246" width="126" height="64" rx="2" fill="#0f172a"/>
+    <ellipse cx="653" cy="246" rx="63" ry="12" fill="#0f172a"/>
+    <ellipse cx="653" cy="310" rx="63" ry="12" fill="#0f172a"/>
+    <rect x="590" y="246" width="126" height="64" fill="rgba(76,29,149,0.4)"/>
+    <ellipse cx="653" cy="246" rx="63" ry="12" fill="rgba(76,29,149,0.4)" stroke="#a78bfa" stroke-width="1.5"/>
+    <ellipse cx="653" cy="310" rx="63" ry="12" fill="rgba(76,29,149,0.4)" stroke="#a78bfa" stroke-width="1.5"/>
+    <line x1="590" y1="246" x2="590" y2="310" stroke="#a78bfa" stroke-width="1.5"/>
+    <line x1="716" y1="246" x2="716" y2="310" stroke="#a78bfa" stroke-width="1.5"/>
+    <text x="653" y="278" fill="white" font-size="11" font-weight="600" text-anchor="middle">DB</text>
+    <text x="653" y="295" fill="#c4b5fd" font-size="8" text-anchor="middle">역량 프로필 · 학습 이력</text>
+  </g>
+  <!-- 외부 공공·금융 데이터 -->
+  <rect x="60" y="425" width="204" height="60" rx="6" fill="rgba(30,41,59,0.5)" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="162" y="450" fill="white" font-size="12" font-weight="600" text-anchor="middle">외부 공공·금융 데이터</text>
+  <text x="162" y="467" fill="#94a3b8" font-size="9" text-anchor="middle">공식 자료 · 통계</text>
+  <!-- 프록시 -->
+  <rect x="330" y="425" width="174" height="60" rx="6" fill="rgba(136,19,55,0.4)" stroke="#fb7185" stroke-width="1.5"/>
+  <text x="417" y="450" fill="white" font-size="12" font-weight="600" text-anchor="middle">프록시</text>
+  <text x="417" y="467" fill="#fb7185" font-size="9" text-anchor="middle">조회 요청만 송신 — 격리 경계</text>
+  <!-- 데이터 파이프라인 -->
+  <rect x="570" y="425" width="184" height="60" rx="6" fill="rgba(251,146,60,0.3)" stroke="#fb923c" stroke-width="1.5"/>
+  <text x="662" y="450" fill="white" font-size="12" font-weight="600" text-anchor="middle">데이터 파이프라인</text>
+  <text x="662" y="467" fill="#94a3b8" font-size="9" text-anchor="middle">수집 · 적재 관리</text>
+  <!-- AI 검증·정제 -->
+  <rect x="820" y="425" width="180" height="60" rx="6" fill="rgba(59,130,246,0.3)" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="910" y="450" fill="white" font-size="12" font-weight="600" text-anchor="middle">AI 검증·정제</text>
+  <text x="910" y="467" fill="#60a5fa" font-size="9" text-anchor="middle">AI 적용 — 적재 전 검증</text>
+
+  <!-- 7. legend -->
+  <g transform="translate(770, 560)">
+    <rect x="0" y="0" width="380" height="64" rx="8" fill="rgba(30,41,59,0.5)" stroke="#334155" stroke-width="1"/>
+    <rect x="14" y="14" width="12" height="12" rx="3" fill="rgba(59,130,246,0.3)" stroke="#60a5fa" stroke-width="1.5"/>
+    <text x="34" y="24" fill="#e2e8f0" font-size="9">AI 적용 — LLM·RAG 안내, 적재 전 검증</text>
+    <rect x="14" y="38" width="12" height="12" rx="3" fill="rgba(6,78,59,0.4)" stroke="#34d399" stroke-width="1.5"/>
+    <text x="34" y="48" fill="#e2e8f0" font-size="9">AI 미적용 — 정답 판정·학습 결과 (결정론)</text>
+    <rect x="216" y="14" width="12" height="12" rx="3" fill="rgba(136,19,55,0.4)" stroke="#fb7185" stroke-width="1.5"/>
+    <text x="236" y="24" fill="#e2e8f0" font-size="9">보안 경계 (프록시)</text>
+    <rect x="216" y="38" width="12" height="12" rx="3" fill="rgba(76,29,149,0.4)" stroke="#a78bfa" stroke-width="1.5"/>
+    <text x="236" y="48" fill="#e2e8f0" font-size="9">저장소 (DB)</text>
+  </g>
+
+  <!-- 8. title block -->
+  <text x="30" y="42" fill="white" font-size="16" font-weight="700">금융 코디세이 — 예상 시스템 구성</text>
+  <text x="30" y="62" fill="#94a3b8" font-size="10">요청 흐름 + 외부 데이터 파이프라인 · AI 적용/미적용 구분</text>
+</svg>
+      </div>
+    </div>
   </section>
 
-  <!-- ===== 07 비즈니스 모델 — 심는 문장: 쓰는 사람과 내는 사람이 다르고, 양쪽 모두 Needs가 있다 ===== -->
+  <!-- ===== 본문 06/10 비즈니스 모델 — 심는 문장: 쓰는 사람과 내는 사람이 다르고, 양쪽 모두 Needs가 있다 ===== -->
   <section class="slide" aria-label="비즈니스 모델">
-    <p class="kicker"><span>비즈니스 모델</span><span class="n">07 / 10</span></p>
+    <p class="kicker"><span>비즈니스 모델</span><span class="n">06 / 10</span></p>
     <h2>기관이 지불하고, <span class="thin">취약계층은 무료로 쓴다</span></h2>
     <div class="flow">
       <div class="node"><div class="k">지불자</div><div class="t">공공·금융기관 / 금융·통신사</div><p>서비스 사용료 지불</p></div>
@@ -509,7 +635,7 @@
       <div class="arrow">▶</div>
       <div class="node" style="border-top-color: var(--ok);"><div class="k">사용자</div><div class="t">금융 취약계층</div><p>무료 이용</p></div>
     </div>
-    <table>
+    <table class="airy">
       <thead><tr><th style="width:14%">수익 구조</th><th style="width:44%">고객 유형</th><th>가격 책정 방식</th></tr></thead>
       <tbody>
         <tr>
@@ -537,9 +663,9 @@
     </div>
   </section>
 
-  <!-- ===== 08 기대 효과 — 심는 문장: 개인 역량, 사회적 피해, 기관 지표의 세 층위에서 효과가 발생한다 ===== -->
+  <!-- ===== 본문 07/10 기대 효과 — 심는 문장: 개인 역량, 사회적 피해, 기관 지표의 세 층위에서 효과가 발생한다 ===== -->
   <section class="slide" aria-label="기대 효과">
-    <p class="kicker"><span>기대 효과</span><span class="n">08 / 10</span></p>
+    <p class="kicker"><span>기대 효과</span><span class="n">07 / 10</span></p>
     <h2>사용자에게는 역량을, <span class="thin">기관에는 지표를</span></h2>
     <div class="rows grow">
       <div class="row" style="grid-template-columns: 300px 1fr 1fr;">
@@ -580,9 +706,9 @@
     <p class="note"><strong>수치 표기 원칙</strong> — '목표치'는 서비스 도입 시 달성을 목표로 하는 값, '내부 추정'은 자체 산정치다. 외부 검증된 실측치가 아니며, 실증(PoC) 단계에서 사전·사후 비교로 검증할 계획이다.</p>
   </section>
 
-  <!-- ===== 09 향후 발전 방향 — 심는 문장: 시니어 실증 → 세그먼트 확장 → 공공 인프라 편입·데이터 사업 ===== -->
+  <!-- ===== 본문 08/10 향후 발전 방향 — 심는 문장: 시니어 실증 → 세그먼트 확장 → 공공 인프라 편입·데이터 사업 ===== -->
   <section class="slide" aria-label="향후 발전 방향">
-    <p class="kicker"><span>향후 발전 방향</span><span class="n">09 / 10</span></p>
+    <p class="kicker"><span>향후 발전 방향</span><span class="n">08 / 10</span></p>
     <h2>실증으로 시작해, <span class="thin">교육 인프라와 데이터로</span></h2>
     <div class="rows grow">
       <div class="row" style="grid-template-columns: 250px 1fr 1fr;">
@@ -622,12 +748,13 @@
     <p class="lead closing">확장의 축은 <em>타겟 세그먼트</em>이고, 축적되는 자산은 <em>연령별 미션 수행 데이터</em>다.</p>
   </section>
 
-  <!-- ===== 10 팀 역할 분담 + 클로징 — 심는 문장: 이 기획은 5개 영역의 조사·설계를 통합한 결과다 ===== -->
-  <section class="slide" aria-label="팀 역할 분담과 핵심 제안">
-    <p class="kicker"><span>팀 역할 분담 · 핵심 제안</span><span class="n">10 / 10</span></p>
+  <!-- ===== 본문 09/10 팀 역할 분담 — 심는 문장: 이 기획은 5개 영역의 조사·설계를 통합한 결과다 ===== -->
+  <section class="slide" aria-label="팀 역할 분담">
+    <p class="kicker"><span>팀 역할 분담</span><span class="n">09 / 10</span></p>
     <h2>다섯 영역의 조사·설계를 <span class="thin">하나의 기획으로</span></h2>
-    <table>
-      <thead><tr><th style="width:22%">담당 영역 · 담당자</th><th>기획서 작성 과정에서의 기여 내용</th></tr></thead>
+    <p class="lead">팀 역할은 향후 개발 직무가 아니라, 이번 기획서를 작성하는 과정에서 각 팀원이 담당한 <strong>조사·설계·정리 영역과 기여 내용</strong>을 기준으로 작성했다.</p>
+    <table class="airy">
+      <thead><tr><th style="width:24%">담당 영역 · 담당자</th><th>기획서 작성 과정에서의 기여 내용</th></tr></thead>
       <tbody>
         <tr><td>기획 총괄 <span class="sub">[TODO: 성명]</span></td><td>아이디어 방향 설정, 문제 정의, 서비스 핵심 콘셉트 및 전체 기획서 구성·통합</td></tr>
         <tr><td>시장·사례 조사 <span class="sub">[TODO: 성명]</span></td><td>기존 금융교육·AI 금융서비스 및 유사 서비스 조사, 기존 서비스 대비 차별점 도출</td></tr>
@@ -636,12 +763,39 @@
         <tr><td>서비스 설계·발표 <span class="sub">[TODO: 성명]</span></td><td>타겟 사용자, 학습 흐름, 시스템 구성, 기대 효과·사업화 방향 정리 및 발표자료 구성</td></tr>
       </tbody>
     </table>
-    <p class="note">팀 역할은 향후 개발 직무가 아니라, 이번 기획서를 작성하는 과정에서 각 팀원이 담당한 조사·설계·정리 영역과 기여 내용을 기준으로 작성했다.</p>
     <div class="spacer"></div>
-    <div class="band">
-      <b>핵심 제안</b>
+    <p class="note closing">팀: <strong>TEAM 6 · 5인</strong> — 팀원 실명은 확정 후 기입하며, 기획서 §9와 동일 인물·동일 역할명으로 맞춘다.</p>
+  </section>
+
+  <!-- ===== 본문 10/10 핵심 제안 — 심는 문장: 콘텐츠를 더하는 것이 아니라 학습 여정을 만드는 플랫폼이다 ===== -->
+  <section class="slide" aria-label="핵심 제안">
+    <p class="kicker"><span>핵심 제안</span><span class="n">10 / 10</span></p>
+    <h2>콘텐츠를 하나 더 만드는 <span class="thin">서비스가 아니다</span></h2>
+    <div class="spacer"></div>
+    <div class="band big">
+      <b>결론</b>
       <p>금융 코디세이는 새로운 금융교육 콘텐츠를 하나 더 만드는 서비스가 아니다. 사용자의 실제 금융 미션 수행을 통해 <em>'지금 무엇을 어려워하는지'</em>를 파악하고, AI가 필요한 도움과 다음 금융과업을 연결함으로써 <em>흩어진 금융교육을 개인별 하나의 학습 여정</em>으로 만드는 플랫폼이다.</p>
     </div>
+    <div class="spacer"></div>
+    <div class="cards c3">
+      <div class="card">
+        <b>기능 01</b>
+        <h3>미션 기반 역량 진단</h3>
+        <p>행동 데이터를 기준과 가중치에 따라 점수화해 영역별 취약도를 파악한다.</p>
+      </div>
+      <div class="card">
+        <b>기능 02</b>
+        <h3>AI 가이드형 실습</h3>
+        <p>사용자 수준·미션 단계·오류 이력에 맞춘 안내를 생성하고, 공식 금융자료를 근거로 제시한다.</p>
+      </div>
+      <div class="card">
+        <b>기능 03</b>
+        <h3>개인별 학습경로 추천</h3>
+        <p>역량 프로필을 기준으로 기초금융·금융안전·생활금융 중 다음 학습을 연결한다.</p>
+      </div>
+    </div>
+    <div class="spacer"></div>
+    <p class="lead closing" style="font-size:22px; color:var(--ink); font-weight:700;">흩어진 금융교육을, 하나의 학습 여정으로 — <span style="color:var(--ink-faint); font-weight:600;">금융 코디세이 (가칭) · TEAM 6</span></p>
   </section>
 
   </div>
@@ -651,7 +805,7 @@
 <nav class="chrome dots" id="dots" aria-label="슬라이드 바로가기"></nav>
 <div class="chrome nav">
   <button type="button" id="prev" aria-label="이전 슬라이드">‹</button>
-  <span class="count"><b id="cur">1</b> / <span id="total">10</span></span>
+  <span class="count"><b id="cur">1</b> / <span id="total">12</span></span>
   <button type="button" id="next" aria-label="다음 슬라이드">›</button>
 </div>
 
