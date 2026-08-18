@@ -1,6 +1,6 @@
 # 금융 코디세이 MVP
 
-> 스코프: `docs/idea-1/MVP_스코프_v0.1.md` | 데모 대본: `docs/idea-1/데모_시나리오_v0.1.md`
+> 스코프: `docs/idea-1/_archive/MVP_스코프_v0.1.md` | 데모 대본: `docs/idea-1/_archive/데모_시나리오_v0.1.md`
 
 ## 구조
 
