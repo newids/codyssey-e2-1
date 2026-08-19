@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>금융 코디세이 — 개인 맞춤형 금융학습 플랫폼 | 발표자료 (10p)</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧭</text></svg>">
+<!--
+  내용 근거(SSOT): docs/idea-1/_workspace/input_통합기획안_2026-08-18.md (사용자 제공 확정 통합 서사, 2026-08-18)
+  형식 근거: docs/Mission-e2-1.md (발표자료 10p 이내, PPT 또는 PDF) / .claude/skills/deck-production/SKILL.md (브랜드 토큰)
+  디자인 참조: docs/idea-1/pitch-deck.html (토큰·컴포넌트만 계승, 내용은 미계승)
+
+  [TODO] 팀명·팀원 실명 — 슬라이드 01, 10의 역할명 옆 자리에 확정 시 기입. 기획서 §9와 동일 인물이어야 한다.
+  [TODO] 슬라이드 08 수치 라벨 — '목표치/내부 추정' 표기는 출처 확보 시 근거 병기로 교체.
+
+  PDF 변환: 브라우저 인쇄 → 용지 여백 '없음', 배경 그래픽 켜기 → 슬라이드 1장 = 1페이지(16:9).
+-->
+<style>
+  :root {
+    --paper: oklch(97.5% 0.006 85);
+    --ink: oklch(24% 0.015 260);
+    --ink-soft: oklch(42% 0.012 260);
+    --ink-faint: oklch(55% 0.01 260);
+    --accent: oklch(48% 0.13 250);
+    --accent-deep: oklch(38% 0.12 250);
+    --accent-soft: oklch(48% 0.13 250 / 0.09);
+    --accent-line: oklch(48% 0.13 250 / 0.3);
+    --danger: oklch(52% 0.17 25);
+    --danger-soft: oklch(52% 0.17 25 / 0.08);
+    --ok: oklch(52% 0.12 155);
+    --ok-soft: oklch(52% 0.12 155 / 0.1);
+    --card: oklch(99.2% 0.003 85);
+    --rule: oklch(24% 0.015 260 / 0.14);
+    --shade: oklch(24% 0.015 260 / 0.045);
+
+    --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+      "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", system-ui, sans-serif;
+    --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; background: oklch(93% 0.008 260); }
+  body {
+    font-family: var(--font-sans);
+    color: var(--ink);
+    line-height: 1.5;
+    word-break: keep-all;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- 무대: 1280x720 고정 캔버스를 뷰포트에 맞춰 스케일 ---------- */
+  .stage { position: fixed; inset: 0; display: grid; place-items: center; }
+  .deck {
+    width: 1280px; height: 720px; position: relative;
+    transform: scale(var(--scale, 1)); transform-origin: center center;
+  }
+  .slide {
+    position: absolute; inset: 0;
+    width: 1280px; height: 720px;
+    background: var(--paper);
+    padding: 44px 64px 46px;
+    display: flex; flex-direction: column; gap: 18px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px oklch(24% 0.015 260 / 0.22);
+    opacity: 0; visibility: hidden;
+    transition: opacity 260ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .slide.is-active { opacity: 1; visibility: visible; }
+  .slide::after {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 8px;
+    background: linear-gradient(var(--accent), var(--accent-deep));
+  }
+  .slide.cover::after { width: 100%; height: 8px; bottom: auto; }
+
+  /* ---------- 타이포 ---------- */
+  .kicker {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+    border-top: 3px solid var(--ink); padding-top: 9px;
+    font-size: 13px; letter-spacing: 0.14em; font-weight: 700; color: var(--accent);
+    text-transform: uppercase;
+  }
+  .kicker .n { font-family: var(--font-mono); color: var(--ink-faint); font-weight: 500; letter-spacing: 0.06em; }
+  h1 { font-size: 62px; line-height: 1.08; letter-spacing: -0.035em; font-weight: 800; }
+  h2 { font-size: 40px; line-height: 1.15; letter-spacing: -0.03em; font-weight: 780; }
+  h2 .thin { color: var(--ink-faint); font-weight: 600; }
+  .lead { font-size: 19px; line-height: 1.55; color: var(--ink-soft); }
+  .lead strong { color: var(--ink); font-weight: 700; }
+  em { font-style: normal; background: linear-gradient(transparent 58%, var(--accent-soft) 58%); font-weight: 700; color: var(--accent-deep); }
+  .note { font-size: 13px; line-height: 1.5; color: var(--ink-faint); }
+  .note strong { color: var(--ink-soft); }
+  .spacer { flex: 1 1 auto; min-height: 0; }
+  .grow { flex: 1 1 auto; min-height: 0; }
+  .closing { border-top: 2px solid var(--ink); padding-top: 13px; }
+
+  /* ---------- 스탯 밴드 ---------- */
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border-block: 1px solid var(--rule); }
+  .stat { background: var(--paper); padding: 12px 16px 13px; }
+  .stat .n { font-size: 34px; font-weight: 800; letter-spacing: -0.035em; line-height: 1.05; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .stat.bad .n { color: var(--danger); }
+  .stat .l { font-size: 13px; line-height: 1.45; color: var(--ink-soft); margin-top: 4px; }
+  .stat .src { display: block; font-size: 11.5px; color: var(--ink-faint); margin-top: 2px; }
+
+  /* ---------- 카드 ---------- */
+  .cards { display: grid; gap: 14px; }
+  .cards.c3 { grid-template-columns: repeat(3, 1fr); }
+  .cards.c2 { grid-template-columns: repeat(2, 1fr); }
+  .card {
+    background: var(--card); border: 1px solid var(--rule); border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0; padding: 14px 16px 15px;
+  }
+  .card > b { display: block; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+  .card h3 { font-size: 18px; font-weight: 750; letter-spacing: -0.02em; line-height: 1.25; margin-bottom: 5px; }
+  .card p { font-size: 14px; line-height: 1.5; color: var(--ink-soft); }
+  .card p + p { margin-top: 5px; }
+  .card ul { list-style: none; display: grid; gap: 4px; margin-top: 4px; }
+  .card li { font-size: 14px; line-height: 1.45; color: var(--ink-soft); padding-left: 13px; position: relative; }
+  .card li::before { content: ""; position: absolute; left: 0; top: 8px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent-line); }
+  .card.num { position: relative; }
+  .card.num .idx {
+    font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: oklch(99% 0 0);
+    background: var(--accent); border-radius: 999px; padding: 2px 9px; margin-bottom: 7px;
+    display: inline-block; align-self: flex-start;
+  }
+  .cards.grow .card { display: flex; flex-direction: column; }
+  .cards.grow.mid .card { justify-content: center; }
+  .cards.areas .card h3 { font-size: 24px; margin-bottom: 10px; }
+  .cards.areas .card li { font-size: 16px; padding-left: 16px; }
+  .cards.areas .card ul { gap: 8px; }
+  .cards.areas .card li::before { top: 9px; width: 6px; height: 6px; }
+  table.airy td, table.airy th { padding-top: 13px; padding-bottom: 13px; }
+  .card.ok { border-left-color: var(--ok); }
+  .card.ok > b, .card.ok .idx { color: var(--ok); }
+  .card.ok .idx { background: var(--ok); color: oklch(99% 0 0); }
+
+  /* ---------- 칩 ---------- */
+  .chips { display: flex; flex-wrap: wrap; gap: 7px; }
+  .chip { font-size: 13px; font-weight: 650; background: var(--accent-soft); color: var(--accent-deep); border-radius: 999px; padding: 5px 13px; }
+  .chip.plain { background: transparent; color: var(--ink-soft); border: 1px solid var(--rule); font-weight: 600; }
+  .chip.flag { background: var(--danger-soft); color: var(--danger); font-size: 11.5px; letter-spacing: 0.04em; padding: 3px 9px; }
+  .chip.goal { background: var(--ok-soft); color: var(--ok); font-size: 11.5px; letter-spacing: 0.04em; padding: 3px 9px; }
+
+  /* ---------- 표 ---------- */
+  table { border-collapse: collapse; width: 100%; }
+  th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; font-size: 14px; line-height: 1.45; }
+  th { font-size: 12px; letter-spacing: 0.08em; color: var(--ink-faint); font-weight: 700; text-transform: uppercase; border-bottom: 2px solid var(--ink); padding-bottom: 7px; }
+  td:first-child { font-weight: 750; color: var(--ink); }
+  td .rank { font-family: var(--font-mono); font-size: 11px; color: var(--accent); display: block; font-weight: 700; letter-spacing: 0.06em; }
+  td .sub { display: block; font-size: 12.5px; color: var(--ink-faint); font-weight: 500; margin-top: 2px; }
+  tbody tr:last-child td { border-bottom: none; }
+  td strong { color: var(--ink); }
+  code { font-family: var(--font-mono); font-size: 12.5px; background: var(--shade); padding: 1px 6px; border-radius: 4px; color: var(--accent-deep); }
+
+  /* ---------- 루프 플로우 ---------- */
+  .flow { display: flex; align-items: stretch; gap: 10px; }
+  .flow .node {
+    flex: 1 1 0; background: var(--card); border: 1px solid var(--rule); border-radius: 10px;
+    padding: 12px 14px 13px; border-top: 3px solid var(--accent);
+  }
+  .flow .node .k { font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; color: var(--accent); letter-spacing: 0.08em; }
+  .flow .node .t { font-size: 16.5px; font-weight: 750; letter-spacing: -0.015em; margin-top: 2px; line-height: 1.25; }
+  .flow .node p { font-size: 13px; color: var(--ink-soft); line-height: 1.4; margin-top: 4px; }
+  .flow .arrow { align-self: center; color: var(--accent-line); font-size: 20px; font-weight: 700; line-height: 1; }
+  .loopback { font-size: 12.5px; color: var(--accent-deep); font-weight: 650; text-align: right; }
+
+  /* ---------- 행 레이아웃 (기대 효과 · 로드맵) ---------- */
+  .rows { display: flex; flex-direction: column; gap: 12px; }
+  .rows.grow .row { flex: 1 1 0; }
+  .row {
+    display: grid; align-items: center; gap: 26px;
+    background: var(--card); border: 1px solid var(--rule); border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0; padding: 14px 22px;
+  }
+  .row.ok { border-left-color: var(--ok); }
+  .row .head b { display: block; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 5px; }
+  .row.ok .head b { color: var(--ok); }
+  .row .head h3 { font-size: 20px; font-weight: 780; letter-spacing: -0.025em; line-height: 1.2; }
+  .row .head .who { font-size: 20px; font-weight: 780; letter-spacing: -0.025em; line-height: 1.2; }
+  .row .col > dt, .row .col > .lbl {
+    font-size: 11.5px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-faint);
+    font-weight: 700; margin-bottom: 5px;
+  }
+  .row .col p, .row .col dd { font-size: 14px; line-height: 1.5; color: var(--ink-soft); }
+  .row .col .bignum { font-size: 32px; font-weight: 800; letter-spacing: -0.035em; line-height: 1.1; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .row.ok .col .bignum { color: var(--ok); }
+  .row .col .bignum + p { margin-top: 4px; }
+
+
+  /* ---------- 클로징 밴드 ---------- */
+  .band {
+    background: var(--ink); color: oklch(97% 0.005 85); border-radius: 12px; padding: 16px 22px 18px;
+  }
+  .band b { display: block; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: oklch(80% 0.06 250); margin-bottom: 6px; }
+  .band p { font-size: 16.5px; line-height: 1.5; }
+  .band em { background: none; color: oklch(85% 0.11 250); }
+
+  /* ---------- 커버 ---------- */
+  .cover { justify-content: center; gap: 0; }
+  .cover .brandline { font-size: 14px; letter-spacing: 0.2em; font-weight: 700; color: var(--accent); text-transform: uppercase; }
+  .cover .name { font-size: 21px; font-weight: 750; letter-spacing: -0.01em; margin-top: 26px; color: var(--ink-soft); }
+  .cover h1 { margin-top: 10px; }
+  .cover .lead { margin-top: 20px; max-width: 900px; font-size: 20px; }
+  .cover .chips { margin-top: 22px; }
+  .cover .meta {
+    margin-top: 34px; padding-top: 16px; border-top: 1px solid var(--rule);
+    display: flex; gap: 40px; align-items: flex-start;
+  }
+  .cover .meta div { font-size: 13.5px; color: var(--ink-soft); }
+  .cover .meta dt { font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); font-weight: 700; margin-bottom: 3px; }
+
+  /* ---------- 화면 크롬(내비게이션) ---------- */
+  .chrome { position: fixed; z-index: 20; }
+  .chrome.bar { left: 0; right: 0; top: 0; height: 3px; background: oklch(24% 0.015 260 / 0.12); }
+  .chrome.bar > i { display: block; height: 100%; background: var(--accent); width: 10%; transition: width 240ms cubic-bezier(0.16, 1, 0.3, 1); }
+  .chrome.nav { right: 18px; bottom: 16px; display: flex; align-items: center; gap: 10px; }
+  .chrome.nav button {
+    width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--rule);
+    background: var(--card); color: var(--ink); font-size: 15px; cursor: pointer; line-height: 1;
+  }
+  .chrome.nav button:hover { background: var(--accent); color: oklch(99% 0 0); border-color: var(--accent); }
+  .chrome.nav button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  .chrome.nav .count { font-family: var(--font-mono); font-size: 13px; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .chrome.dots { left: 18px; bottom: 16px; display: flex; gap: 6px; }
+  .chrome.dots button {
+    width: 9px; height: 9px; border-radius: 50%; padding: 0; cursor: pointer;
+    border: 1px solid var(--ink-faint); background: transparent;
+  }
+  .chrome.dots button[aria-current="true"] { background: var(--accent); border-color: var(--accent); }
+  .chrome.dots button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .slide, .chrome.bar > i { transition: none; }
+  }
+
+  /* ---------- 인쇄: 슬라이드 1장 = PDF 1페이지 (16:9) ---------- */
+  @media print {
+    @page { size: 1280px 720px; margin: 0; }
+    html, body { background: #fff; height: auto; overflow: visible; }
+    .stage { position: static; display: block; }
+    .deck { width: 1280px; height: auto; transform: none; }
+    .slide {
+      position: static; opacity: 1 !important; visibility: visible !important;
+      box-shadow: none; transition: none;
+      break-after: page; page-break-after: always;
+      break-inside: avoid; page-break-inside: avoid;
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+    .slide:last-child { break-after: auto; page-break-after: auto; }
+    .chrome { display: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <div class="deck" id="deck">
+
+  <!-- ===== 01 표지 — 심는 문장: 이 서비스는 콘텐츠가 아니라 진단–연결 구조다 ===== -->
+  <section class="slide cover is-active" aria-label="표지">
+    <p class="brandline">AI Fintech · 텀 프로젝트 아이디어톤</p>
+    <p class="name">금융 코디세이 <span style="font-weight:500; color:var(--ink-faint);">(가칭)</span></p>
+    <h1>흩어진 금융교육을,<br>하나의 학습 여정으로</h1>
+    <p class="lead">사용자의 <strong>실제 금융 미션 수행</strong>을 기반으로 금융역량을 파악하고,
+      AI가 <em>기초금융 · 금융안전 · 생활금융</em> 중 필요한 다음 학습을 연결하는
+      <strong>개인 맞춤형 금융학습 플랫폼</strong>.</p>
+    <div class="chips">
+      <span class="chip">미션 기반 역량 진단</span>
+      <span class="chip">AI 가이드형 실습</span>
+      <span class="chip">개인별 학습경로 추천</span>
+    </div>
+    <div class="meta">
+      <div><dt>도메인</dt>AI Fintech</div>
+      <div><dt>팀</dt>[TODO: 팀명] · 5인</div>
+      <div style="flex:1 1 auto;"><dt>역할 구성</dt>기획 총괄 · 시장·사례 조사 · AI 기술 조사 · 금융·데이터 조사 · 서비스 설계·발표</div>
+    </div>
+    <p class="note" style="margin-top:14px;">※ 서비스명은 가칭이며 추후 리브랜딩을 검토한다. 팀원 실명은 확정 후 기입한다.</p>
+  </section>
+
+  <!-- ===== 02 문제 정의 — 심는 문장: 콘텐츠는 넘치는데 "내게 무엇이 부족한지"를 알려주는 진단이 없다 ===== -->
+  <section class="slide" aria-label="문제 정의">
+    <p class="kicker"><span>문제 정의</span><span class="n">02 / 10</span></p>
+    <h2>콘텐츠는 있지만, <span class="thin">진단이 없다</span></h2>
+    <div class="stats">
+      <div class="stat bad"><div class="n">65.7점</div><div class="l">성인 금융이해력 — 하락 추세<span class="src">한국은행·금융감독원, 2024</span></div></div>
+      <div class="stat bad"><div class="n">96.5% → 65.6%</div><div class="l">취약계층 디지털 접근 대비 역량 — 활용은 80.0%<span class="src">NIA 디지털정보격차실태조사, 2024</span></div></div>
+      <div class="stat bad"><div class="n">7,766억 원</div><div class="l">보이스피싱 피해액<span class="src">경찰청 국가수사본부, 2025.1~7월</span></div></div>
+    </div>
+    <div class="cards c3 grow mid">
+      <div class="card num">
+        <span class="idx">01</span>
+        <h3>콘텐츠는 있지만 진단이 없다</h3>
+        <p>모바일 금융 실습·사기 시뮬레이션 등 체험형 금융교육은 이미 확산 중이다. 그러나 역량별 학습이 여러 서비스에 흩어져 있어, <strong>무엇이 부족하고 어떤 학습이 필요한지 사용자가 스스로 판단할 수 없다.</strong></p>
+      </div>
+      <div class="card num">
+        <span class="idx">02</span>
+        <h3>같은 연령대라도 부족한 역량이 다르다</h3>
+        <p>모바일뱅킹 조작이 서툰 사람, 신용·대출 개념이 약한 사람, 지식은 있어도 실제 사기 상황에서 위험한 선택을 하는 사람이 공존한다. <strong>획일적 교육으로는 대응할 수 없다.</strong></p>
+      </div>
+      <div class="card num">
+        <span class="idx">03</span>
+        <h3>필요한 것은 '진단–연결 구조'</h3>
+        <p>또 하나의 콘텐츠가 아니다. <strong>실제 금융과업 수행 과정에서 현재 역량을 진단하고, 필요한 교육·실습을 개인별로 연결하는 구조</strong>가 필요하다.</p>
+      </div>
+    </div>
+    <div class="spacer"></div>
+    <p class="lead closing">사람 강사가 모든 사용자를 1:1로 관찰·지도할 수는 없다 — 이 <em>개인화를 대규모로 구현하는 수단이 AI</em>다.</p>
+  </section>
+
+  <!-- ===== 03 타겟 사용자 — 심는 문장: 연령으로 나누되, 개인화는 행동 데이터로 한다 ===== -->
+  <section class="slide" aria-label="타겟 사용자">
+    <p class="kicker"><span>타겟 사용자</span><span class="n">03 / 10</span></p>
+    <h2>전 국민이 대상, <span class="thin">그러나 순서가 있다</span></h2>
+    <p class="lead">생애주기별 금융과업을 가진 전 국민이 대상이나, 다음 우선순위로 타겟을 설정하고 추진한다.</p>
+    <table class="airy">
+      <thead><tr><th style="width:19%">대상 (우선순위 순)</th><th style="width:44%">교육 니즈 · 역량 취약도</th><th>대표 학습</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="rank">1순위</span>고령층 (60대+)</td>
+          <td>디지털정보화 수준 <strong>71.4%</strong> — 계층 중 최저 <span class="sub">NIA 디지털정보격차실태조사, 2024</span></td>
+          <td>모바일 송금, 금융문서 이해, 기관사칭 대응</td>
+        </tr>
+        <tr>
+          <td><span class="rank">2순위</span>청년 (20–30대)</td>
+          <td>사회생활·자산형성 시작. 기관사칭형 피해자의 <strong>52%가 30대 이하</strong> <span class="sub">피해자 수 기준, 2025</span></td>
+          <td>신용·대출 이해, 청년 지원제도 탐색</td>
+        </tr>
+        <tr>
+          <td><span class="rank">3순위</span>중장년 (50대)</td>
+          <td>자산관리·재무 재설계. 사기 피해 중 50대 이상 <strong>53%</strong> — 피해액 기준(2023년 32%) <span class="sub">경찰청 국수본, 2025년 1분기</span></td>
+          <td>투자·대출 판단, 퇴직연금, 금융사기 대응</td>
+        </tr>
+        <tr>
+          <td><span class="rank">4순위</span>청소년 (10대)</td>
+          <td>금융 기본습관 형성 단계</td>
+          <td>예산관리, 온라인 거래 위험 판단</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="spacer"></div>
+    <div class="card ok">
+      <b>개인화 원칙</b>
+      <p style="font-size:16px; color:var(--ink);">연령은 <strong>초기 추천의 참고정보</strong>로만 활용한다. 실제 학습경로는 <strong>미션 수행 결과 · 반복 오류 · AI 도움 필요 수준</strong> 등 행동 데이터를 중심으로 개인화한다.</p>
+    </div>
+  </section>
+
+  <!-- ===== 04 서비스 개요 — 심는 문장: 미션 수행 데이터가 역량 프로필이 되고, 그 프로필이 다음 학습을 부른다 ===== -->
+  <section class="slide" aria-label="서비스 개요">
+    <p class="kicker"><span>서비스 개요</span><span class="n">04 / 10</span></p>
+    <h2>미션을 수행하면, <span class="thin">역량이 보인다</span></h2>
+    <div class="flow">
+      <div class="node"><div class="k">STEP 01</div><div class="t">금융 미션 수행</div><p>실제 금융과업을 앱에서 수행</p></div>
+      <div class="arrow">▶</div>
+      <div class="node"><div class="k">STEP 02</div><div class="t">행동 데이터 수집</div><p>수행 결과 · 반복 오류 · 도움 요청</p></div>
+      <div class="arrow">▶</div>
+      <div class="node"><div class="k">STEP 03</div><div class="t">금융역량 프로필</div><p>영역별 취약도 진단·점수화</p></div>
+      <div class="arrow">▶</div>
+      <div class="node"><div class="k">STEP 04</div><div class="t">학습경로 연결</div><p>취약 영역에 맞는 다음 학습 추천</p></div>
+    </div>
+    <p class="loopback">↻ 다음 미션으로 순환 — 진단과 학습이 하나의 루프</p>
+    <div class="cards c3 areas grow mid">
+      <div class="card">
+        <b>학습 영역 01</b>
+        <h3>기초금융</h3>
+        <ul><li>계좌이체</li><li>신용·대출</li><li>금융문서 이해</li></ul>
+      </div>
+      <div class="card">
+        <b>학습 영역 02</b>
+        <h3>금융안전</h3>
+        <ul><li>보이스피싱 · 스미싱</li><li>기관사칭 대응</li><li>투자사기 대응</li></ul>
+      </div>
+      <div class="card">
+        <b>학습 영역 03</b>
+        <h3>생활금융</h3>
+        <ul><li>지원제도 탐색</li><li>청년·퇴직·연금 정보</li><li>금융조건 비교</li></ul>
+      </div>
+    </div>
+    <div class="spacer"></div>
+    <p class="lead closing"><strong>차별점</strong> — 기존 금융교육과 달리 개별 콘텐츠 제공에 그치지 않고, <em>미션 수행 결과를 금융역량 프로필로 연결</em>해 사용자의 취약 영역에 맞는 학습을 제공한다.</p>
+  </section>
+
+  <!-- ===== 05 AI 기술 적용 — 심는 문장: 규칙 기반으로 시작하되 데이터가 쌓이면 학습 기반으로 고도화한다 ===== -->
+  <section class="slide" aria-label="AI 기술 적용 방안">
+    <p class="kicker"><span>AI 기술 적용 방안</span><span class="n">05 / 10</span></p>
+    <h2>3대 핵심 기능, <span class="thin">단계적 고도화 경로</span></h2>
+    <table>
+      <thead><tr><th style="width:20%">핵심 기능</th><th style="width:30%">적용 기술</th><th>기술 설명</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>금융역량 진단</td>
+          <td><code>Weighted Rule-based Scoring</code> → <code>ML (분류/회귀)</code></td>
+          <td>사용자의 행동 데이터를 기준과 가중치에 따라 점수화하고, 이후 축적된 데이터를 학습한 ML 모델로 고도화한다.</td>
+        </tr>
+        <tr>
+          <td>AI 가이드형 실습</td>
+          <td><code>Instruction LLM</code> + <code>Context Prompting</code> + <code>RAG (Embedding 검색)</code></td>
+          <td>LLM으로 자연어 안내·피드백을 생성하고, 프롬프트에 <strong>사용자 수준 · 현재 미션 단계 · 오류 이력 · 힌트 단계</strong>를 전달해 응답 방식을 조정한다. RAG로 <strong>공식 금융자료를 답변 근거</strong>로 활용한다.</td>
+        </tr>
+        <tr>
+          <td>개인별 학습경로 추천</td>
+          <td><code>Profile-based Rule Recommendation</code> → <code>Learning-to-Rank</code></td>
+          <td>사용자 프로필과 사전 정의된 규칙으로 추천하고, 향후 데이터가 쌓이면 사용자별 학습효과를 반영해 추천을 정교화할 수 있다.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="spacer"></div>
+    <div class="cards c2 grow mid">
+      <div class="card">
+        <b>기술 선택 이유</b>
+        <p>초기에는 데이터가 없으므로 <strong>규칙·가중치 기반</strong>으로 즉시 동작하는 구조를 택했다. 사용 데이터가 축적되면 동일한 기능을 <strong>ML · Learning-to-Rank</strong>로 교체해 정교화한다.</p>
+      </div>
+      <div class="card ok">
+        <b>왜 AI여야 하는가</b>
+        <p>사람 강사가 대규모 사용자를 1:1로 관찰·지도할 수 없다. <strong>개인별 진단 → 맞춤 안내 → 다음 학습 연결</strong>을 동시에, 대규모로 수행하는 수단은 AI뿐이다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 06 시스템 구성 — 심는 문장: AI를 쓰는 곳과 쓰지 않는 곳이 구분돼 있다 ===== -->
+  <section class="slide" aria-label="예상 시스템 구성">
+    <p class="kicker"><span>예상 시스템 구성</span><span class="n">06 / 10</span></p>
+    <h2>AI를 쓰는 곳과, <span class="thin">쓰지 않는 곳</span></h2>
+    <svg viewBox="0 0 1152 336" width="100%" role="img" aria-label="시스템 구성도: 사용자 앱에서 API 게이트웨이와 API 서버를 거쳐 AI 모델 레이어로 요청이 전달되고, 데이터 파이프라인이 프록시를 경유해 외부 데이터를 조회한 뒤 AI 검증·정제를 거쳐 데이터베이스에 적재된다.">
+      <defs>
+        <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="oklch(42% 0.012 260)"/>
+        </marker>
+        <marker id="ahs" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="oklch(48% 0.13 250)"/>
+        </marker>
+      </defs>
+      <g font-family="var(--font-sans)">
+        <!-- 레인 1: 요청 흐름 -->
+        <text x="0" y="12" font-size="12" font-weight="700" fill="oklch(55% 0.01 260)" letter-spacing="1.4">요청 흐름</text>
+        <g>
+          <rect x="0" y="26" width="184" height="104" rx="10" fill="oklch(99.2% 0.003 85)" stroke="oklch(24% 0.015 260 / 0.28)"/>
+          <text x="92" y="66" text-anchor="middle" font-size="17" font-weight="750" fill="oklch(24% 0.015 260)">사용자 앱</text>
+          <text x="92" y="88" text-anchor="middle" font-size="13" fill="oklch(42% 0.012 260)">Mobile / Web</text>
+          <text x="92" y="108" text-anchor="middle" font-size="12" fill="oklch(55% 0.01 260)">미션 수행 · 학습</text>
+        </g>
+        <line x1="188" y1="78" x2="222" y2="78" stroke="oklch(42% 0.012 260)" stroke-width="1.6" marker-end="url(#ah)"/>
+        <g>
+          <rect x="226" y="26" width="150" height="104" rx="10" fill="oklch(99.2% 0.003 85)" stroke="oklch(24% 0.015 260 / 0.28)"/>
+          <text x="301" y="72" text-anchor="middle" font-size="17" font-weight="750" fill="oklch(24% 0.015 260)">API G/W</text>
+          <text x="301" y="94" text-anchor="middle" font-size="12" fill="oklch(55% 0.01 260)">인증 · 라우팅</text>
+        </g>
+        <line x1="380" y1="78" x2="414" y2="78" stroke="oklch(42% 0.012 260)" stroke-width="1.6" marker-end="url(#ah)"/>
+        <g>
+          <rect x="418" y="26" width="222" height="104" rx="10" fill="oklch(99.2% 0.003 85)" stroke="oklch(24% 0.015 260 / 0.45)" stroke-width="1.6"/>
+          <rect x="418" y="26" width="222" height="5" rx="2.5" fill="oklch(24% 0.015 260)"/>
+          <text x="529" y="58" text-anchor="middle" font-size="17" font-weight="750" fill="oklch(24% 0.015 260)">API 서버 (Backend)</text>
+          <text x="529" y="80" text-anchor="middle" font-size="12.5" fill="oklch(42% 0.012 260)">미션 요청 · 정답 판정</text>
+          <text x="529" y="98" text-anchor="middle" font-size="12.5" fill="oklch(42% 0.012 260)">학습 결과 처리</text>
+          <text x="529" y="119" text-anchor="middle" font-size="11.5" font-weight="700" fill="oklch(55% 0.01 260)" letter-spacing="0.8">AI 미적용 — 결정론 처리</text>
+        </g>
+        <line x1="644" y1="78" x2="686" y2="78" stroke="oklch(48% 0.13 250)" stroke-width="1.8" marker-end="url(#ahs)" marker-start="url(#ahs)"/>
+        <g>
+          <rect x="690" y="26" width="462" height="104" rx="10" fill="oklch(48% 0.13 250 / 0.09)" stroke="oklch(48% 0.13 250 / 0.5)" stroke-width="1.6"/>
+          <rect x="690" y="26" width="462" height="5" rx="2.5" fill="oklch(48% 0.13 250)"/>
+          <text x="712" y="56" font-size="17" font-weight="750" fill="oklch(38% 0.12 250)">AI 모델 레이어</text>
+          <text x="712" y="80" font-size="13" fill="oklch(24% 0.015 260)">· Instruction LLM + Context Prompting — 실시간 안내·피드백 생성</text>
+          <text x="712" y="99" font-size="13" fill="oklch(24% 0.015 260)">· RAG (Embedding 검색) — 공식 금융자료 근거 제시</text>
+          <text x="712" y="118" font-size="13" fill="oklch(24% 0.015 260)">· 역량 스코어링 · 학습경로 추천</text>
+        </g>
+        <!-- API 서버 → DB -->
+        <path d="M529,134 L529,168 L780,168 L780,196" fill="none" stroke="oklch(42% 0.012 260)" stroke-width="1.6" marker-end="url(#ah)"/>
+        <text x="545" y="162" font-size="11.5" fill="oklch(55% 0.01 260)">학습 결과 · 역량 프로필 저장</text>
+
+        <!-- 레인 2: 외부 데이터 -->
+        <text x="0" y="186" font-size="12" font-weight="700" fill="oklch(55% 0.01 260)" letter-spacing="1.4">외부 데이터 파이프라인</text>
+        <g>
+          <rect x="0" y="200" width="176" height="96" rx="10" fill="oklch(99.2% 0.003 85)" stroke="oklch(24% 0.015 260 / 0.28)" stroke-dasharray="5 4"/>
+          <text x="88" y="240" text-anchor="middle" font-size="15" font-weight="750" fill="oklch(24% 0.015 260)">외부 데이터</text>
+          <text x="88" y="261" text-anchor="middle" font-size="12" fill="oklch(42% 0.012 260)">공공·금융 공식자료</text>
+        </g>
+        <line x1="180" y1="248" x2="212" y2="248" stroke="oklch(42% 0.012 260)" stroke-width="1.6" marker-end="url(#ah)" marker-start="url(#ah)"/>
+        <g>
+          <rect x="216" y="200" width="136" height="96" rx="10" fill="oklch(99.2% 0.003 85)" stroke="oklch(24% 0.015 260 / 0.28)"/>
+          <text x="284" y="243" text-anchor="middle" font-size="15" font-weight="750" fill="oklch(24% 0.015 260)">프록시</text>
+          <text x="284" y="264" text-anchor="middle" font-size="11.5" fill="oklch(52% 0.17 25)">조회 요청만 송신</text>
+        </g>
+        <line x1="356" y1="248" x2="388" y2="248" stroke="oklch(42% 0.012 260)" stroke-width="1.6" marker-end="url(#ah)" marker-start="url(#ah)"/>
+        <g>
+          <rect x="392" y="200" width="182" height="96" rx="10" fill="oklch(99.2% 0.003 85)" stroke="oklch(24% 0.015 260 / 0.28)"/>
+          <text x="483" y="243" text-anchor="middle" font-size="15" font-weight="750" fill="oklch(24% 0.015 260)">데이터 파이프라인</text>
+          <text x="483" y="264" text-anchor="middle" font-size="11.5" fill="oklch(42% 0.012 260)">수집 · 적재 스케줄</text>
+        </g>
+        <line x1="578" y1="248" x2="686" y2="248" stroke="oklch(48% 0.13 250)" stroke-width="1.8" marker-end="url(#ahs)"/>
+        <rect x="586" y="234" width="96" height="24" rx="12" fill="oklch(48% 0.13 250)"/>
+        <text x="634" y="250" text-anchor="middle" font-size="11.5" font-weight="700" fill="oklch(99% 0 0)">AI 검증·정제</text>
+        <g>
+          <rect x="690" y="200" width="462" height="96" rx="10" fill="oklch(24% 0.015 260 / 0.045)" stroke="oklch(24% 0.015 260 / 0.28)"/>
+          <text x="712" y="236" font-size="16" font-weight="750" fill="oklch(24% 0.015 260)">Database</text>
+          <text x="712" y="262" font-size="12.5" fill="oklch(42% 0.012 260)">미션·학습 이력 · 금융역량 프로필 · 검증된 외부 금융정보</text>
+          <text x="712" y="281" font-size="11.5" fill="oklch(55% 0.01 260)">RAG 임베딩 인덱스 원천</text>
+        </g>
+      </g>
+    </svg>
+    <div class="spacer"></div>
+    <p class="note closing"><strong>설계 원칙</strong> — 정답 판정·학습 결과 집계처럼 <strong>재현·감사되어야 하는 처리는 API 서버(AI 미적용)</strong>에서 수행하고, AI는 안내·피드백 생성과 개인화에만 관여한다. 외부 데이터는 프록시를 경유해 <strong>조회 요청만</strong> 송신하며, AI 검증·정제를 거친 뒤 DB에 적재한다.</p>
+  </section>
+
+  <!-- ===== 07 비즈니스 모델 — 심는 문장: 쓰는 사람과 내는 사람이 다르고, 양쪽 모두 Needs가 있다 ===== -->
+  <section class="slide" aria-label="비즈니스 모델">
+    <p class="kicker"><span>비즈니스 모델</span><span class="n">07 / 10</span></p>
+    <h2>기관이 지불하고, <span class="thin">취약계층은 무료로 쓴다</span></h2>
+    <div class="flow">
+      <div class="node"><div class="k">지불자</div><div class="t">공공·금융기관 / 금융·통신사</div><p>서비스 사용료 지불</p></div>
+      <div class="arrow">▶</div>
+      <div class="node" style="border-top-color: var(--ink);"><div class="k">플랫폼</div><div class="t">금융 코디세이</div><p>진단 · AI 가이드 · 학습경로</p></div>
+      <div class="arrow">▶</div>
+      <div class="node" style="border-top-color: var(--ok);"><div class="k">사용자</div><div class="t">금융 취약계층</div><p>무료 이용</p></div>
+    </div>
+    <table>
+      <thead><tr><th style="width:14%">수익 구조</th><th style="width:44%">고객 유형</th><th>가격 책정 방식</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>B2B2C</td>
+          <td>은행, 증권사, 보험사, 통신사</td>
+          <td>1) API 사용량 기반 과금(Pay as you go)<br>2) 라이선스 구독(월/연 단위)</td>
+        </tr>
+        <tr>
+          <td>B2B2G</td>
+          <td>금융/소비자 보호 규제 기관, 광역·기초 지자체, 치안/범죄 예방 기관</td>
+          <td>동일 과금 체계 적용</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="spacer"></div>
+    <div class="cards c2 grow mid">
+      <div class="card">
+        <b>지불 Needs — 고객</b>
+        <p><strong>포용 금융 및 ESG 경영을 실천해야 하는 Needs</strong>가 있어 지불의사가 존재한다.</p>
+      </div>
+      <div class="card ok">
+        <b>사용 Needs — 사용자</b>
+        <p>금융 취약계층은 <strong>무료로 금융 피해를 최소화</strong>할 수 있어 사용에 대한 Needs가 존재한다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 08 기대 효과 — 심는 문장: 개인 역량, 사회적 피해, 기관 지표의 세 층위에서 효과가 발생한다 ===== -->
+  <section class="slide" aria-label="기대 효과">
+    <p class="kicker"><span>기대 효과</span><span class="n">08 / 10</span></p>
+    <h2>사용자에게는 역량을, <span class="thin">기관에는 지표를</span></h2>
+    <div class="rows grow">
+      <div class="row" style="grid-template-columns: 300px 1fr 1fr;">
+        <div class="head"><b>효과 01 — 사용자</b><h3>연령대별<br>금융 이해력 향상</h3></div>
+        <div class="col">
+          <div class="bignum">75% 이상</div>
+          <p>금융 사기 인지율 기존 대비 향상 <span class="chip goal">목표치</span></p>
+        </div>
+        <div class="col">
+          <div class="bignum">20~30%</div>
+          <p>금융 사기 대응 안전 행동 실천율 개선 <span class="chip goal">목표치</span></p>
+        </div>
+      </div>
+      <div class="row" style="grid-template-columns: 300px 1fr 1fr;">
+        <div class="head"><b>효과 02 — 사회</b><h3>금융 사기<br>피해 감소</h3></div>
+        <div class="col">
+          <div class="bignum">약 1,380억 원</div>
+          <p>개인 대상 연간 금융 사기 피해액 감소 <span class="chip flag">내부 추정</span></p>
+        </div>
+        <div class="col">
+          <span class="lbl">부가 효과</span>
+          <p>금융 사고 발생에 대한 <strong>민원 처리 및 행정 비용 감소</strong></p>
+        </div>
+      </div>
+      <div class="row ok" style="grid-template-columns: 300px 1fr 1fr;">
+        <div class="head"><b>효과 03 — 고객사</b><h3>포용 금융 ·<br>ESG 경영 실현</h3></div>
+        <div class="col">
+          <span class="lbl">취약계층 보호</span>
+          <p>금융 취약계층의 디지털 채널 활용 금융 서비스 <strong>이용 안전성 증대</strong></p>
+        </div>
+        <div class="col">
+          <span class="lbl">사회공헌 지표</span>
+          <p>금융 예방 교육 이수시간 등 <strong>정량화 가능한 사회공헌 지표</strong> 제공</p>
+        </div>
+      </div>
+    </div>
+    <p class="lead closing">교육을 제공했다는 사실이 아니라 <em>역량이 어떻게 변했는지</em>가 결과물이다 — 미션 수행 데이터가 곧 측정 지표가 된다.</p>
+    <p class="note"><strong>수치 표기 원칙</strong> — '목표치'는 서비스 도입 시 달성을 목표로 하는 값, '내부 추정'은 자체 산정치다. 외부 검증된 실측치가 아니며, 실증(PoC) 단계에서 사전·사후 비교로 검증할 계획이다.</p>
+  </section>
+
+  <!-- ===== 09 향후 발전 방향 — 심는 문장: 시니어 실증 → 세그먼트 확장 → 공공 인프라 편입·데이터 사업 ===== -->
+  <section class="slide" aria-label="향후 발전 방향">
+    <p class="kicker"><span>향후 발전 방향</span><span class="n">09 / 10</span></p>
+    <h2>실증으로 시작해, <span class="thin">교육 인프라와 데이터로</span></h2>
+    <div class="rows grow">
+      <div class="row" style="grid-template-columns: 250px 1fr 1fr;">
+        <div class="head"><b>1단계</b><div class="who">60대 이상<br>시니어층</div></div>
+        <dl class="col">
+          <dt>목표</dt>
+          <dd>1) 교육 이수자 대상 <strong>실제 행동 변화 입증</strong><br>2) 금융사·공공기관 대상 <strong>PoC 성공 및 레퍼런스 확보</strong></dd>
+        </dl>
+        <dl class="col">
+          <dt>실행 전략</dt>
+          <dd>1) AI 기반 대화형 인터페이스 도입<br>2) 밀착형 시나리오 미션 구성</dd>
+        </dl>
+      </div>
+      <div class="row" style="grid-template-columns: 250px 1fr 1fr;">
+        <div class="head"><b>2단계</b><div class="who">청년층 ·<br>중장년층</div></div>
+        <dl class="col">
+          <dt>목표</dt>
+          <dd>1) 사기 유형별 맞춤형 시나리오 다각화를 통한 <strong>고객사 확장</strong><br>2) 플랫폼 <strong>체류 시간 증대</strong></dd>
+        </dl>
+        <dl class="col">
+          <dt>실행 전략</dt>
+          <dd>1) 게이미피케이션 기반 교육 콘텐츠 도입<br>2) 이용 금융 서비스의 실질 혜택과 연계한 마케팅 캠페인 도입</dd>
+        </dl>
+      </div>
+      <div class="row" style="grid-template-columns: 250px 1fr 1fr;">
+        <div class="head"><b>3단계</b><div class="who">청소년층 ·<br>전 연령층 (통합)</div></div>
+        <dl class="col">
+          <dt>목표</dt>
+          <dd>1) 학교 등 <strong>공공 교육 인프라 편입</strong><br>2) 축적된 사용자 데이터 기반 <strong>DaaS 구축</strong></dd>
+        </dl>
+        <dl class="col">
+          <dt>실행 전략</dt>
+          <dd>1) 청소년층 특화 시나리오 개발<br>2) 정규 교과과정 실습용 소프트웨어 납품<br>3) 연령별 미션 수행 데이터 수집·가공</dd>
+        </dl>
+      </div>
+    </div>
+    <p class="lead closing">확장의 축은 <em>타겟 세그먼트</em>이고, 축적되는 자산은 <em>연령별 미션 수행 데이터</em>다.</p>
+  </section>
+
+  <!-- ===== 10 팀 역할 분담 + 클로징 — 심는 문장: 이 기획은 5개 영역의 조사·설계를 통합한 결과다 ===== -->
+  <section class="slide" aria-label="팀 역할 분담과 핵심 제안">
+    <p class="kicker"><span>팀 역할 분담 · 핵심 제안</span><span class="n">10 / 10</span></p>
+    <h2>다섯 영역의 조사·설계를 <span class="thin">하나의 기획으로</span></h2>
+    <table>
+      <thead><tr><th style="width:22%">담당 영역 · 담당자</th><th>기획서 작성 과정에서의 기여 내용</th></tr></thead>
+      <tbody>
+        <tr><td>기획 총괄 <span class="sub">[TODO: 성명]</span></td><td>아이디어 방향 설정, 문제 정의, 서비스 핵심 콘셉트 및 전체 기획서 구성·통합</td></tr>
+        <tr><td>시장·사례 조사 <span class="sub">[TODO: 성명]</span></td><td>기존 금융교육·AI 금융서비스 및 유사 서비스 조사, 기존 서비스 대비 차별점 도출</td></tr>
+        <tr><td>AI 기술 조사 <span class="sub">[TODO: 성명]</span></td><td>LLM, RAG, 행동 데이터 분석, 개인화 추천 등 적용 가능한 AI 기술 조사 및 적용 방안 구체화</td></tr>
+        <tr><td>금융·데이터 조사 <span class="sub">[TODO: 성명]</span></td><td>금융이해력, 디지털 역량, 금융사기 피해 등 관련 통계·정책·공공데이터 조사</td></tr>
+        <tr><td>서비스 설계·발표 <span class="sub">[TODO: 성명]</span></td><td>타겟 사용자, 학습 흐름, 시스템 구성, 기대 효과·사업화 방향 정리 및 발표자료 구성</td></tr>
+      </tbody>
+    </table>
+    <p class="note">팀 역할은 향후 개발 직무가 아니라, 이번 기획서를 작성하는 과정에서 각 팀원이 담당한 조사·설계·정리 영역과 기여 내용을 기준으로 작성했다.</p>
+    <div class="spacer"></div>
+    <div class="band">
+      <b>핵심 제안</b>
+      <p>금융 코디세이는 새로운 금융교육 콘텐츠를 하나 더 만드는 서비스가 아니다. 사용자의 실제 금융 미션 수행을 통해 <em>'지금 무엇을 어려워하는지'</em>를 파악하고, AI가 필요한 도움과 다음 금융과업을 연결함으로써 <em>흩어진 금융교육을 개인별 하나의 학습 여정</em>으로 만드는 플랫폼이다.</p>
+    </div>
+  </section>
+
+  </div>
+</div>
+
+<div class="chrome bar" aria-hidden="true"><i id="progress"></i></div>
+<nav class="chrome dots" id="dots" aria-label="슬라이드 바로가기"></nav>
+<div class="chrome nav">
+  <button type="button" id="prev" aria-label="이전 슬라이드">‹</button>
+  <span class="count"><b id="cur">1</b> / <span id="total">10</span></span>
+  <button type="button" id="next" aria-label="다음 슬라이드">›</button>
+</div>
+
+<script>
+  const deck = document.getElementById('deck');
+  const slides = [...deck.querySelectorAll('.slide')];
+  const dotsNav = document.getElementById('dots');
+  const curEl = document.getElementById('cur');
+  const progress = document.getElementById('progress');
+  document.getElementById('total').textContent = slides.length;
+
+  const SLIDE_W = 1280, SLIDE_H = 720, MARGIN = 40;
+  function fit() {
+    const s = Math.min(
+      (window.innerWidth - MARGIN) / SLIDE_W,
+      (window.innerHeight - MARGIN) / SLIDE_H
+    );
+    deck.style.setProperty('--scale', Math.max(s, 0.1));
+  }
+  window.addEventListener('resize', fit);
+  fit();
+
+  slides.forEach((_, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', `슬라이드 ${i + 1}`);
+    b.addEventListener('click', () => show(i));
+    dotsNav.appendChild(b);
+  });
+  const dots = [...dotsNav.children];
+
+  let current = 0;
+  function show(i) {
+    current = Math.max(0, Math.min(slides.length - 1, i));
+    slides.forEach((s, n) => s.classList.toggle('is-active', n === current));
+    dots.forEach((d, n) => d.setAttribute('aria-current', n === current ? 'true' : 'false'));
+    curEl.textContent = current + 1;
+    progress.style.width = ((current + 1) / slides.length * 100) + '%';
+  }
+  const go = (d) => show(current + d);
+  show(0);
+
+  document.getElementById('prev').addEventListener('click', () => go(-1));
+  document.getElementById('next').addEventListener('click', () => go(1));
+
+  document.addEventListener('keydown', (e) => {
+    if (['ArrowRight', 'ArrowDown', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); go(1); }
+    else if (['ArrowUp', 'ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); go(-1); }
+    else if (e.key === 'Home') { e.preventDefault(); show(0); }
+    else if (e.key === 'End') { e.preventDefault(); show(slides.length - 1); }
+  });
+
+  let wheelLock = 0;
+  window.addEventListener('wheel', (e) => {
+    const now = Date.now();
+    if (now - wheelLock < 480) return;
+    if (Math.abs(e.deltaY) < 12 && Math.abs(e.deltaX) < 12) return;
+    wheelLock = now;
+    go((e.deltaY || e.deltaX) > 0 ? 1 : -1);
+  }, { passive: true });
+
+  let tx = 0, ty = 0;
+  window.addEventListener('touchstart', (e) => { tx = e.changedTouches[0].clientX; ty = e.changedTouches[0].clientY; }, { passive: true });
+  window.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
+    if (Math.max(Math.abs(dx), Math.abs(dy)) < 45) return;
+    go((Math.abs(dx) > Math.abs(dy) ? -dx : -dy) > 0 ? 1 : -1);
+  }, { passive: true });
+
+  // 인쇄 시 전 슬라이드를 노출
+  window.addEventListener('beforeprint', () => slides.forEach((s) => s.classList.add('is-active')));
+  window.addEventListener('afterprint', () => show(current));
+</script>
+</body>
+</html>
