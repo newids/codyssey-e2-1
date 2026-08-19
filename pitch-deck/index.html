@@ -3,20 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>금융 코디세이 — 개인 맞춤형 금융학습 플랫폼 | 발표자료 (표지·목차 + 본문 10p)</title>
+<title>금융 학습 AI 플랫폼: 금융 코디세이 | 발표자료 (표지·목차 + 본문 10p) · TEAM 6</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧭</text></svg>">
 <!--
-  파일: docs/idea-1/_workspace/10_deck_v3.html (v3 — 표지 + 목차 + 본문 10장 = 총 12장)
-  이전본: docs/idea-1/_workspace/07_deck_v2_통합서사.html (감사 추적용 보존, 수정 금지)
+  파일: docs/idea-1/_workspace/13_deck_final.html (최종본 — 표지 + 목차 + 본문 10장 = 총 12장)
+  이전본: docs/idea-1/_workspace/10_deck_v3.html (v3, 감사 추적용 보존 — 수정 금지)
 
-  내용 근거(SSOT): docs/idea-1/_workspace/input_통합기획안_2026-08-18.md (사용자 제공 확정 통합 서사, 2026-08-18)
+  내용 근거(SSOT): docs/idea-1/_doc/코디세이_입학연수_TermProject_서비스기획서_6조.pdf (팀 최종 기획서 A4 2p, 2026-08-19)
   형식 근거: docs/Mission-e2-1.md (발표자료 10p 이내) / .claude/skills/deck-production/SKILL.md (브랜드 토큰·검증 절차)
-  다이어그램: docs/idea-1/_workspace/diagram/system_architecture.svg 를 인라인 삽입 (외부 참조 없음)
+  다이어그램: docs/idea-1/_workspace/diagram/system_architecture.svg (갱신본) 를 인라인 삽입 (외부 참조 없음)
 
   페이지 계산: 표지·목차는 번호 없음, 본문만 01/10 ~ 10/10 으로 표기.
 
-  [TODO] 팀원 실명 — 본문 09/10(팀 역할 분담)의 [TODO: 성명] 5칸. 기획서 §9와 동일 인물·동일 역할명이어야 한다.
-  [TODO] 본문 07/10 수치 라벨 — '목표치/내부 추정' 표기는 외부 출처 확보 시 근거 병기로 교체.
+  v3 대비 변경: 표지 메타·역할 구성 / 03 학습 영역 상세 / 04 기술명 표기 / 05 시스템 구성도 갱신본 교체 /
+                06 비즈니스 모델 표 / 08 향후 발전 방향 / 09 팀 역할 분담(실명 확정, 6개 영역).
+  유지: 01 문제 정의 스탯 3종·출처, 02 타겟 표 정정 라벨, 07 기대 효과 목표치/내부 추정 라벨·ESG 행, 10 핵심 제안.
 
   PDF 변환: 브라우저 인쇄 → 용지 여백 '없음', 배경 그래픽 켜기 → 슬라이드 1장 = 1페이지(16:9), 총 12페이지.
 -->
@@ -134,6 +135,8 @@
   .cards.areas .card ul { gap: 8px; }
   .cards.areas .card li::before { top: 9px; width: 6px; height: 6px; }
   table.airy td, table.airy th { padding-top: 13px; padding-bottom: 13px; }
+  table.airy.roomy td, table.airy.roomy th { padding-top: 17px; padding-bottom: 17px; }
+  table.airy.roomy th { padding-bottom: 10px; }
   .card.ok { border-left-color: var(--ok); }
   .card.ok > b, .card.ok .idx { color: var(--ok); }
   .card.ok .idx { background: var(--ok); color: oklch(99% 0 0); }
@@ -300,7 +303,7 @@
 
   <!-- ===== 표지 — 심는 문장: 이 서비스는 콘텐츠가 아니라 진단–연결 구조다 ===== -->
   <section class="slide cover is-active" aria-label="표지">
-    <p class="brandline">AI Fintech · 텀 프로젝트 아이디어톤</p>
+    <p class="brandline">코디세이 AI 올인원 2기 입학연수과정 · TERM PROJECT</p>
     <p class="name">금융 코디세이 <span style="font-weight:500; color:var(--ink-faint);">(가칭)</span></p>
     <h1>흩어진 금융교육을,<br>하나의 학습 여정으로</h1>
     <p class="lead">사용자의 <strong>실제 금융 미션 수행</strong>을 기반으로 금융역량을 파악하고,
@@ -312,11 +315,14 @@
       <span class="chip">개인별 학습경로 추천</span>
     </div>
     <div class="meta">
-      <div><dt>도메인</dt>AI Fintech</div>
-      <div><dt>팀</dt>TEAM 6 · 5인</div>
-      <div style="flex:1 1 auto;"><dt>역할 구성</dt>기획 총괄 · 시장·사례 조사 · AI 기술 조사 · 금융·데이터 조사 · 서비스 설계·발표</div>
+      <div><dt>과정</dt>코디세이 AI 올인원 2기 입학연수과정</div>
+      <div><dt>도메인</dt>핀테크</div>
+      <div><dt>팀</dt>TEAM 6 · 팀장 최진석</div>
     </div>
-    <p class="note" style="margin-top:14px;">※ 서비스명은 가칭이며 추후 리브랜딩을 검토한다. 팀원 실명은 확정 후 기입한다.</p>
+    <div class="meta" style="margin-top:14px; padding-top:0; border-top:none;">
+      <div style="flex:1 1 auto;"><dt>역할 구성</dt>기획 총괄 · 문제 정의·고객 정의 · 서비스 설계 · AI 기술 조사 · 시스템 설계 · 사업화 방향·발표</div>
+    </div>
+    <p class="note" style="margin-top:14px;">※ 서비스명은 가칭이며 추후 리브랜딩을 검토한다.</p>
   </section>
 
   <!-- ===== 목차 — 심는 문장: 문제에서 시작해 팀과 제안으로 닫는 10장이다 ===== -->
@@ -332,7 +338,7 @@
       <li><span class="i">06</span><b>비즈니스 모델</b><span class="d">기관이 지불하고, 취약계층은 무료</span></li>
       <li><span class="i">07</span><b>기대 효과</b><span class="d">사용자에게는 역량을, 기관에는 지표를</span></li>
       <li><span class="i">08</span><b>향후 발전 방향</b><span class="d">실증 → 세그먼트 확장 → 교육 인프라</span></li>
-      <li><span class="i">09</span><b>팀 역할 분담</b><span class="d">다섯 영역의 조사·설계</span></li>
+      <li><span class="i">09</span><b>팀 역할 분담</b><span class="d">여섯 영역의 조사·설계</span></li>
       <li><span class="i">10</span><b>핵심 제안</b><span class="d">흩어진 금융교육을, 하나의 학습 여정으로</span></li>
     </ol>
     <p class="note closing">본문 10장은 <strong>문제 → 대상 → 서비스 → 기술 → 시스템 → 사업 → 효과 → 확장 → 팀 → 제안</strong> 순으로 구성했다.</p>
@@ -423,17 +429,17 @@
       <div class="card">
         <b>학습 영역 01</b>
         <h3>기초금융</h3>
-        <ul><li>계좌이체</li><li>신용·대출</li><li>금융문서 이해</li></ul>
+        <ul><li>계좌이체 · 자동이체</li><li>신용점수 · 대출금리</li><li>금융문서 이해</li></ul>
       </div>
       <div class="card">
         <b>학습 영역 02</b>
         <h3>금융안전</h3>
-        <ul><li>보이스피싱 · 스미싱</li><li>기관사칭 대응</li><li>투자사기 대응</li></ul>
+        <ul><li>보이스피싱 · 스미싱</li><li>악성앱 · 기관사칭 대응</li><li>투자사기 대응</li></ul>
       </div>
       <div class="card">
         <b>학습 영역 03</b>
         <h3>생활금융</h3>
-        <ul><li>지원제도 탐색</li><li>청년·퇴직·연금 정보</li><li>금융조건 비교</li></ul>
+        <ul><li>지원제도 탐색</li><li>청년·퇴직·연금 정보 이해</li><li>금융조건 비교</li></ul>
       </div>
     </div>
     <div class="spacer"></div>
@@ -449,17 +455,17 @@
       <tbody>
         <tr>
           <td>금융역량 진단</td>
-          <td><code>Weighted Rule-based Scoring</code> → <code>ML (분류/회귀)</code></td>
+          <td><code>Rule-based Scoring</code> → <code>ML (분류·회귀 모델)</code></td>
           <td>사용자의 행동 데이터를 기준과 가중치에 따라 점수화하고, 이후 축적된 데이터를 학습한 ML 모델로 고도화한다.</td>
         </tr>
         <tr>
           <td>AI 가이드형 실습</td>
-          <td><code>Instruction LLM</code> + <code>Context Prompting</code> + <code>RAG (Embedding 검색)</code></td>
+          <td><code>Instruction LLM</code> + <code>Context Prompting</code> + <code>RAG</code></td>
           <td>LLM으로 자연어 안내·피드백을 생성하고, 프롬프트에 <strong>사용자 수준 · 현재 미션 단계 · 오류 이력 · 힌트 단계</strong>를 전달해 응답 방식을 조정한다. RAG로 <strong>공식 금융자료를 답변 근거</strong>로 활용한다.</td>
         </tr>
         <tr>
           <td>개인별 학습경로 추천</td>
-          <td><code>Profile-based Rule Recommendation</code> → <code>Learning-to-Rank</code></td>
+          <td><code>Rule-based 추천</code> → <code>Learning-to-Rank</code></td>
           <td>사용자 프로필과 사전 정의된 규칙으로 추천하고, 향후 데이터가 쌓이면 사용자별 학습효과를 반영해 추천을 정교화할 수 있다.</td>
         </tr>
       </tbody>
@@ -482,11 +488,11 @@
     <p class="kicker"><span>예상 시스템 구성</span><span class="n">05 / 10</span></p>
     <div class="dhead">
       <h2>AI를 쓰는 곳과, <span class="thin">쓰지 않는 곳</span></h2>
-      <p><strong>정답 판정·학습 결과는 API 서버(결정론)</strong>가 처리하고, AI는 <strong>실시간 안내·피드백</strong>과 <strong>외부 데이터 적재 전 검증</strong>에만 관여한다.</p>
+      <p><strong>실시간 가이드·피드백·근거는 AI가</strong>, <strong>정답 판정·수행기록은 API 서버가 결정론으로</strong> 처리한다.</p>
     </div>
     <div class="blueprint">
       <div class="bp-panel">
-<svg id="sys-arch" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 660" role="img" aria-label="예상 시스템 구성도: 사용자 앱에서 API 게이트웨이와 API 서버를 거쳐 AI 모델로 요청이 전달되고 실시간 안내·피드백이 앱으로 회신된다. 별도 레인에서 데이터 파이프라인이 프록시를 경유해 외부 공공·금융 데이터를 조회한 뒤 AI 검증·정제를 거쳐 DB에 적재한다.">
+<svg id="sys-arch" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 660" role="img" aria-label="예상 시스템 구성도: 사용자 앱의 미션 수행 요청이 API Gateway의 인증·인가를 거쳐 API 서버로 전달되고, API 서버는 정답 판정과 수행기록을 결정론으로 처리하며 DB와 프로필 조회·수행기록 저장을 주고받는다. AI 모델은 미션 컨텍스트를 받아 가이드·피드백·근거를 생성해 앱으로 회신하고, DB와 임베딩 적재·근거 검색(RAG)을 수행한다. 데이터 파이프라인은 금융 공공정보 원문을 수신·정제한 뒤 AI 모델에 정제 텍스트 임베딩을 요청한다.">
   <defs>
     <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
       <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
@@ -497,8 +503,8 @@
     <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
       <polygon points="0 0, 10 3.5, 0 7" fill="#60a5fa"/>
     </marker>
-    <marker id="arrow-rose" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polyline points="0 0, 10 3.5, 0 7" fill="none" stroke="#fb7185" stroke-width="1.5"/>
+    <marker id="arrow-orange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#fb923c"/>
     </marker>
     <marker id="arrow-violet" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
       <polygon points="0 0, 10 3.5, 0 7" fill="#a78bfa"/>
@@ -513,46 +519,39 @@
   <rect x="30" y="82" width="1120" height="252" rx="12" fill="none" stroke="#fbbf24" stroke-width="1" stroke-dasharray="8,4"/>
   <text x="42" y="100" fill="#fbbf24" font-size="9" font-weight="600">요청 흐름 — 미션 수행과 학습 제공</text>
   <rect x="30" y="376" width="1120" height="150" rx="12" fill="none" stroke="#fbbf24" stroke-width="1" stroke-dasharray="8,4"/>
-  <text x="42" y="394" fill="#fbbf24" font-size="9" font-weight="600">외부 데이터 파이프라인 — 조회·검증·적재</text>
+  <text x="42" y="394" fill="#fbbf24" font-size="9" font-weight="600">외부 데이터 파이프라인 — 원문 수신 · 정제 · 임베딩</text>
 
   <!-- 3. arrows -->
   <!-- request lane: app → gw → api → ai -->
   <line x1="230" y1="174" x2="308" y2="174" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
   <line x1="470" y1="174" x2="548" y2="174" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
   <line x1="750" y1="174" x2="838" y2="174" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <text x="269" y="164" fill="#94a3b8" font-size="8" text-anchor="middle">미션 요청</text>
-  <text x="509" y="164" fill="#94a3b8" font-size="8" text-anchor="middle">인증·라우팅</text>
-  <text x="794" y="164" fill="#94a3b8" font-size="8" text-anchor="middle">컨텍스트 전달</text>
+  <text x="269" y="164" fill="#94a3b8" font-size="8" text-anchor="middle">미션 수행 요청</text>
+  <text x="509" y="164" fill="#94a3b8" font-size="8" text-anchor="middle">인증 · 인가</text>
+  <text x="794" y="164" fill="#94a3b8" font-size="8" text-anchor="middle">미션 컨텍스트</text>
   <!-- return feedback: ai model → user app (dashed, over the top) -->
   <path d="M 980,142 L 980,118 L 145,118 L 145,142" fill="none" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#arrow-blue)"/>
-  <text x="562" y="112" fill="#60a5fa" font-size="8" text-anchor="middle">실시간 안내·피드백 생성 (AI 적용)</text>
+  <text x="562" y="112" fill="#60a5fa" font-size="8" text-anchor="middle">가이드 · 피드백 · 근거 (AI 적용)</text>
   <!-- api server ↔ db -->
   <line x1="650" y1="206" x2="650" y2="236" stroke="#a78bfa" stroke-width="1.5" marker-end="url(#arrow-violet)"/>
-  <text x="662" y="226" fill="#94a3b8" font-size="8">판정 결과·학습 이력 기록</text>
-  <!-- pipeline lane: request (dashed, right→left, upper) / data (solid, left→right, lower) -->
-  <line x1="330" y1="438" x2="264" y2="438" stroke="#fb7185" stroke-width="1.2" stroke-dasharray="4,4" marker-end="url(#arrow-rose)"/>
-  <line x1="570" y1="438" x2="504" y2="438" stroke="#fb7185" stroke-width="1.2" stroke-dasharray="4,4" marker-end="url(#arrow-rose)"/>
-  <text x="297" y="430" fill="#fb7185" font-size="8" text-anchor="middle">조회 요청</text>
-  <text x="537" y="430" fill="#fb7185" font-size="8" text-anchor="middle">요청만 송신</text>
-  <line x1="264" y1="472" x2="328" y2="472" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <line x1="504" y1="472" x2="568" y2="472" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <line x1="754" y1="455" x2="818" y2="455" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <text x="296" y="486" fill="#94a3b8" font-size="8" text-anchor="middle">조회 응답</text>
-  <text x="536" y="486" fill="#94a3b8" font-size="8" text-anchor="middle">원천 데이터</text>
-  <text x="786" y="447" fill="#94a3b8" font-size="8" text-anchor="middle">적재 전 검증</text>
-  <!-- verified data up to DB -->
-  <path d="M 910,425 L 910,272 L 716,272" fill="none" stroke="#a78bfa" stroke-width="1.5" marker-end="url(#arrow-violet)"/>
-  <text x="924" y="330" fill="#a78bfa" font-size="8">검증·정제 후 적재</text>
+  <text x="540" y="226" fill="#94a3b8" font-size="8">프로필 조회 · 수행기록 저장</text>
+  <!-- ai ↔ db: 근거 검색 / 임베딩 적재 -->
+  <path d="M 980,206 L 980,276 L 720,276" fill="none" stroke="#a78bfa" stroke-width="1.5" marker-end="url(#arrow-violet)"/>
+  <text x="800" y="266" fill="#a78bfa" font-size="8">임베딩 적재 · 근거 검색(RAG)</text>
+  <!-- pipeline lane: source → pipeline -->
+  <line x1="320" y1="455" x2="388" y2="455" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="354" y="447" fill="#94a3b8" font-size="8" text-anchor="middle">원문 수신</text>
+  <!-- pipeline → ai: 정제 텍스트 임베딩 요청 -->
+  <path d="M 620,455 L 1060,455 L 1060,210" fill="none" stroke="#fb923c" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#arrow-orange)"/>
+  <text x="840" y="447" fill="#fb923c" font-size="8" text-anchor="middle">정제 텍스트 임베딩 요청</text>
 
   <!-- 4. mask layer -->
   <rect x="60" y="142" width="170" height="64" rx="6" fill="#0f172a"/>
   <rect x="310" y="142" width="160" height="64" rx="6" fill="#0f172a"/>
   <rect x="550" y="142" width="200" height="64" rx="6" fill="#0f172a"/>
   <rect x="840" y="142" width="280" height="64" rx="6" fill="#0f172a"/>
-  <rect x="60" y="425" width="204" height="60" rx="6" fill="#0f172a"/>
-  <rect x="330" y="425" width="174" height="60" rx="6" fill="#0f172a"/>
-  <rect x="570" y="425" width="184" height="60" rx="6" fill="#0f172a"/>
-  <rect x="820" y="425" width="180" height="60" rx="6" fill="#0f172a"/>
+  <rect x="60" y="425" width="260" height="60" rx="6" fill="#0f172a"/>
+  <rect x="390" y="425" width="230" height="60" rx="6" fill="#0f172a"/>
 
   <!-- 5. component boxes -->
   <!-- 사용자 앱 -->
@@ -561,18 +560,18 @@
   <text x="145" y="186" fill="#94a3b8" font-size="9" text-anchor="middle">금융 미션 수행 · 학습</text>
   <!-- API G/W -->
   <rect x="310" y="142" width="160" height="64" rx="6" fill="rgba(30,41,59,0.5)" stroke="#94a3b8" stroke-width="1.5"/>
-  <text x="390" y="168" fill="white" font-size="12" font-weight="600" text-anchor="middle">API G/W</text>
-  <text x="390" y="186" fill="#94a3b8" font-size="9" text-anchor="middle">인증 · 라우팅</text>
+  <text x="390" y="168" fill="white" font-size="12" font-weight="600" text-anchor="middle">API Gateway</text>
+  <text x="390" y="186" fill="#94a3b8" font-size="9" text-anchor="middle">인증 · 인가</text>
   <!-- API 서버 -->
   <rect x="550" y="142" width="200" height="64" rx="6" fill="rgba(6,78,59,0.4)" stroke="#34d399" stroke-width="1.5"/>
   <text x="650" y="164" fill="white" font-size="12" font-weight="600" text-anchor="middle">API 서버</text>
-  <text x="650" y="180" fill="#94a3b8" font-size="9" text-anchor="middle">정답 판정 · 학습 결과 처리</text>
+  <text x="650" y="180" fill="#94a3b8" font-size="9" text-anchor="middle">정답 판정 · 수행기록 처리</text>
   <text x="650" y="196" fill="#34d399" font-size="8" font-weight="600" text-anchor="middle">AI 미적용 — 결정론 처리</text>
   <!-- AI 모델 -->
   <rect x="840" y="142" width="280" height="64" rx="6" fill="rgba(59,130,246,0.3)" stroke="#60a5fa" stroke-width="1.5"/>
-  <text x="980" y="164" fill="white" font-size="12" font-weight="600" text-anchor="middle">AI 모델</text>
+  <text x="980" y="164" fill="white" font-size="12" font-weight="600" text-anchor="middle">AI 모델 (LLM)</text>
   <text x="980" y="180" fill="#94a3b8" font-size="9" text-anchor="middle">Instruction LLM + Context Prompting + RAG</text>
-  <text x="980" y="196" fill="#60a5fa" font-size="8" font-weight="600" text-anchor="middle">AI 적용 — 실시간 안내·피드백</text>
+  <text x="980" y="196" fill="#60a5fa" font-size="8" font-weight="600" text-anchor="middle">AI 적용 — 가이드·피드백·근거 생성</text>
   <!-- DB cylinder -->
   <g>
     <rect x="590" y="246" width="126" height="64" rx="2" fill="#0f172a"/>
@@ -583,35 +582,27 @@
     <ellipse cx="653" cy="310" rx="63" ry="12" fill="rgba(76,29,149,0.4)" stroke="#a78bfa" stroke-width="1.5"/>
     <line x1="590" y1="246" x2="590" y2="310" stroke="#a78bfa" stroke-width="1.5"/>
     <line x1="716" y1="246" x2="716" y2="310" stroke="#a78bfa" stroke-width="1.5"/>
-    <text x="653" y="278" fill="white" font-size="11" font-weight="600" text-anchor="middle">DB</text>
-    <text x="653" y="295" fill="#c4b5fd" font-size="8" text-anchor="middle">역량 프로필 · 학습 이력</text>
+    <text x="653" y="278" fill="white" font-size="11" font-weight="600" text-anchor="middle">Database</text>
+    <text x="653" y="295" fill="#c4b5fd" font-size="8" text-anchor="middle">프로필 · 수행기록 · 임베딩</text>
   </g>
-  <!-- 외부 공공·금융 데이터 -->
-  <rect x="60" y="425" width="204" height="60" rx="6" fill="rgba(30,41,59,0.5)" stroke="#94a3b8" stroke-width="1.5"/>
-  <text x="162" y="450" fill="white" font-size="12" font-weight="600" text-anchor="middle">외부 공공·금융 데이터</text>
-  <text x="162" y="467" fill="#94a3b8" font-size="9" text-anchor="middle">공식 자료 · 통계</text>
-  <!-- 프록시 -->
-  <rect x="330" y="425" width="174" height="60" rx="6" fill="rgba(136,19,55,0.4)" stroke="#fb7185" stroke-width="1.5"/>
-  <text x="417" y="450" fill="white" font-size="12" font-weight="600" text-anchor="middle">프록시</text>
-  <text x="417" y="467" fill="#fb7185" font-size="9" text-anchor="middle">조회 요청만 송신 — 격리 경계</text>
+  <!-- 금융 공공정보 -->
+  <rect x="60" y="425" width="260" height="60" rx="6" fill="rgba(30,41,59,0.5)" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="190" y="450" fill="white" font-size="12" font-weight="600" text-anchor="middle">금융 공공정보 · 제도 혜택정보</text>
+  <text x="190" y="467" fill="#94a3b8" font-size="9" text-anchor="middle">공공데이터 원문</text>
   <!-- 데이터 파이프라인 -->
-  <rect x="570" y="425" width="184" height="60" rx="6" fill="rgba(251,146,60,0.3)" stroke="#fb923c" stroke-width="1.5"/>
-  <text x="662" y="450" fill="white" font-size="12" font-weight="600" text-anchor="middle">데이터 파이프라인</text>
-  <text x="662" y="467" fill="#94a3b8" font-size="9" text-anchor="middle">수집 · 적재 관리</text>
-  <!-- AI 검증·정제 -->
-  <rect x="820" y="425" width="180" height="60" rx="6" fill="rgba(59,130,246,0.3)" stroke="#60a5fa" stroke-width="1.5"/>
-  <text x="910" y="450" fill="white" font-size="12" font-weight="600" text-anchor="middle">AI 검증·정제</text>
-  <text x="910" y="467" fill="#60a5fa" font-size="9" text-anchor="middle">AI 적용 — 적재 전 검증</text>
+  <rect x="390" y="425" width="230" height="60" rx="6" fill="rgba(251,146,60,0.3)" stroke="#fb923c" stroke-width="1.5"/>
+  <text x="505" y="450" fill="white" font-size="12" font-weight="600" text-anchor="middle">데이터 파이프라인</text>
+  <text x="505" y="467" fill="#94a3b8" font-size="9" text-anchor="middle">원문 수집 · 정제</text>
 
   <!-- 7. legend -->
   <g transform="translate(770, 560)">
     <rect x="0" y="0" width="380" height="64" rx="8" fill="rgba(30,41,59,0.5)" stroke="#334155" stroke-width="1"/>
     <rect x="14" y="14" width="12" height="12" rx="3" fill="rgba(59,130,246,0.3)" stroke="#60a5fa" stroke-width="1.5"/>
-    <text x="34" y="24" fill="#e2e8f0" font-size="9">AI 적용 — LLM·RAG 안내, 적재 전 검증</text>
+    <text x="34" y="24" fill="#e2e8f0" font-size="9">AI 적용 — LLM·RAG 가이드·피드백·근거</text>
     <rect x="14" y="38" width="12" height="12" rx="3" fill="rgba(6,78,59,0.4)" stroke="#34d399" stroke-width="1.5"/>
-    <text x="34" y="48" fill="#e2e8f0" font-size="9">AI 미적용 — 정답 판정·학습 결과 (결정론)</text>
-    <rect x="216" y="14" width="12" height="12" rx="3" fill="rgba(136,19,55,0.4)" stroke="#fb7185" stroke-width="1.5"/>
-    <text x="236" y="24" fill="#e2e8f0" font-size="9">보안 경계 (프록시)</text>
+    <text x="34" y="48" fill="#e2e8f0" font-size="9">AI 미적용 — 정답 판정·수행기록 (결정론)</text>
+    <rect x="216" y="14" width="12" height="12" rx="3" fill="rgba(251,146,60,0.3)" stroke="#fb923c" stroke-width="1.5"/>
+    <text x="236" y="24" fill="#e2e8f0" font-size="9">외부 데이터 파이프라인</text>
     <rect x="216" y="38" width="12" height="12" rx="3" fill="rgba(76,29,149,0.4)" stroke="#a78bfa" stroke-width="1.5"/>
     <text x="236" y="48" fill="#e2e8f0" font-size="9">저장소 (DB)</text>
   </g>
@@ -640,13 +631,13 @@
       <tbody>
         <tr>
           <td>B2B2C</td>
-          <td>은행, 증권사, 보험사, 통신사</td>
-          <td>1) API 사용량 기반 과금(Pay as you go)<br>2) 라이선스 구독(월/연 단위)</td>
+          <td>은행 · 증권사 · 보험사 · 통신사 등</td>
+          <td>1) API 사용량 기반 과금<br>2) 라이선스 구독(월/연 단위)</td>
         </tr>
         <tr>
           <td>B2B2G</td>
-          <td>금융/소비자 보호 규제 기관, 광역·기초 지자체, 치안/범죄 예방 기관</td>
-          <td>동일 과금 체계 적용</td>
+          <td>금융/소비자 기관 · 지방자치단체 등</td>
+          <td>1) API 사용량 기반 과금<br>2) 라이선스 구독(월/연 단위)</td>
         </tr>
       </tbody>
     </table>
@@ -712,10 +703,10 @@
     <h2>실증으로 시작해, <span class="thin">교육 인프라와 데이터로</span></h2>
     <div class="rows grow">
       <div class="row" style="grid-template-columns: 250px 1fr 1fr;">
-        <div class="head"><b>1단계</b><div class="who">60대 이상<br>시니어층</div></div>
+        <div class="head"><b>1단계</b><div class="who">시니어층</div></div>
         <dl class="col">
           <dt>목표</dt>
-          <dd>1) 교육 이수자 대상 <strong>실제 행동 변화 입증</strong><br>2) 금융사·공공기관 대상 <strong>PoC 성공 및 레퍼런스 확보</strong></dd>
+          <dd>1) <strong>실제 행동 변화 입증</strong><br>2) <strong>PoC 성공 및 레퍼런스 확보</strong></dd>
         </dl>
         <dl class="col">
           <dt>실행 전략</dt>
@@ -726,45 +717,46 @@
         <div class="head"><b>2단계</b><div class="who">청년층 ·<br>중장년층</div></div>
         <dl class="col">
           <dt>목표</dt>
-          <dd>1) 사기 유형별 맞춤형 시나리오 다각화를 통한 <strong>고객사 확장</strong><br>2) 플랫폼 <strong>체류 시간 증대</strong></dd>
+          <dd>1) <strong>사기 유형별 시나리오 다각화</strong><br>2) 플랫폼 <strong>체류 시간 증대</strong></dd>
         </dl>
         <dl class="col">
           <dt>실행 전략</dt>
-          <dd>1) 게이미피케이션 기반 교육 콘텐츠 도입<br>2) 이용 금융 서비스의 실질 혜택과 연계한 마케팅 캠페인 도입</dd>
+          <dd>1) 게이미피케이션 콘텐츠 도입<br>2) 금융 서비스의 실질 혜택 연계</dd>
         </dl>
       </div>
       <div class="row" style="grid-template-columns: 250px 1fr 1fr;">
-        <div class="head"><b>3단계</b><div class="who">청소년층 ·<br>전 연령층 (통합)</div></div>
+        <div class="head"><b>3단계</b><div class="who">청소년층 ·<br>전 연령층</div></div>
         <dl class="col">
           <dt>목표</dt>
-          <dd>1) 학교 등 <strong>공공 교육 인프라 편입</strong><br>2) 축적된 사용자 데이터 기반 <strong>DaaS 구축</strong></dd>
+          <dd>1) <strong>공공 교육 인프라 편입</strong><br>2) 사용자 데이터 기반 <strong>DaaS 구축</strong></dd>
         </dl>
         <dl class="col">
           <dt>실행 전략</dt>
-          <dd>1) 청소년층 특화 시나리오 개발<br>2) 정규 교과과정 실습용 소프트웨어 납품<br>3) 연령별 미션 수행 데이터 수집·가공</dd>
+          <dd>1) 청소년층 특화 시나리오 개발<br>2) 연령별 데이터 수집 및 가공</dd>
         </dl>
       </div>
     </div>
     <p class="lead closing">확장의 축은 <em>타겟 세그먼트</em>이고, 축적되는 자산은 <em>연령별 미션 수행 데이터</em>다.</p>
   </section>
 
-  <!-- ===== 본문 09/10 팀 역할 분담 — 심는 문장: 이 기획은 5개 영역의 조사·설계를 통합한 결과다 ===== -->
+  <!-- ===== 본문 09/10 팀 역할 분담 — 심는 문장: 이 기획은 7개 영역의 조사·설계를 통합한 결과다 ===== -->
   <section class="slide" aria-label="팀 역할 분담">
     <p class="kicker"><span>팀 역할 분담</span><span class="n">09 / 10</span></p>
-    <h2>다섯 영역의 조사·설계를 <span class="thin">하나의 기획으로</span></h2>
+    <h2>여섯 영역의 조사·설계를 <span class="thin">하나의 기획으로</span></h2>
     <p class="lead">팀 역할은 향후 개발 직무가 아니라, 이번 기획서를 작성하는 과정에서 각 팀원이 담당한 <strong>조사·설계·정리 영역과 기여 내용</strong>을 기준으로 작성했다.</p>
-    <table class="airy">
-      <thead><tr><th style="width:24%">담당 영역 · 담당자</th><th>기획서 작성 과정에서의 기여 내용</th></tr></thead>
+    <table class="airy roomy">
+      <thead><tr><th style="width:17%">담당 영역</th><th style="width:21%">참여자</th><th>기획서 작성 과정에서의 기여 내용</th></tr></thead>
       <tbody>
-        <tr><td>기획 총괄 <span class="sub">[TODO: 성명]</span></td><td>아이디어 방향 설정, 문제 정의, 서비스 핵심 콘셉트 및 전체 기획서 구성·통합</td></tr>
-        <tr><td>시장·사례 조사 <span class="sub">[TODO: 성명]</span></td><td>기존 금융교육·AI 금융서비스 및 유사 서비스 조사, 기존 서비스 대비 차별점 도출</td></tr>
-        <tr><td>AI 기술 조사 <span class="sub">[TODO: 성명]</span></td><td>LLM, RAG, 행동 데이터 분석, 개인화 추천 등 적용 가능한 AI 기술 조사 및 적용 방안 구체화</td></tr>
-        <tr><td>금융·데이터 조사 <span class="sub">[TODO: 성명]</span></td><td>금융이해력, 디지털 역량, 금융사기 피해 등 관련 통계·정책·공공데이터 조사</td></tr>
-        <tr><td>서비스 설계·발표 <span class="sub">[TODO: 성명]</span></td><td>타겟 사용자, 학습 흐름, 시스템 구성, 기대 효과·사업화 방향 정리 및 발표자료 구성</td></tr>
+        <tr><td>기획 총괄</td><td>최진석 · 허유란 · 김영운</td><td>아이디어 방향 설정, 서비스 핵심 콘셉트 정의, 전체 문서 간 정합성 관리</td></tr>
+        <tr><td>문제 정의 · 고객 정의</td><td>최진석 · 허유란</td><td>문제 프레임 도출, 타겟 사용자 정의, 연령대별 우선순위 도출</td></tr>
+        <tr><td>서비스 설계</td><td>허유란 · 김지호 · 김영운</td><td>학습 루프 설계, 3대 학습 영역(기초금융·금융안전·생활금융) 구조화</td></tr>
+        <tr><td>AI 기술 조사</td><td>김승현 · 김지호</td><td>개인화 추천 등 적용 가능한 AI 기술 조사</td></tr>
+        <tr><td>시스템 설계</td><td>김승현 · 허유란</td><td>데이터 아키텍처 설계, AI 적용 시스템 구성도 작성</td></tr>
+        <tr><td>사업화 방향 · 발표</td><td>김영운 · 최진석</td><td>비즈니스 모델·기대 효과 정리 및 발표 자료 구성, 발표 준비 진행</td></tr>
       </tbody>
     </table>
     <div class="spacer"></div>
-    <p class="note closing">팀: <strong>TEAM 6 · 5인</strong> — 팀원 실명은 확정 후 기입하며, 기획서 §9와 동일 인물·동일 역할명으로 맞춘다.</p>
+    <p class="note closing">팀: <strong>TEAM 6</strong> (팀장 최진석) — 기획서 역할분담표와 동일하며, 한 팀원이 복수 영역을 담당한다.</p>
   </section>
 
   <!-- ===== 본문 10/10 핵심 제안 — 심는 문장: 콘텐츠를 더하는 것이 아니라 학습 여정을 만드는 플랫폼이다 ===== -->
