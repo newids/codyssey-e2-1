@@ -38,7 +38,7 @@ export default function Result({
           {rounds + 1}회차 훈련하기
         </button>
         <button type="button" onClick={onOpenReport}>
-          기관 대응역량 진단 리포트 (예시 데이터)
+          기관 금융역량 진단 리포트 (예시 데이터)
         </button>
       </div>
 

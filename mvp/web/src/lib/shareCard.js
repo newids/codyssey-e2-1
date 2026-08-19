@@ -20,7 +20,7 @@ export function buildShareText(index, summary = {}) {
   const weakest = measured[0];
 
   const lines = [
-    '[모의사기 훈련 결과]',
+    '[금융안전 실습 결과]',
     `훈련 ${summary.rounds ?? 1}회차까지 마쳤습니다.`,
     weakest
       ? `제가 가장 약한 자극은 "${weakest}"입니다. (취약도 ${index[weakest].score})`
