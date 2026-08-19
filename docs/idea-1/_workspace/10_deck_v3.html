@@ -15,7 +15,7 @@
 
   페이지 계산: 표지·목차는 번호 없음, 본문만 01/10 ~ 10/10 으로 표기.
 
-  [TODO] 팀원 실명 — 본문 09/10(팀 역할 분담)의 [TODO: 성명] 5칸. 기획서 §9와 동일 인물·동일 역할명이어야 한다.
+  [TODO] 팀원 실명 — 본문 09/10(팀 역할 분담)의 [TODO: 성명] 7칸. 기획서 §9와 동일 인물·동일 역할명이어야 한다 (한 팀원이 복수 영역 담당 가능).
   [TODO] 본문 07/10 수치 라벨 — '목표치/내부 추정' 표기는 외부 출처 확보 시 근거 병기로 교체.
 
   PDF 변환: 브라우저 인쇄 → 용지 여백 '없음', 배경 그래픽 켜기 → 슬라이드 1장 = 1페이지(16:9), 총 12페이지.
@@ -134,6 +134,8 @@
   .cards.areas .card ul { gap: 8px; }
   .cards.areas .card li::before { top: 9px; width: 6px; height: 6px; }
   table.airy td, table.airy th { padding-top: 13px; padding-bottom: 13px; }
+  table.airy.compact td, table.airy.compact th { padding-top: 7px; padding-bottom: 7px; font-size: 13px; }
+  table.airy.compact td .sub { display: inline; margin-left: 6px; }
   .card.ok { border-left-color: var(--ok); }
   .card.ok > b, .card.ok .idx { color: var(--ok); }
   .card.ok .idx { background: var(--ok); color: oklch(99% 0 0); }
@@ -314,7 +316,7 @@
     <div class="meta">
       <div><dt>도메인</dt>AI Fintech</div>
       <div><dt>팀</dt>TEAM 6 · 5인</div>
-      <div style="flex:1 1 auto;"><dt>역할 구성</dt>기획 총괄 · 시장·사례 조사 · AI 기술 조사 · 금융·데이터 조사 · 서비스 설계·발표</div>
+      <div style="flex:1 1 auto;"><dt>역할 구성</dt>기획 총괄 · 문제 정의 · 타겟 사용자 · 서비스 설계 · AI 기술 조사 · 시스템 설계 · 발표</div>
     </div>
     <p class="note" style="margin-top:14px;">※ 서비스명은 가칭이며 추후 리브랜딩을 검토한다. 팀원 실명은 확정 후 기입한다.</p>
   </section>
@@ -332,7 +334,7 @@
       <li><span class="i">06</span><b>비즈니스 모델</b><span class="d">기관이 지불하고, 취약계층은 무료</span></li>
       <li><span class="i">07</span><b>기대 효과</b><span class="d">사용자에게는 역량을, 기관에는 지표를</span></li>
       <li><span class="i">08</span><b>향후 발전 방향</b><span class="d">실증 → 세그먼트 확장 → 교육 인프라</span></li>
-      <li><span class="i">09</span><b>팀 역할 분담</b><span class="d">다섯 영역의 조사·설계</span></li>
+      <li><span class="i">09</span><b>팀 역할 분담</b><span class="d">일곱 영역의 조사·설계</span></li>
       <li><span class="i">10</span><b>핵심 제안</b><span class="d">흩어진 금융교육을, 하나의 학습 여정으로</span></li>
     </ol>
     <p class="note closing">본문 10장은 <strong>문제 → 대상 → 서비스 → 기술 → 시스템 → 사업 → 효과 → 확장 → 팀 → 제안</strong> 순으로 구성했다.</p>
@@ -748,23 +750,25 @@
     <p class="lead closing">확장의 축은 <em>타겟 세그먼트</em>이고, 축적되는 자산은 <em>연령별 미션 수행 데이터</em>다.</p>
   </section>
 
-  <!-- ===== 본문 09/10 팀 역할 분담 — 심는 문장: 이 기획은 5개 영역의 조사·설계를 통합한 결과다 ===== -->
+  <!-- ===== 본문 09/10 팀 역할 분담 — 심는 문장: 이 기획은 7개 영역의 조사·설계를 통합한 결과다 ===== -->
   <section class="slide" aria-label="팀 역할 분담">
     <p class="kicker"><span>팀 역할 분담</span><span class="n">09 / 10</span></p>
-    <h2>다섯 영역의 조사·설계를 <span class="thin">하나의 기획으로</span></h2>
+    <h2>일곱 영역의 조사·설계를 <span class="thin">하나의 기획으로</span></h2>
     <p class="lead">팀 역할은 향후 개발 직무가 아니라, 이번 기획서를 작성하는 과정에서 각 팀원이 담당한 <strong>조사·설계·정리 영역과 기여 내용</strong>을 기준으로 작성했다.</p>
-    <table class="airy">
+    <table class="airy compact">
       <thead><tr><th style="width:24%">담당 영역 · 담당자</th><th>기획서 작성 과정에서의 기여 내용</th></tr></thead>
       <tbody>
-        <tr><td>기획 총괄 <span class="sub">[TODO: 성명]</span></td><td>아이디어 방향 설정, 문제 정의, 서비스 핵심 콘셉트 및 전체 기획서 구성·통합</td></tr>
-        <tr><td>시장·사례 조사 <span class="sub">[TODO: 성명]</span></td><td>기존 금융교육·AI 금융서비스 및 유사 서비스 조사, 기존 서비스 대비 차별점 도출</td></tr>
-        <tr><td>AI 기술 조사 <span class="sub">[TODO: 성명]</span></td><td>LLM, RAG, 행동 데이터 분석, 개인화 추천 등 적용 가능한 AI 기술 조사 및 적용 방안 구체화</td></tr>
-        <tr><td>금융·데이터 조사 <span class="sub">[TODO: 성명]</span></td><td>금융이해력, 디지털 역량, 금융사기 피해 등 관련 통계·정책·공공데이터 조사</td></tr>
-        <tr><td>서비스 설계·발표 <span class="sub">[TODO: 성명]</span></td><td>타겟 사용자, 학습 흐름, 시스템 구성, 기대 효과·사업화 방향 정리 및 발표자료 구성</td></tr>
+        <tr><td>기획 총괄 <span class="sub">[TODO: 성명]</span></td><td>아이디어 방향 설정, 서비스 핵심 콘셉트 정의, 전체 기획서·발표자료 구성 통합 및 문서 간 정합성 관리</td></tr>
+        <tr><td>문제 정의 <span class="sub">[TODO: 성명]</span></td><td>금융이해력·디지털 역량 격차·금융사기 피해 통계·정책 조사, 기존 체험형 금융교육 현황 분석과 '진단–연결 구조' 문제 프레임 도출</td></tr>
+        <tr><td>타겟 사용자 <span class="sub">[TODO: 성명]</span></td><td>생애주기별 금융과업 분석, 연령대별 우선순위·대표 학습 설계, 행동 데이터 중심 개인화 원칙 정리</td></tr>
+        <tr><td>서비스 설계 <span class="sub">[TODO: 성명]</span></td><td>미션 수행→역량 진단→학습 연결의 학습 루프 설계, 3대 학습 영역(기초금융·금융안전·생활금융) 구조화</td></tr>
+        <tr><td>AI 기술 조사 <span class="sub">[TODO: 성명]</span></td><td>LLM·Context Prompting·RAG, 규칙 기반→ML 고도화 경로 등 적용 가능한 AI 기술 조사 및 적용 방안 구체화</td></tr>
+        <tr><td>시스템 설계 <span class="sub">[TODO: 성명]</span></td><td>요청 흐름·외부 데이터 파이프라인 아키텍처 설계, AI 적용/미적용 구분 정의 및 시스템 구성도 작성</td></tr>
+        <tr><td>발표 <span class="sub">[TODO: 성명]</span></td><td>발표자료 스토리라인 구성, 비즈니스 모델·기대 효과 정리 및 발표 준비·진행</td></tr>
       </tbody>
     </table>
     <div class="spacer"></div>
-    <p class="note closing">팀: <strong>TEAM 6 · 5인</strong> — 팀원 실명은 확정 후 기입하며, 기획서 §9와 동일 인물·동일 역할명으로 맞춘다.</p>
+    <p class="note closing">팀: <strong>TEAM 6</strong> — 팀원 실명은 확정 후 기입하며, 기획서 §9와 동일 인물·동일 역할명으로 맞춘다. 한 팀원이 복수 영역을 담당할 수 있다.</p>
   </section>
 
   <!-- ===== 본문 10/10 핵심 제안 — 심는 문장: 콘텐츠를 더하는 것이 아니라 학습 여정을 만드는 플랫폼이다 ===== -->
