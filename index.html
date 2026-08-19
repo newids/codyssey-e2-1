@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>금융 코디세이(가칭) — AI 기반 전기통신금융사기 대응역량 훈련 체계</title>
-<meta name="description" content="당신이 어떤 미끼에 약한지 AI가 찾아내고, 그 미끼만 골라 예고 없이 반복해서 던지는 모의사기 훈련 서비스 — 금융사기 대응역량 훈련 체계 · AI Fintech 텀 프로젝트 기획안">
+<title>금융 학습 AI 플랫폼: 금융 코디세이</title>
+<meta name="description" content="금융 미션 수행 데이터를 바탕으로 금융역량을 진단하고, AI 가이드와 개인별 학습경로를 제공하는 맞춤형 금융학습 플랫폼 — AI Fintech 텀 프로젝트 기획안">
 <meta name="color-scheme" content="light">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>">
 <style>
@@ -21,7 +21,7 @@
     --danger-soft: oklch(52% 0.17 25 / 0.07);
 
     --text-base: clamp(1rem, 0.94rem + 0.3vw, 1.0625rem);
-    --text-hero: clamp(2.1rem, 1.2rem + 4.2vw, 3.9rem);
+    --text-hero: clamp(1.9rem, 1.1rem + 3.6vw, 3.4rem);
     --text-section: clamp(1.35rem, 1.15rem + 1vw, 1.9rem);
     --space-section: clamp(3.5rem, 2.5rem + 4vw, 6.5rem);
 
@@ -64,25 +64,25 @@
 
   h1 {
     font-size: var(--text-hero);
-    line-height: 1.12;
+    line-height: 1.15;
     letter-spacing: -0.03em;
     font-weight: 800;
     margin: 1.5rem 0 0;
   }
   h1 .sub {
     display: block;
-    font-size: clamp(1rem, .85rem + .8vw, 1.35rem);
+    font-size: clamp(1rem, .85rem + .8vw, 1.3rem);
     font-weight: 500;
     letter-spacing: -0.01em;
     color: var(--ink-soft);
     margin-top: .9rem;
-    line-height: 1.55;
+    line-height: 1.6;
   }
 
   .meta-grid {
     margin-top: 2.5rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
     border-top: 1px solid var(--rule);
   }
   .meta-grid > div {
@@ -145,27 +145,8 @@
   ul.tight li { padding: .35rem 0 .35rem 1.4rem; position: relative; }
   ul.tight li::before { content: "—"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
 
-  /* ---------- stat band ---------- */
-  .stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
-    gap: 1px;
-    background: var(--rule);
-    border-block: 1px solid var(--rule);
-    margin: 2rem 0;
-  }
-  .stat { background: var(--paper); padding: 1.1rem .9rem 1.2rem; }
-  .stat .n {
-    font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.3rem);
-    font-weight: 800; letter-spacing: -0.03em; line-height: 1.1;
-    color: var(--accent);
-  }
-  .stat.bad .n { color: var(--danger); }
-  .stat .l { font-size: .82rem; color: var(--ink-soft); margin-top: .45rem; line-height: 1.5; }
-  .stat .s { font-size: .72rem; color: var(--ink-soft); opacity: .75; margin-top: .3rem; }
-
-  /* ---------- cards ---------- */
-  .cards { display: grid; gap: .75rem; margin: 1.75rem 0; }
+  /* ---------- 문제 정의 카드 ---------- */
+  .cards { display: grid; gap: .75rem; margin: 1.5rem 0; }
   .card {
     background: var(--card);
     border: 1px solid var(--rule);
@@ -173,25 +154,7 @@
     border-radius: 0 .5rem .5rem 0;
     padding: 1rem 1.25rem;
   }
-  .card b { display: block; font-size: .78rem; letter-spacing: .08em; color: var(--accent); text-transform: uppercase; margin-bottom: .25rem; }
-
-  /* ---------- 5단계 훈련 절차 ---------- */
-  .loop { display: grid; grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr)); gap: 1rem; margin: 1.5rem 0 .5rem; }
-  .loop .step { border-top: 3px solid var(--accent); padding-top: .55rem; }
-  .loop .step .k { font-family: var(--font-mono); font-size: .75rem; color: var(--accent); font-weight: 700; }
-  .loop .step .t { font-weight: 750; line-height: 1.35; margin-top: .1rem; }
-  .loop .step p { font-size: .84rem; color: var(--ink-soft); line-height: 1.55; margin-top: .2rem; }
-  .loop-back { font-size: .82rem; color: var(--ink-soft); font-family: var(--font-mono); }
-
-  /* ---------- 아키텍처 밴드 ---------- */
-  .arch { display: grid; gap: .5rem; margin: 1.5rem 0; }
-  .band { border: 1px solid var(--rule); border-radius: .6rem; padding: .9rem 1rem; background: var(--card); }
-  .band > b { display: block; font-size: .74rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: .5rem; }
-  .band.core { border-left: 4px solid var(--ink); }
-  .band.ai { border-left: 4px solid var(--accent); background: var(--accent-soft); }
-  .band.ai > b { color: var(--accent); }
-  .band p { font-size: .88rem; line-height: 1.6; }
-  .flow { text-align: center; font-family: var(--font-mono); font-size: .78rem; color: var(--ink-soft); }
+  .card b { display: block; font-size: .95rem; letter-spacing: -0.01em; color: var(--ink); margin-bottom: .35rem; }
 
   /* ---------- 강조 박스 ---------- */
   .callout {
@@ -203,12 +166,27 @@
   .callout.warn b.h { color: var(--danger); }
   .callout p { font-size: .92rem; line-height: 1.7; }
 
+  /* ---------- 시스템 구성도 ---------- */
+  .diagram {
+    font-family: var(--font-mono);
+    font-size: .8rem;
+    line-height: 1.6;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: .6rem;
+    padding: 1.1rem 1.25rem;
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    white-space: pre;
+  }
+
   /* ---------- tables ---------- */
   .tbl-scroll { overflow-x: auto; margin: 1.25rem 0; }
   table { border-collapse: collapse; width: 100%; font-size: .9rem; min-width: 30rem; }
   th, td { text-align: left; padding: .6rem .75rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
   th { font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); border-bottom: 2px solid var(--ink); }
   td:first-child { font-weight: 650; }
+  .tbl-note { font-size: .82rem; color: var(--ink-soft); line-height: 1.7; }
 
   /* ---------- 부록 링크 카드 ---------- */
   .linkcards { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: .75rem; margin: 1.5rem 0; }
@@ -252,201 +230,174 @@
 
 <header class="masthead">
   <p class="kicker"><strong>AI Fintech · 텀 프로젝트 기획안</strong><span>2026.08</span></p>
-  <h1>아는 것과, 당하지 않는 것은 다르다
-    <span class="sub">금융 코디세이(가칭)는 <em>당신이 어떤 미끼에 약한지 AI가 찾아내고, 그 미끼만 골라 예고 없이 반복해서 던지는 모의사기 훈련 서비스</em>다.</span>
+  <h1>금융 학습 AI 플랫폼: 금융 코디세이
+    <span class="sub">금융 미션 수행 데이터를 바탕으로 금융역량을 진단하고, AI 가이드와 개인별 학습경로를 제공하는 <em>맞춤형 금융학습 플랫폼</em></span>
   </h1>
 
   <dl class="meta-grid">
-    <div><dt>도메인</dt><dd>AI Fintech</dd></div>
-    <div><dt>팀명</dt><dd>포디세이(Fodyssey)</dd></div>
-    <div><dt>사업 구상</dt><dd>전 국민 금융역량 인프라 구상 — 1단계</dd></div>
-    <div><dt>정식 명칭</dt><dd>AI 기반 전기통신금융사기 대응역량 훈련 체계(시민 대상)</dd></div>
-    <div><dt>서비스명</dt><dd>가칭 · 리브랜딩 검토</dd></div>
+    <div><dt>도메인</dt><dd>핀테크 (AI Fintech)</dd></div>
+    <div><dt>팀명</dt><dd>6조 · 포디세이(Fodyssey)</dd></div>
+    <div><dt>프로젝트명</dt><dd>금융 학습 AI 플랫폼: 금융 코디세이</dd></div>
+    <div><dt>문서 성격</dt><dd>팀 최종 기획서의 웹버전</dd></div>
   </dl>
 
   <div class="cta-row">
-    <a class="cta" href="app/">🛡️ 판별형 훈련 모듈 실습 프로토타입(정적)</a>
-    <a class="cta ghost" href="deck/">발표자료 보기</a>
+    <a class="cta" href="app/">🛡️ 금융안전 실습 프로토타입(정적)</a>
+    <a class="cta ghost" href="pitch-deck/">발표자료 보기</a>
   </div>
-  <p class="cta-note"><strong>구현 범위</strong> — 사전 행동수칙 교육, 규칙 기반 채점, 자극 유형별 취약도 지수 실계산과 회차 간 개선폭 표시까지 동작한다. <strong>취약 자극 유형 진단(AI)·시나리오 자동 생성·음성 출력, 그리고 모듈 ①·③은 설계 단계이며 미구현</strong>이고, 다음 구현 대상은 ②의 나머지 셋이다.</p>
+  <p class="cta-note"><strong>프로토타입 범위</strong> — 3대 학습 영역 가운데 <strong>금융안전 영역의 사기문자 판별 실습 일부</strong>만 구현한 정적 프로토타입이다. 기초금융·생활금융 영역과 학습경로 추천은 설계 단계이며 구현되지 않았다.</p>
 </header>
 
 <main>
 
 <section aria-labelledby="s1">
-  <div class="sec-head"><span class="sec-num">01</span><h2 id="s1">문제 정의 — 아는 것이 그 순간에 작동하지 않는다</h2></div>
+  <div class="sec-head"><span class="sec-num">01</span><h2 id="s1">문제 정의</h2></div>
 
-  <p><strong>산업·규제 환경과 정책 근거.</strong> AI 기본법이 2026년 1월 시행되고 금융위원회가 AI 활용 7대 원칙을 담은 통합 가이드라인을 마련하면서, 금융권 AI 서비스는 "도입할 수 있는가"에서 "어떤 원칙 아래 도입하는가"의 국면으로 이동했다.</p>
-
-  <p><strong>해결하려는 문제.</strong> 사기 피해는 지식이 아니라 <strong>지식-행동 전이의 문제</strong>다.</p>
-
-  <div class="stats">
-    <div class="stat"><div class="n">65.6%</div><div class="l">취약계층 디지털 <strong>역량</strong> — 접근 96.5%·활용 80.0%인데 역량만 낮다. 고령층은 71.4%로 계층 중 최저</div><div class="s">NIA, 2024 디지털정보격차 실태조사</div></div>
-    <div class="stat bad"><div class="n">65.7점</div><div class="l">성인 금융이해력 — 직전 조사(66.5점) 대비 <strong>하락</strong></div><div class="s">한은·금감원, 2024</div></div>
-    <div class="stat bad"><div class="n">7,766억</div><div class="l">2025년 1–7월 누적 피해액(원) — <strong>하루 약 36.6억 원</strong>(누적 피해액 ÷ 일수 환산치)</div><div class="s">경찰청 국수본</div></div>
-  </div>
-
-  <ul class="tight">
-    <li>기기는 있는데 <em>판단을 못 한다</em> — 격차의 본질은 접근이 아니라 역량이다.</li>
-    <li>금융이해력 지표는 내려갔고, 피해액은 위와 같다.</li>
-    <li>1회성 수강은 사기가 문을 두드리는 순간에 작동하지 않는다 — 필요한 것은 <strong>반복되는, 예고 없는 훈련</strong>이다.</li>
-  </ul>
-
-  <div class="callout">
-    <b class="h">사업의 성격</b>
-    <p>KISA 사이버 위기대응 모의훈련은 참여 대상이 민간기업으로 한정돼 있고, 이에 대응하는 시민 대상 상시 모의훈련은 확인되지 않는다. 본 사업은 새로운 훈련 방법을 제안하는 것이 아니라, <strong>국가가 이미 집행 중인 훈련 방법론을 전기통신금융사기(보이스피싱·스미싱) 국면의 시민에게 이행</strong>하는 것이다. 금융위원회는 생애주기별 금융교육으로 국민의 <strong>금융역량</strong>을 강화하고 고령층에는 금융피해 예방 교육을 집중한다는 방향을 밝혔다(금융위원회, 2025.12). <strong>금융역량 인프라가 도착점이고, 모의 훈련은 그 1단계 관문</strong>이다.</p>
+  <div class="cards">
+    <div class="card">
+      <b>기존 금융교육 한계: 콘텐츠는 있지만 진단이 없음</b>
+      모바일 금융 실습, 사기 시뮬레이션 등 체험형 금융교육은 이미 존재한다. 그러나 역량별 학습이 여러 서비스에 흩어져 있어, 사용자는 자신에게 무엇이 부족하고 어떤 학습이 필요한지 스스로 판단할 수 없다.
+    </div>
+    <div class="card">
+      <b>같은 연령대라도 부족한 역량이 다름</b>
+      모바일뱅킹 조작이 서툰 사람, 신용·대출 개념이 약한 사람, 지식은 있어도 실제 사기 상황에서 위험한 선택을 하는 사람이 공존한다. 획일적 교육으로는 대응할 수 없다.
+    </div>
+    <div class="card">
+      <b>필요한 것은 '또 하나의 콘텐츠'가 아니라 '진단-연결 구조'</b>
+      실제 금융과업 수행 과정에서 현재 역량을 진단하고, 필요한 교육·실습을 개인별로 연결하는 구조가 필요하다.
+    </div>
   </div>
 </section>
 
 <section aria-labelledby="s2">
-  <div class="sec-head"><span class="sec-num">02</span><h2 id="s2">타겟 사용자 — 피해 규모 × 역량 취약도 매트릭스</h2></div>
+  <div class="sec-head"><span class="sec-num">02</span><h2 id="s2">타겟 사용자</h2></div>
 
   <div class="tbl-scroll">
     <table>
-      <thead><tr><th>우선순위</th><th>피해 규모 (경찰청)</th><th>역량 취약도</th></tr></thead>
+      <thead><tr><th>우선 순위</th><th>교육 니즈 · 역량 취약도</th><th>대표 학습</th></tr></thead>
       <tbody>
-        <tr><td><strong>1군 60대+</strong></td><td>단일 연령대 <strong>30.6%로 1위</strong>(2025.9)</td><td>디지털정보화 <strong>71.4%</strong>, 최저(NIA 2024)</td></tr>
-        <tr><td><strong>2군 20·30대</strong></td><td><strong>10.5%/9.1%</strong>(2024년 말, 4%대→상승), 기관사칭 피해자 <strong>52%가 30대 이하</strong>(2025)</td><td>별도 지표 없음 — 자극 유형 집중도</td></tr>
+        <tr><td><strong>1. 고령층(60대+)</strong></td><td>디지털정보화 71.4%, 최저(NIA, 2024)</td><td>모바일 송금, 금융문서 이해, 기관사칭 대응</td></tr>
+        <tr><td><strong>2. 청년(20-30대)</strong></td><td>사회생활·자산형성 시작 / 기관사칭 피해자 52%가 30대 이하(2025)</td><td>신용·대출 이해, 청년 지원제도 탐색</td></tr>
+        <tr><td><strong>3. 중장년(50대)</strong></td><td>자산관리·재무 재설계 / 사기 피해자 중 50대 이상 53%(2025)</td><td>투자·대출 판단, 퇴직연금, 금융사기 대응</td></tr>
+        <tr><td><strong>4. 청소년(10대)</strong></td><td>금융 기본습관 형성</td><td>예산관리, 온라인 거래 위험 판단</td></tr>
       </tbody>
     </table>
   </div>
 
-  <p>1군은 두 축 모두 최악이라 1순위, 2군은 <strong>피해 유형 집중도와 상승 추세</strong>로 정당화된다. 3군(50대)은 로드맵으로 둔다. <em>사용자 ≠ 구매자</em> — 훈련은 시민이, 비용은 기관이 낸다. 연령대는 ①의 학습 항목을 정하는 축이고, 취약도는 ②의 훈련 항목을 정하는 축이다.</p>
+  <p class="tbl-note">우선 순위는 향후 발전 방향의 1~3단계와 같은 순서를 따른다. 인용 통계의 기관·기준 시점은 부록 B에 정리했다.</p>
 </section>
 
 <section aria-labelledby="s3">
   <div class="sec-head"><span class="sec-num">03</span><h2 id="s3">서비스 개요</h2></div>
 
-  <p><strong>한 문장 정의.</strong> 금융 코디세이(가칭)는 <strong>당신이 어떤 미끼에 약한지 AI가 찾아내고, 그 미끼만 골라 예고 없이 반복해서 던지는 모의사기 훈련 서비스</strong>다.</p>
+  <p>금융 코디세이는 금융 미션 수행 데이터를 바탕으로 금융역량을 진단하고, AI 가이드와 개인별 학습경로를 제공하는 <strong>맞춤형 금융학습 플랫폼</strong>이다.</p>
 
-  <p><strong>서비스 구성 — 세 모듈, 하나의 프로필.</strong> ① <strong>연령대별 기본 금융 교육</strong>(진입)은 연령대의 금융과업에 맞춰 계좌이체·신용·금융문서 이해와 행동수칙을 먼저 세운다. ② <strong>금융사기 대응역량 훈련</strong>(핵심)은 그 지식이 사기 순간에도 작동하는지 반복해서 측정한다. ③ <strong>금융지원 제도 찾기</strong>(부가)는 받을 수 있는 공공 지원제도를 찾아 주고, 그 진짜 정보가 기관사칭을 걸러내는 기준이 된다. <strong>사업의 중심은 ②다</strong> — ①은 ②의 기준선을, ③은 ②의 소재와 재방문을 만든다. ①의 이해도 진단이 ②의 초기 프로필이 되고 ②의 자극 유형별 취약도가 ①의 다음 학습 순서를 정한다 — <strong>커리큘럼을 사람이 짜지 않고 측정치가 정한다.</strong></p>
-
-  <h3>핵심 기능 — 5단계 반복 훈련 절차</h3>
-  <div class="loop">
-    <div class="step"><div class="k">01</div><div class="t">행동수칙 교육</div><p>3분 학습</p></div>
-    <div class="step"><div class="k">02</div><div class="t">취약 유형 진단</div><p>기준선 측정</p></div>
-    <div class="step"><div class="k">03</div><div class="t">무예고 훈련</div><p>변형 시나리오를 예고 없이 반복</p></div>
-    <div class="step"><div class="k">04</div><div class="t">사후 분석</div><p>피격 지점을 되짚기</p></div>
-    <div class="step"><div class="k">05</div><div class="t">재평가</div><p>대응역량 재측정 → 훈련 프로필 갱신</p></div>
+  <h3>3대 학습 영역</h3>
+  <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>학습 영역</th><th>다루는 내용</th></tr></thead>
+      <tbody>
+        <tr><td><strong>기초금융</strong></td><td>계좌이체, 자동이체, 신용점수, 대출금리, 금융문서 이해</td></tr>
+        <tr><td><strong>금융안전</strong></td><td>보이스피싱·스미싱·악성앱·기관사칭·투자사기 대응</td></tr>
+        <tr><td><strong>생활금융</strong></td><td>지원제도 탐색, 청년·퇴직·연금 정보 이해, 금융조건 비교</td></tr>
+      </tbody>
+    </table>
   </div>
-  <p class="loop-back">└─ 사전 행동수칙 교육 → 취약 유형 진단 → 변형 시나리오 무예고 훈련 → 피격 지점 사후 분석 → 대응역량 재평가 → 훈련 프로필 갱신 …</p>
 
-  <p>훈련은 <strong>사전 행동수칙 교육(3분)</strong> 에서 시작한다 — 수칙을 모르는 상태의 실패는 학습이 아니라 좌절이기 때문이다. 예고 없이 도착하는 것은 <strong>개별 시나리오의 시점</strong>이지 훈련 참여 사실이나 행동수칙이 아니다.</p>
-
-  <p>3대 설계 제약은 ① <strong>3분 이내</strong> ② <strong>예고 없이</strong>(앱 내 모의 수신함) ③ <strong>가상 격리</strong>다. 기관사칭형이 전체 피해의 51%(경찰청, 2025)이므로 판별형의 기관사칭 비중을 40% 이상으로 둔다.</p>
+  <p>미션 수행 결과를 <strong>금융역량 프로필</strong>로 연결해 사용자의 취약 영역에 맞는 학습을 제공한다.</p>
 
   <div class="callout">
-    <b class="h">전문 상담 연계</b>
-    <p>같은 자극 유형에 3회 이상 반복 피격되면 전문 상담으로 연계한다. 연결 대상은 <strong>도입 기관이 이미 운영 중인 상담·교육 인력</strong>이며, 우리는 트리거 조건과 인계 리포트(취약 자극 유형·반복 횟수)만 제공한다. 사용자끼리 서로를 가르치는 동료 간 상호 교육은 채택하지 않았다 — 검증되지 않은 대응법이 사람을 통해 퍼지는 경로가 되기 때문이며, 사람의 개입이 필요한 지점은 도입 기관의 상담·교육 인력으로 연결해 해결한다.</p>
-  </div>
-
-  <h3>차별점</h3>
-  <div class="cards">
-    <div class="card">
-      <b>① 반복 훈련의 효과는 국가 훈련에서 확인됐다</b>
-      재참여 기업이 신규 참여보다 빠르게 대응했다(과기정통부·KISA, 2026 상반기 — 디도스 대응 훈련).
-    </div>
-    <div class="card">
-      <b>② 경쟁 서비스와의 차이</b>
-      금감원 금융교육포털은 지식을 전달하고 은행 FDS는 거래 시점에 차단한다. 가장 근접한 사례는 은행 고객 채널의 체험형 시뮬레이션(우리은행 '하마터면', 2025.9)이며, 이용자별 취약 유형 진단·주기 반복 여부는 공개 자료에서 확인되지 않았다. <strong>차이는 콘텐츠가 아니라 개입 시점과 반복 구조, 그리고 개인화다.</strong>
-    </div>
+    <b class="h">차별점</b>
+    <p><strong>차별점은 콘텐츠가 아니라 구조다.</strong> 체험형 금융교육 콘텐츠는 이미 존재하지만 역량별로 흩어져 있어, 사용자는 자신에게 무엇이 부족한지 스스로 판단할 수 없다. 금융 코디세이는 콘텐츠를 하나 더 만드는 대신, <strong>실제 금융과업 수행 과정에서 역량을 진단하고 필요한 학습을 개인별로 연결하는 구조</strong>를 만든다.</p>
   </div>
 </section>
 
 <section aria-labelledby="s4">
   <div class="sec-head"><span class="sec-num">04</span><h2 id="s4">AI 기술 적용</h2></div>
 
-  <p><strong>설계 원칙.</strong> 훈련 진행·정답 판정·상태 관리·스케줄링은 <strong>결정론 코어</strong>가 하고, AI는 <strong>진단·적응·생성·판별</strong>에만 쓴다. 이 경계선이 거버넌스 원칙(재현·감사 가능성)에 대한 답이다.</p>
-
   <div class="tbl-scroll">
     <table>
-      <thead><tr><th>ID</th><th>명칭</th><th>적용 기술</th><th>왜 이 기술인가</th></tr></thead>
+      <thead><tr><th>핵심 기능</th><th>적용 기술</th><th>기술 설명</th></tr></thead>
       <tbody>
-        <tr><td><strong>A1</strong></td><td><strong>취약 자극 유형 진단</strong></td><td>LLM few-shot 분류 + 규칙 가중 스코어링</td><td>라벨 데이터 없어 지도학습 불가</td></tr>
-        <tr><td><strong>A2</strong></td><td><strong>설명 난이도·다음 훈련 선택</strong></td><td>난이도는 LLM, <strong>훈련 선택은 결정론 규칙</strong></td><td>선택은 감사 대상이라 규칙 고정</td></tr>
-        <tr><td><strong>A3</strong></td><td><strong>훈련 시나리오 자동 생성</strong></td><td>LLM + 슬롯 제약 템플릿 생성</td><td>고정 문항은 소진된다</td></tr>
-        <tr><td><strong>A4</strong></td><td><strong>판별 결과에 실제 사례 근거를 함께 제시</strong></td><td>임베딩 검색(RAG) + 근거 생성, <strong>규칙 필터 병행</strong></td><td>실사례 근거로 환각 차단</td></tr>
-        <tr><td><strong>A5</strong></td><td><strong>쉬운 말 재작성·음성 안내</strong></td><td>LLM 재작성 + Web Speech API</td><td>어휘 재작성은 생성 과제</td></tr>
+        <tr><td><strong>금융역량 진단</strong></td><td>Rule-based Scoring → ML(분류/회귀 모델)</td><td>사용자의 행동 데이터를 기준과 가중치에 따라 점수화한다. 축적된 데이터를 학습한 ML 모델로 고도화한다</td></tr>
+        <tr><td><strong>AI 가이드형 실습</strong></td><td>Instruction LLM + Context Prompting + RAG</td><td>LLM으로 자연어 안내·피드백을 생성한다. 프롬프트에 사용자 수준·현재 미션 단계 등 조건을 전달해 응답 방식을 조정한다. RAG를 통해 공식 금융자료를 답변 근거로 활용한다</td></tr>
+        <tr><td><strong>개인별 학습경로 추천</strong></td><td>Rule-based 추천 → Learning-to-Rank</td><td>사용자 프로필과 사전 정의된 규칙으로 추천한다. 향후 데이터가 쌓이면 사용자별 학습효과를 반영해 추천을 정교화한다</td></tr>
       </tbody>
     </table>
   </div>
 
-  <p><strong>모듈별 적용.</strong> ②는 다섯 컴포넌트를 모두 쓰고, ①은 <strong>설명 난이도·다음 훈련 선택</strong>과 <strong>쉬운 말 재작성·음성 안내</strong>를, ③은 <strong>쉬운 말 재작성·음성 안내</strong>를 쓴다 — <strong>모듈이 늘어도 AI 컴포넌트는 늘리지 않는다.</strong></p>
+  <p class="tbl-note">세 기능은 모두 <strong>규칙 기반으로 지금 동작하고, 데이터가 쌓이면 학습 기반으로 고도화되는 2단 구조</strong>다 — 현재 구현 가능한 경로와 향후 고도화 경로를 함께 밝힌다.</p>
 </section>
 
 <section aria-labelledby="s5">
   <div class="sec-head"><span class="sec-num">05</span><h2 id="s5">시스템 구성</h2></div>
 
-  <div class="arch">
-    <div class="band">
-      <b>사용자 접점</b>
-      <p>모의 수신함 · 판별 입력창 · 사후 분석 · 음성/스포트라이트 UI</p>
-    </div>
-    <p class="flow">│ 반응 로그(가명처리) ▼ &nbsp;&nbsp; ▲ 출력 │</p>
-    <div class="band core">
-      <b>결정론 코어 — AI 적용 대상이 아니다</b>
-      <p>훈련 진행 관리 · 규칙 기반 채점 · 반복 훈련 일정 관리 · 가명처리 프로필 저장 · 안전 가드 · 판정 이력 기록(감사)</p>
-    </div>
-    <p class="flow">│ 호출 ▼ &nbsp;&nbsp; ▲ 결과 │</p>
-    <div class="band ai">
-      <b>AI 레이어 — 앞 절 표 5행과 1:1</b>
-      <p>취약 자극 유형 진단 · 설명 난이도·다음 훈련 선택 · 훈련 시나리오 자동 생성 · 실제 사례 근거 제시 · 쉬운 말 재작성·음성 안내</p>
-    </div>
-    <div class="band">
-      <b>데이터</b>
-      <p>공공(경찰청 · 공개 사례 · 공공서비스(혜택) · NIA) → 프로필 → 리포트</p>
-    </div>
+  <div class="diagram" role="img" aria-label="시스템 구성도: 사용자의 미션 수행 요청이 API Gateway의 인증·인가를 거쳐 API server로 전달되고, API server는 미션 컨텍스트를 AI(LLM)에 전달해 가이드·피드백·근거를 받는다. API server는 Database에서 프로필을 조회하고 수행기록을 저장하며, Pipeline이 금융 공공정보·제도·혜택정보 원문을 수집해 정제 텍스트를 임베딩하고 Database에 적재한다.">
+ 사용자
+   │  미션 수행 요청
+   ▼
+ API Gateway  — 인증 / 인가
+   │
+   ▼
+ API server ──── 미션 컨텍스트 ────▶  AI (LLM)
+   │   ◀──── 가이드 / 피드백 / 근거 ────┘
+   │                                     │  정제 텍스트 임베딩 요청
+   │  프로필 조회 · 수행기록 저장          │  임베딩 벡터 근거 검색
+   ▼                                     ▼
+ Database  ◀────────────────────  Pipeline
+                                         ▲
+                                         │ 원문 수집
+                              금융 공공정보 · 제도 · 혜택정보
   </div>
 
-  <div class="callout">
-    <b class="h">개인정보</b>
-    <p>취약성 프로파일은 <strong>훈련 목적으로만</strong>, 고지 후 <strong>명시적 동의</strong>가 있을 때만 저장한다. 저장 시점부터 <strong>가명처리</strong>하며 리포트는 <strong>집계 단위로만</strong> 산출한다. 전문 상담 연계는 <strong>별도 동의 시에만</strong> 작동한다.</p>
+  <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>구분</th><th>흐름</th></tr></thead>
+      <tbody>
+        <tr><td><strong>요청 흐름</strong></td><td>사용자의 미션 수행 요청이 <strong>API Gateway</strong>의 인증·인가를 거쳐 <strong>API server</strong>로 전달된다</td></tr>
+        <tr><td><strong>AI 호출</strong></td><td>API server가 미션 컨텍스트를 <strong>AI(LLM)</strong> 에 전달하고, 가이드·피드백·근거를 받아 사용자에게 제공한다</td></tr>
+        <tr><td><strong>데이터</strong></td><td>API server는 <strong>Database</strong>에서 프로필을 조회하고 수행기록을 저장한다. AI는 임베딩 벡터 근거 검색으로 답변 근거를 가져온다</td></tr>
+        <tr><td><strong>외부 수집</strong></td><td><strong>Pipeline</strong>이 금융 공공정보·제도·혜택정보 원문을 수집해 정제 텍스트를 임베딩하고 Database에 적재한다</td></tr>
+      </tbody>
+    </table>
   </div>
-
-  <h3>금융위원회 AI 활용 7대 원칙 대응</h3>
-  <ul class="tight">
-    <li><strong>거버넌스</strong> = 모든 판정 이력을 기록해 추적 가능</li>
-    <li><strong>합법성</strong> = 공공데이터·공개 사례만 활용, 모의 문자 실발송 배제(법적 검토는 진행 예정)</li>
-    <li><strong>보조수단성</strong> = 반복 피격 시 전문 상담 연계</li>
-    <li><strong>신뢰성</strong> = 판별 결과에 실제 사례 근거를 항상 함께 제시</li>
-    <li><strong>금융안정성</strong> = 실제 금융시스템에 쓰기 접근 없는 가상 격리</li>
-    <li><strong>신의성실</strong> = 금융상품 판매·중개 없음</li>
-    <li><strong>보안성</strong> = 프로필 가명처리·개인 금융정보 비수집</li>
-  </ul>
 </section>
 
 <section aria-labelledby="s6">
   <div class="sec-head"><span class="sec-num">06</span><h2 id="s6">기대 효과</h2></div>
 
+  <h3>비즈니스 모델</h3>
   <div class="tbl-scroll">
     <table>
-      <thead><tr><th>목표 지표</th><th>측정 방법</th><th>비교 기준</th></tr></thead>
+      <thead><tr><th>수익 구조</th><th>고객 유형</th><th>가격 책정 방식</th></tr></thead>
       <tbody>
-        <tr><td><strong>피격률(클릭·정보입력) 감소</strong></td><td>1회차 대비 N회차 비교</td><td>자체 기준선(1회차 값)</td></tr>
-        <tr><td><strong>취약 자극 유형별 취약도 변화</strong></td><td>유형 진단 재측정값의 시계열 비교</td><td>자체 기준선</td></tr>
-        <tr><td><strong>반복 참여 효과</strong></td><td>재참여자 vs 신규 참여자 비교</td><td>KISA 디도스 재참여 우위</td></tr>
+        <tr><td><strong>B2B2C</strong></td><td>은행, 증권사, 보험사, 통신사 등</td><td rowspan="2">① API 사용량 기반 과금<br>② 라이선스 구독(월/연 단위 구독)</td></tr>
+        <tr><td><strong>B2B2G</strong></td><td>금융/소비자 기관, 지방자치단체 등</td></tr>
       </tbody>
     </table>
   </div>
 
-  <p><strong>사용자 관점.</strong> 실제로 걸려 보고 그 이유를 아는 사람이 남는다.</p>
+  <h3>기대효과</h3>
+  <ul class="tight">
+    <li><strong>연령대별 금융 이해력 향상</strong> — 금융 사기 인지율 기존 대비 <strong>75% 이상 향상</strong> ※ / 금융 사기 대응을 위한 안전 행동 실천율 <strong>20~30% 개선</strong> ※</li>
+    <li><strong>금융 사기 피해 감소</strong> — 개인 대상 연간 금융 사기 피해액 약 <strong>1,380억원 감소</strong> ※</li>
+  </ul>
 
-  <p><strong>비즈니스 관점.</strong> 시민에게 훈련은 무료이고, <strong>기관에는 "훈련이 됐다"는 측정치를 판다.</strong> 기관에게 금융역량 강화는 <strong>이미 부여된 임무</strong>이며, 우리가 파는 것은 새 임무가 아니라 <strong>그 임무의 측정 수단</strong>이다. 기관에 제공하는 <strong>기관 대응역량 진단 리포트</strong>의 핵심 값은 <strong>대응역량 취약도 지수</strong>다 — 자극 유형별로 <code>피격 횟수 ÷ 발송 횟수</code>를 최근 회차에 가중해 산출하고, 기관·지역 단위로는 소속 사용자 지수의 평균과 <strong>1회차 대비 개선폭</strong>을 제공한다. 지수는 생성형 AI가 아니라 <strong>규칙 기반 채점 결과로만 계산</strong>해 재현·감사가 가능하며, 최소 인원에 미달하는 소규모 집단은 재식별 방지를 위해 산출하지 않는다. 수익원은 공공 도입(B2G) 훈련 공급(기관 보유 기기 탑재)·성과 리포트·B2B 제휴다.</p>
+  <p class="tbl-note">※ 기대효과 수치는 팀 내부 추정치이며 외부 출처가 아직 확인되지 않았다. 산출 근거의 확인 상태는 부록 B에 기록해 두었다.</p>
 </section>
 
 <section aria-labelledby="s7">
   <div class="sec-head"><span class="sec-num">07</span><h2 id="s7">향후 발전 방향</h2></div>
 
-  <p><strong>단계적 확산 계획은 두 축이다.</strong> 대상은 타겟 매트릭스 순서(1군→4군)로 넓히고, 영역은 <strong>금융역량 인프라 로드맵</strong>으로 깊인다 — <strong>① 금융사기 대응역량 훈련 체계(3모듈·현 단계) → ② 금융역량 프로필 통합 → ③ 생애주기 금융과업 확대 → ④ 공공 교육 인프라 연계 → ⑤ 전 국민 금융역량 인프라.</strong> 단 진입 가능한 공공 교육사업이 40~64세에 집중돼 <strong>1차 베타는 50~64세</strong>로 시작한다. 서울시50플러스재단·서울시평생학습포털이 <strong>연계 검토 대상</strong>이며 진입 절차·요건은 미확인이다.</p>
-
-  <div class="callout warn">
-    <b class="h">현 단계 산출물</b>
-    <p>설계 검증용 <strong>판별형 훈련 모듈 실습 프로토타입(정적)</strong> 에서 사전 행동수칙 교육, 규칙 기반 채점, 자극 유형별 취약도 지수 실계산과 회차 간 개선폭 표시가 동작한다. <strong>취약 자극 유형 진단(AI)·시나리오 자동 생성·음성 출력, 그리고 모듈 ①·③은 설계 단계이며 미구현</strong>이고, 다음 구현 대상은 ②의 나머지 셋이다.</p>
-  </div>
-
-  <div class="cta-row">
-    <a class="cta" href="app/">🛡️ 판별형 훈련 모듈 실습 프로토타입(정적)</a>
-    <a class="cta ghost" href="deck/">발표자료 보기</a>
+  <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>구분</th><th>타겟 사용자</th><th>목표</th><th>실행 전략</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1단계</strong></td><td>시니어층</td><td>실제 행동 변화 입증 / PoC 성공 및 레퍼런스 확보</td><td>AI 기반 대화형 인터페이스 도입 / 밀착형 시나리오 미션 구성</td></tr>
+        <tr><td><strong>2단계</strong></td><td>청년층, 중장년층</td><td>사기 유형별 시나리오 다각화 / 플랫폼 체류 시간 증대</td><td>게이미피케이션 콘텐츠 도입 / 금융 서비스의 실질 혜택 연계</td></tr>
+        <tr><td><strong>3단계</strong></td><td>청소년층, 전 연령층</td><td>공공 교육 인프라 편입 / 사용자 데이터 기반 DaaS 구축</td><td>청소년층 특화 시나리오 개발 / 연령별 데이터 수집 및 가공</td></tr>
+      </tbody>
+    </table>
   </div>
 </section>
 
@@ -455,18 +406,19 @@
 
   <div class="tbl-scroll">
     <table>
-      <thead><tr><th>역할 (담당)</th><th>담당 영역</th><th>기여 내용</th></tr></thead>
+      <thead><tr><th>담당 영역</th><th>기획서 작성 과정에서의 기여 내용</th></tr></thead>
       <tbody>
-        <tr><td><strong>기획 총괄</strong> (JHKim)</td><td>문제 정의·전략·정합성</td><td>문제 프레임 확정, 도메인 방어 논리</td></tr>
-        <tr><td><strong>AI 설계</strong> (YRHeo)</td><td>AI 컴포넌트·아키텍처</td><td>컴포넌트 명세, 코어–AI 경계 설계</td></tr>
-        <tr><td><strong>데이터 · 시나리오</strong> (YWKim)</td><td>근거 통계·훈련 데이터</td><td>타겟 매트릭스, 데이터셋 구성비</td></tr>
-        <tr><td><strong>서비스 · UX</strong> (SHkim)</td><td>사용자 경험·안전 설계</td><td>5단계 절차·3대 제약, 개인정보 원칙</td></tr>
-        <tr><td><strong>사업화 · 발표</strong> (JSChoi)</td><td>수익 논리·확산·발표</td><td>3층 유인 구조, 공공 경로 조사</td></tr>
+        <tr><td><strong>기획 총괄</strong></td><td>아이디어 방향 설정, 서비스 핵심 콘셉트 정의, 전체 문서간 정합성 관리</td></tr>
+        <tr><td><strong>문제 정의 · 고객 정의</strong></td><td>문제 프레임 도출 · 타겟 사용자 정의 · 연령대별 우선 순위 도출</td></tr>
+        <tr><td><strong>서비스 설계</strong></td><td>학습 루프 설계, 3대 학습 영역(기초금융·금융안전·생활금융) 구조화</td></tr>
+        <tr><td><strong>AI 기술 조사</strong></td><td>개인화 추천 등 적용 가능한 AI 기술 조사</td></tr>
+        <tr><td><strong>시스템 설계</strong></td><td>데이터 아키텍처 설계, AI 적용 시스템 구성도 작성</td></tr>
+        <tr><td><strong>사업화 방향 · 발표</strong></td><td>비즈니스 모델·기대 효과 정리 및 발표 자료 구성, 발표 준비 진행</td></tr>
       </tbody>
     </table>
   </div>
 
-  <p>5인 전원이 기획에 기여했으며, 발표자료의 역할 분담도 동일 인물·역할명으로 표기한다.</p>
+  <p class="tbl-note">팀원 전원이 기획 과정에 참여했다. 영역별 참여자 명단은 팀 최종 기획서에 기재되어 있으며, 본 공개 웹버전에서는 표기하지 않는다.</p>
 </section>
 
 <section aria-labelledby="s9">
@@ -475,25 +427,30 @@
   <div class="linkcards">
     <a class="linkcard" href="부록_용어와_아키텍처.html">
       <b>용어·아키텍처 부록</b>
-      <span>용어집, AI 레이어 5개·결정론 코어 6개 컴포넌트 명세, 서비스 3모듈 구성, 상세 아키텍처, 7대 원칙 대응표, 취약도 지수 산식</span>
+      <span>용어집, AI 3기능 명세, 시스템 구성 재현, 금융위 AI 활용 7대 원칙 대응, 개인정보·안전 설계, 금융안전 영역 심화 설계</span>
     </a>
     <a class="linkcard" href="부록_출처.html">
       <b>인용 출처 전체</b>
-      <span>본문에 인용한 모든 통계의 기관·기준 시점·원문 주소</span>
+      <span>기획서 인용 통계 대조표, 22건의 기관·기준 시점·원문 주소, 내부 추정 수치의 검증 상태</span>
     </a>
     <a class="linkcard" href="부록_경쟁서비스_조사.html">
       <b>경쟁 서비스 조사</b>
-      <span>개입 시점 · 개인화 단위 · 반복 · 무엇을 지키는가 4개 축의 비교 근거</span>
+      <span>진단 유무 · 개인화 단위 · 진단–학습 연결 · 무엇을 지키는가 4개 축의 비교 근거</span>
     </a>
+  </div>
+
+  <div class="cta-row">
+    <a class="cta" href="app/">🛡️ 금융안전 실습 프로토타입(정적)</a>
+    <a class="cta ghost" href="pitch-deck/">발표자료 보기</a>
   </div>
 </section>
 
 </main>
 
 <footer>
-  <p><strong>금융 코디세이(가칭)</strong> — 금융사기 대응역량 훈련 체계 · AI Fintech 텀 프로젝트 기획안 · 팀 포디세이(Fodyssey)</p>
-  <p><a href="app/">판별형 훈련 모듈 실습 프로토타입(정적)</a> · <a href="deck/">발표자료</a> · <a href="부록_인덱스.html">상세 자료 모음</a></p>
-  <p>주요 출처: 경찰청 국수본 · NIA 2024 디지털정보격차 실태조사 · 한국은행·금융감독원 2024 전국민 금융이해력 조사 · 과학기술정보통신부·한국인터넷진흥원(KISA) 2026 상반기 사이버 위기대응 모의훈련</p>
+  <p>금융 학습 AI 플랫폼: 금융 코디세이 — AI Fintech 텀 프로젝트 기획안 · 팀 6조(포디세이) · 본 페이지는 팀 최종 기획서의 웹버전이다.</p>
+  <p><a href="app/">금융안전 실습 프로토타입(정적)</a> · <a href="pitch-deck/">발표자료</a> · <a href="부록_인덱스.html">상세 자료 모음</a></p>
+  <p>인용 통계의 기관·기준 시점과 원문 주소는 <a href="부록_출처.html">부록 B</a>에 정리했다.</p>
 </footer>
 
 </div>
