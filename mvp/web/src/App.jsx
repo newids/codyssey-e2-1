@@ -9,7 +9,8 @@ import { buildSession, selectFocusLures } from './lib/quiz.js';
 import { appendSession, overallIndex, improvementByLure, historySummary } from './lib/history.js';
 import { loadProfile, saveProfile, loadHistory, saveHistory, clearAll } from './lib/storage.js';
 
-// 훈련 루프 5단계: 대응 수칙 → 진단 → 예고 없는 노출 → 실패 해부 → 재측정
+// 5단계 실습 절차: 행동수칙 안내 → 진단 → 예고 없는 노출 → 사후 분석 → 재측정
+// (행동수칙은 문서 계층 용어이고, 학습자 화면 표기는 「대응 수칙」이다)
 // 화면 순서: intro → onboarding → briefing → quiz(해설 포함) → result → (report)
 
 export default function App() {

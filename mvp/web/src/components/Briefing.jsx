@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { buildBriefing } from '../lib/rules.js';
 
-// 훈련 루프 1단계 — 대응 수칙 사전 교육.
-// 예고 없이 오는 것은 개별 문자의 시점이지, 훈련 참여 사실이나 대응 수칙이 아니다.
+// 5단계 실습 절차의 1단계 — 행동수칙 사전 안내(화면 표기 「대응 수칙」).
+// 예고 없이 오는 것은 개별 문자의 시점이지, 실습 참여 사실이나 수칙 안내가 아니다.
 
 function StepBriefing({ rules, onDone, onSkip }) {
   const [index, setIndex] = useState(0);
