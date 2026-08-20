@@ -1,6 +1,7 @@
 # 금융 코디세이 MVP
 
-> 스코프: `docs/idea-1/_archive/MVP_스코프_v0.1.md` | 데모 대본: `docs/idea-1/_archive/데모_시나리오_v0.1.md`
+> 구축 계획·범위: `docs/idea-1/_workspace/07_mvp_plan.md` (MVP 구축계획서)
+> 현재 상태: **금융안전 영역 판별 실습 · 정적 프로토타입**
 
 ## 구조
 
@@ -15,7 +16,7 @@ mvp/
 │   ├── profiles.json              # 데모 페르소나 2종 (senior / youth)
 │   ├── run_compare.py             # 동일 입력 → 프로파일별 출력 비교 스크립트
 │   └── golden/                    # 기대 출력 기준 문안 (S01)
-└── web/                           # 실습 교육용 웹 (React+Vite, 완전 정적)
+└── web/                           # 실습 교육용 웹 (React+Vite, 정적)
     └── src/
         ├── lib/                   # 순수 로직 — 프로파일·세션 구성·취약도 지수·회차 이력
         └── components/            # 화면 — 온보딩·수칙·퀴즈·해설·결과·기관 리포트
@@ -31,11 +32,11 @@ npm run dev     # 로컬 확인
 ```
 
 - 배포: https://newids.github.io/codyssey-e2-1/app/ (`vite.config.js`의 `base` 경로 유지 필수)
-- 훈련 루프 5단계 구현: 대응 수칙(`lib/rules.js`) → 진단·집중 노출(`lib/quiz.js`) → 실패 해부(`lib/adaptive.js`) → 재측정(`lib/vulnerability.js`, `lib/history.js`)
-- 런타임 LLM·서버 호출 없음. 상태는 localStorage(`lib/storage.js`)에만 남는다.
-- 기관 리포트 미리보기는 **합성 데이터 전용 모듈**(`lib/cohortDemo.js`)에서만 값을 받으며, 화면에 `예시 데이터(합성)` 배지를 항상 노출한다.
+- 5단계 실습 절차 구현: 행동수칙 안내(`lib/rules.js`, 화면 표기 「대응 수칙」) → 진단·집중 노출(`lib/quiz.js`) → 사후 분석(`lib/adaptive.js`) → 재측정(`lib/vulnerability.js`, `lib/history.js`)
+- 현재 런타임 LLM·서버 호출 없음. 상태는 localStorage(`lib/storage.js`)에만 남는다. AI 가이드 해설 1경로의 런타임 호출은 구축계획서 M1의 작업 대상이다.
+- 집단 리포트 미리보기(화면 표기 「기관 금융역량 진단 리포트」)는 **합성 데이터 전용 모듈**(`lib/cohortDemo.js`)에서만 값을 받으며, 화면에 `예시 데이터(합성)` 배지를 항상 노출한다.
 
-## 프로토타입 실행 (W1 검증)
+## 적응형 응답 비교 실행
 
 ```bash
 export ANTHROPIC_API_KEY=<키>
