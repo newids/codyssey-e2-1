@@ -1,13 +1,13 @@
 ---
 name: idea-development
-description: 텀 프로젝트(금융 코디세이) 아이디어 발전 오케스트레이터 — 피드백 반영, 아이디어 개선/발전/피벗, 기획서·발표자료 작성/개정/업데이트/재실행, 심사 검증, 제출 준비 요청 시 반드시 이 스킬을 사용할 것. "Feedback-N 반영해줘", "기획서 다시 써줘", "덱 업데이트", "제출 전 점검", "이전 결과 개선" 같은 후속 요청도 모두 이 스킬로 처리한다.
+description: 텀 프로젝트(금융 코디세이) 아이디어 발전 오케스트레이터 — 피드백 반영, 아이디어 개선/발전/피벗, 기획서·발표자료·웹버전·MVP(실습 교육용 시스템) 작성/개정/업데이트/재실행, 심사 검증, 제출 준비 요청 시 반드시 이 스킬을 사용할 것. "Feedback-N 반영해줘", "기획서 다시 써줘", "덱 업데이트", "MVP 만들어/고쳐줘", "실습 시스템 확장", "제출 전 점검", "이전 결과 개선" 같은 후속 요청도 모두 이 스킬로 처리한다.
 ---
 
 # Idea Development — 아이디어 발전 오케스트레이터
 
 ## 목표
 
-팀·심사 피드백을 아이디어 개정에 체계적으로 반영하여, 기획서(A4 2p)와 발표자료(10p)를 현실성·수상 가능성 기준으로 발전시킨다. 과제 범위는 기획·아키텍처 설계까지 — **MVP 코드 구현은 범위 외**.
+팀·심사 피드백을 아이디어 개정에 체계적으로 반영하여, 기획서(A4 2p)·발표자료(10p)·웹버전·실습 교육용 MVP를 현실성·수상 가능성 기준으로 발전시킨다. 과제 **제출** 범위는 기획·아키텍처 설계까지이나, 실습 교육·데모용 MVP(`mvp/web/`) 제작·개정은 이 하네스가 담당한다(2026-08-17 확장).
 
 ## 실행 모드
 
@@ -21,6 +21,8 @@ description: 텀 프로젝트(금융 코디세이) 아이디어 발전 오케스
 - `03_proposal_draft.md` — 기획서 작업본 (proposal-writer)
 - `04_deck_revision.html` — 덱 작업본 (deck-producer)
 - `05_judge_verdict.md` — 심사 판정 (judge-redteam)
+- `06_web_page.html` — 기획서 웹버전 작업본 (proposal-writer)
+- `07_mvp_notes.md` — MVP 변경 요약 (mvp-builder; 코드는 `mvp/web/`에 직접 반영, git이 감사 추적)
 
 중간 산출물은 보존한다(감사 추적). 정본 반영은 사용자 승인 후에만.
 
@@ -46,14 +48,16 @@ description: 텀 프로젝트(금융 코디세이) 아이디어 발전 오케스
 
 ## Phase 3: 산출물 개정 (병렬)
 
-- **에이전트**: proposal-writer + deck-producer (`model: "opus"`, 병렬 호출)
-- 입력: `02_strategy_revision.md` (+ 서로의 기존 정본) / 출력: `03_proposal_draft.md`, `04_deck_revision.html`
-- 두 에이전트 모두 확정 전략 외 창작 금지 — 근거 없으면 `[TODO]`
+- **에이전트**: proposal-writer + deck-producer + mvp-builder (`model: "opus"`, 병렬 호출; MVP 변경이 불필요한 라운드에는 mvp-builder 생략)
+- 입력: `02_strategy_revision.md` (+ 서로의 기존 정본) / 출력: `03_proposal_draft.md` + `06_web_page.html`, `04_deck_revision.html`, `07_mvp_notes.md` + `mvp/web/` 코드
+- 모든 에이전트는 확정 전략 외 창작 금지 — 근거 없으면 `[TODO]`
+- 웹버전 규칙: 덱 HTML이 곧 덱 웹버전이다(별도 산출물 아님). 기획서 웹버전(06)은 proposal-writer가 03 확정 문안 기준으로 작성한다.
 
 ## Phase 4: 심사 검증
 
 - **에이전트**: judge-redteam (`model: "opus"`)
-- 입력: 03·04 작업본 + Mission-e2-1.md + PROJECT_BRIEF.md / 출력: `05_judge_verdict.md`
+- 입력: 03·04·06 작업본 + 07 노트 + Mission-e2-1.md + PROJECT_BRIEF.md / 출력: `05_judge_verdict.md`
+- MVP는 코드 리뷰가 아니라 **문서-MVP 정합성**(기획서가 약속한 범위와 07 노트의 구현 사실 일치)만 판정한다. 빌드·테스트 통과는 mvp-builder의 종료 조건.
 - **반려 시**: 지적의 담당 에이전트만 재호출(1회 루프). 같은 사유 2회 반복 시 루프 중단, 사용자 에스컬레이션.
 
 ## Phase 5: 정본 반영·기록

@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>금융 학습 AI 플랫폼: 금융 코디세이</title>
+<meta name="description" content="금융 미션 수행 데이터를 바탕으로 금융역량을 진단하고, AI 가이드와 개인별 학습경로를 제공하는 맞춤형 금융학습 플랫폼 — AI Fintech 텀 프로젝트 기획안">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>">
+<style>
+  :root {
+    --paper: oklch(97.5% 0.006 85);
+    --ink: oklch(24% 0.015 260);
+    --ink-soft: oklch(42% 0.012 260);
+    --accent: oklch(48% 0.13 250);
+    --accent-soft: oklch(48% 0.13 250 / 0.08);
+    --accent-deep: oklch(42% 0.14 250);
+    --rule: oklch(24% 0.015 260 / 0.14);
+    --card: oklch(99.2% 0.003 85);
+    --danger: oklch(52% 0.17 25);
+    --danger-soft: oklch(52% 0.17 25 / 0.07);
+
+    --text-base: clamp(1rem, 0.94rem + 0.3vw, 1.0625rem);
+    --text-hero: clamp(1.9rem, 1.1rem + 3.6vw, 3.4rem);
+    --text-section: clamp(1.35rem, 1.15rem + 1vw, 1.9rem);
+    --space-section: clamp(3.5rem, 2.5rem + 4vw, 6.5rem);
+
+    --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+      "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", system-ui, sans-serif;
+    --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: 1.75;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
+  .wrap { max-width: 46rem; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 2.5rem); }
+
+  .skip {
+    position: absolute; left: -9999px;
+    background: var(--ink); color: var(--paper); padding: .6rem 1rem; border-radius: .4rem;
+  }
+  .skip:focus { left: 1rem; top: 1rem; z-index: 20; }
+
+  /* ---------- masthead ---------- */
+  header.masthead { padding: clamp(3rem, 8vw, 6rem) 0 0; }
+
+  .kicker {
+    display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; align-items: baseline;
+    font-size: .8125rem; letter-spacing: .08em; color: var(--ink-soft);
+    text-transform: uppercase;
+    border-top: 3px solid var(--ink);
+    padding-top: .75rem;
+  }
+  .kicker strong { color: var(--accent); font-weight: 700; }
+
+  h1 {
+    font-size: var(--text-hero);
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    font-weight: 800;
+    margin: 1.5rem 0 0;
+  }
+  h1 .sub {
+    display: block;
+    font-size: clamp(1rem, .85rem + .8vw, 1.3rem);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink-soft);
+    margin-top: .9rem;
+    line-height: 1.6;
+  }
+
+  .meta-grid {
+    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    border-top: 1px solid var(--rule);
+  }
+  .meta-grid > div {
+    padding: .8rem .25rem .9rem 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: .9rem;
+  }
+  .meta-grid dt { font-size: .72rem; letter-spacing: .1em; color: var(--ink-soft); text-transform: uppercase; margin-bottom: .2rem; }
+  .meta-grid dd { font-weight: 600; }
+
+  /* ---------- CTA ---------- */
+  .cta-row { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.9rem; }
+  .cta {
+    display: inline-block; text-decoration: none; font-weight: 700;
+    background: var(--accent); color: oklch(98% 0 0);
+    padding: .7rem 1.3rem; border-radius: .55rem;
+    font-size: .95rem; line-height: 1.4;
+    border: 1px solid var(--accent);
+    transition: background .18s ease, transform .18s ease;
+  }
+  .cta:hover { background: var(--accent-deep); transform: translateY(-1px); }
+  .cta.ghost { background: transparent; color: var(--accent); }
+  .cta.ghost:hover { background: var(--accent-soft); }
+  .cta:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+  .cta-note {
+    margin-top: .85rem; font-size: .82rem; line-height: 1.65; color: var(--ink-soft);
+    border-left: 3px solid var(--rule); padding-left: .85rem;
+  }
+
+  /* ---------- sections ---------- */
+  section { margin-top: var(--space-section); }
+
+  .sec-head { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1.5rem; }
+  .sec-num {
+    font-family: var(--font-mono);
+    font-size: .85rem;
+    color: var(--accent);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  h2 {
+    font-size: var(--text-section);
+    letter-spacing: -0.02em;
+    font-weight: 750;
+    line-height: 1.25;
+  }
+
+  p + p { margin-top: 1em; }
+  section p strong { font-weight: 700; }
+  em { font-style: normal; background: linear-gradient(transparent 62%, var(--accent-soft) 62%); }
+
+  h3 {
+    font-size: 1.05rem; font-weight: 750; letter-spacing: -0.01em;
+    margin: 2.25rem 0 .6rem;
+    display: flex; align-items: center; gap: .6rem;
+  }
+  h3::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+
+  ul.tight { list-style: none; margin: .75rem 0; }
+  ul.tight li { padding: .35rem 0 .35rem 1.4rem; position: relative; }
+  ul.tight li::before { content: "—"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+
+  /* ---------- 문제 정의 카드 ---------- */
+  .cards { display: grid; gap: .75rem; margin: 1.5rem 0; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 .5rem .5rem 0;
+    padding: 1rem 1.25rem;
+  }
+  .card b { display: block; font-size: .95rem; letter-spacing: -0.01em; color: var(--ink); margin-bottom: .35rem; }
+
+  /* ---------- 강조 박스 ---------- */
+  .callout {
+    background: var(--card); border: 1px solid var(--rule); border-radius: .6rem;
+    padding: 1.1rem 1.25rem; margin: 1.5rem 0;
+  }
+  .callout.warn { border-left: 4px solid var(--danger); background: var(--danger-soft); }
+  .callout b.h { display: block; font-size: .76rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: .35rem; }
+  .callout.warn b.h { color: var(--danger); }
+  .callout p { font-size: .92rem; line-height: 1.7; }
+
+  /* ---------- 시스템 구성도 ---------- */
+  .diagram {
+    font-family: var(--font-mono);
+    font-size: .8rem;
+    line-height: 1.6;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: .6rem;
+    padding: 1.1rem 1.25rem;
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    white-space: pre;
+  }
+
+  /* ---------- tables ---------- */
+  .tbl-scroll { overflow-x: auto; margin: 1.25rem 0; }
+  table { border-collapse: collapse; width: 100%; font-size: .9rem; min-width: 30rem; }
+  th, td { text-align: left; padding: .6rem .75rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th { font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); border-bottom: 2px solid var(--ink); }
+  td:first-child { font-weight: 650; }
+  .tbl-note { font-size: .82rem; color: var(--ink-soft); line-height: 1.7; }
+
+  /* ---------- 부록 링크 카드 ---------- */
+  .linkcards { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: .75rem; margin: 1.5rem 0; }
+  .linkcard {
+    display: block; text-decoration: none; color: var(--ink);
+    background: var(--card); border: 1px solid var(--rule); border-radius: .6rem;
+    padding: 1rem 1.15rem;
+    transition: border-color .18s ease, transform .18s ease;
+  }
+  .linkcard:hover, .linkcard:focus-visible { border-color: var(--accent); transform: translateY(-2px); }
+  .linkcard:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+  .linkcard b { display: block; font-weight: 750; letter-spacing: -0.01em; }
+  .linkcard span { display: block; font-size: .82rem; color: var(--ink-soft); line-height: 1.55; margin-top: .25rem; }
+  .linkcard b::after { content: " ↗"; color: var(--accent); font-size: .85em; }
+
+  .src { font-size: .78rem; color: var(--ink-soft); line-height: 1.7; margin-top: 1rem; }
+
+  /* ---------- footer ---------- */
+  footer {
+    margin-top: var(--space-section);
+    border-top: 3px solid var(--ink);
+    padding: 1.5rem 0 4rem;
+    font-size: .82rem; color: var(--ink-soft); line-height: 1.9;
+  }
+  footer a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-soft); }
+  footer a:hover, footer a:focus-visible { border-bottom-color: var(--accent); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    section { animation: rise .5s ease-out both; }
+    @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cta, .linkcard { transition: none; }
+    .cta:hover, .linkcard:hover { transform: none; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#s1">본문으로 건너뛰기</a>
+<div class="wrap">
+
+<header class="masthead">
+  <p class="kicker"><strong>AI Fintech · 텀 프로젝트 기획안</strong><span>2026.08</span></p>
+  <h1>금융 학습 AI 플랫폼: 금융 코디세이
+    <span class="sub">금융 미션 수행 데이터를 바탕으로 금융역량을 진단하고, AI 가이드와 개인별 학습경로를 제공하는 <em>맞춤형 금융학습 플랫폼</em></span>
+  </h1>
+
+  <dl class="meta-grid">
+    <div><dt>도메인</dt><dd>핀테크 (AI Fintech)</dd></div>
+    <div><dt>팀명</dt><dd>6조 · 포디세이(Fodyssey)</dd></div>
+    <div><dt>프로젝트명</dt><dd>금융 학습 AI 플랫폼: 금융 코디세이</dd></div>
+    <div><dt>문서 성격</dt><dd>팀 최종 기획서의 웹버전</dd></div>
+  </dl>
+
+  <div class="cta-row">
+    <a class="cta" href="app/">🛡️ 금융안전 실습 프로토타입(정적)</a>
+    <a class="cta ghost" href="pitch-deck/">발표자료 보기</a>
+  </div>
+  <p class="cta-note"><strong>프로토타입 범위</strong> — 3대 학습 영역 가운데 <strong>금융안전 영역의 사기문자 판별 실습 일부</strong>만 구현한 정적 프로토타입이다. 기초금융·생활금융 영역과 학습경로 추천은 설계 단계이며 구현되지 않았다.</p>
+</header>
+
+<main>
+
+<section aria-labelledby="s1">
+  <div class="sec-head"><span class="sec-num">01</span><h2 id="s1">문제 정의</h2></div>
+
+  <div class="cards">
+    <div class="card">
+      <b>기존 금융교육 한계: 콘텐츠는 있지만 진단이 없음</b>
+      모바일 금융 실습, 사기 시뮬레이션 등 체험형 금융교육은 이미 존재한다. 그러나 역량별 학습이 여러 서비스에 흩어져 있어, 사용자는 자신에게 무엇이 부족하고 어떤 학습이 필요한지 스스로 판단할 수 없다.
+    </div>
+    <div class="card">
+      <b>같은 연령대라도 부족한 역량이 다름</b>
+      모바일뱅킹 조작이 서툰 사람, 신용·대출 개념이 약한 사람, 지식은 있어도 실제 사기 상황에서 위험한 선택을 하는 사람이 공존한다. 획일적 교육으로는 대응할 수 없다.
+    </div>
+    <div class="card">
+      <b>필요한 것은 '또 하나의 콘텐츠'가 아니라 '진단-연결 구조'</b>
+      실제 금융과업 수행 과정에서 현재 역량을 진단하고, 필요한 교육·실습을 개인별로 연결하는 구조가 필요하다.
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="s2">
+  <div class="sec-head"><span class="sec-num">02</span><h2 id="s2">타겟 사용자</h2></div>
+
+  <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>우선 순위</th><th>교육 니즈 · 역량 취약도</th><th>대표 학습</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1. 고령층(60대+)</strong></td><td>디지털정보화 71.4%, 최저(NIA, 2024)</td><td>모바일 송금, 금융문서 이해, 기관사칭 대응</td></tr>
+        <tr><td><strong>2. 청년(20-30대)</strong></td><td>사회생활·자산형성 시작 / 기관사칭 피해자 52%가 30대 이하(2025)</td><td>신용·대출 이해, 청년 지원제도 탐색</td></tr>
+        <tr><td><strong>3. 중장년(50대)</strong></td><td>자산관리·재무 재설계 / 사기 피해자 중 50대 이상 53%(2025)</td><td>투자·대출 판단, 퇴직연금, 금융사기 대응</td></tr>
+        <tr><td><strong>4. 청소년(10대)</strong></td><td>금융 기본습관 형성</td><td>예산관리, 온라인 거래 위험 판단</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="tbl-note">우선 순위는 향후 발전 방향의 1~3단계와 같은 순서를 따른다. 인용 통계의 기관·기준 시점은 부록 B에 정리했다.</p>
+</section>
+
+<section aria-labelledby="s3">
+  <div class="sec-head"><span class="sec-num">03</span><h2 id="s3">서비스 개요</h2></div>
+
+  <p>금융 코디세이는 금융 미션 수행 데이터를 바탕으로 금융역량을 진단하고, AI 가이드와 개인별 학습경로를 제공하는 <strong>맞춤형 금융학습 플랫폼</strong>이다.</p>
+
+  <h3>3대 학습 영역</h3>
+  <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>학습 영역</th><th>다루는 내용</th></tr></thead>
+      <tbody>
+        <tr><td><strong>기초금융</strong></td><td>계좌이체, 자동이체, 신용점수, 대출금리, 금융문서 이해</td></tr>
+        <tr><td><strong>금융안전</strong></td><td>보이스피싱·스미싱·악성앱·기관사칭·투자사기 대응</td></tr>
+        <tr><td><strong>생활금융</strong></td><td>지원제도 탐색, 청년·퇴직·연금 정보 이해, 금융조건 비교</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>미션 수행 결과를 <strong>금융역량 프로필</strong>로 연결해 사용자의 취약 영역에 맞는 학습을 제공한다.</p>
+
+  <div class="callout">
+    <b class="h">차별점</b>
+    <p><strong>차별점은 콘텐츠가 아니라 구조다.</strong> 체험형 금융교육 콘텐츠는 이미 존재하지만 역량별로 흩어져 있어, 사용자는 자신에게 무엇이 부족한지 스스로 판단할 수 없다. 금융 코디세이는 콘텐츠를 하나 더 만드는 대신, <strong>실제 금융과업 수행 과정에서 역량을 진단하고 필요한 학습을 개인별로 연결하는 구조</strong>를 만든다.</p>
+  </div>
+</section>
+
+<section aria-labelledby="s4">
+  <div class="sec-head"><span class="sec-num">04</span><h2 id="s4">AI 기술 적용</h2></div>
+
+  <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>핵심 기능</th><th>적용 기술</th><th>기술 설명</th></tr></thead>
+      <tbody>
+        <tr><td><strong>금융역량 진단</strong></td><td>Rule-based Scoring → ML(분류/회귀 모델)</td><td>사용자의 행동 데이터를 기준과 가중치에 따라 점수화한다. 축적된 데이터를 학습한 ML 모델로 고도화한다</td></tr>
+        <tr><td><strong>AI 가이드형 실습</strong></td><td>Instruction LLM + Context Prompting + RAG</td><td>LLM으로 자연어 안내·피드백을 생성한다. 프롬프트에 사용자 수준·현재 미션 단계 등 조건을 전달해 응답 방식을 조정한다. RAG를 통해 공식 금융자료를 답변 근거로 활용한다</td></tr>
+        <tr><td><strong>개인별 학습경로 추천</strong></td><td>Rule-based 추천 → Learning-to-Rank</td><td>사용자 프로필과 사전 정의된 규칙으로 추천한다. 향후 데이터가 쌓이면 사용자별 학습효과를 반영해 추천을 정교화한다</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="tbl-note">세 기능은 모두 <strong>규칙 기반으로 지금 동작하고, 데이터가 쌓이면 학습 기반으로 고도화되는 2단 구조</strong>다 — 현재 구현 가능한 경로와 향후 고도화 경로를 함께 밝힌다.</p>
+</section>
+
+<section aria-labelledby="s5">
+  <div class="sec-head"><span class="sec-num">05</span><h2 id="s5">시스템 구성</h2></div>
+
+  <div class="diagram" role="img" aria-label="시스템 구성도: 사용자의 미션 수행 요청이 API Gateway의 인증·인가를 거쳐 API server로 전달되고, API server는 미션 컨텍스트를 AI(LLM)에 전달해 가이드·피드백·근거를 받는다. API server는 Database에서 프로필을 조회하고 수행기록을 저장하며, Pipeline이 금융 공공정보·제도·혜택정보 원문을 수집해 정제 텍스트를 임베딩하고 Database에 적재한다.">
+ 사용자
+   │  미션 수행 요청
+   ▼
+ API Gateway  — 인증 / 인가
+   │
+   ▼
+ API server ──── 미션 컨텍스트 ────▶  AI (LLM)
+   │   ◀──── 가이드 / 피드백 / 근거 ────┘
+   │                                     │  정제 텍스트 임베딩 요청
+   │  프로필 조회 · 수행기록 저장          │  임베딩 벡터 근거 검색
+   ▼                                     ▼
+ Database  ◀────────────────────  Pipeline
+                                         ▲
+                                         │ 원문 수집
+                              금융 공공정보 · 제도 · 혜택정보
+  </div>
+
+  <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>구분</th><th>흐름</th></tr></thead>
+      <tbody>
+        <tr><td><strong>요청 흐름</strong></td><td>사용자의 미션 수행 요청이 <strong>API Gateway</strong>의 인증·인가를 거쳐 <strong>API server</strong>로 전달된다</td></tr>
+        <tr><td><strong>AI 호출</strong></td><td>API server가 미션 컨텍스트를 <strong>AI(LLM)</strong> 에 전달하고, 가이드·피드백·근거를 받아 사용자에게 제공한다</td></tr>
+        <tr><td><strong>데이터</strong></td><td>API server는 <strong>Database</strong>에서 프로필을 조회하고 수행기록을 저장한다. AI는 임베딩 벡터 근거 검색으로 답변 근거를 가져온다</td></tr>
+        <tr><td><strong>외부 수집</strong></td><td><strong>Pipeline</strong>이 금융 공공정보·제도·혜택정보 원문을 수집해 정제 텍스트를 임베딩하고 Database에 적재한다</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section aria-labelledby="s6">
+  <div class="sec-head"><span class="sec-num">06</span><h2 id="s6">기대 효과</h2></div>
+
+  <h3>비즈니스 모델</h3>
+  <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>수익 구조</th><th>고객 유형</th><th>가격 책정 방식</th></tr></thead>
+      <tbody>
+        <tr><td><strong>B2B2C</strong></td><td>은행, 증권사, 보험사, 통신사 등</td><td rowspan="2">① API 사용량 기반 과금<br>② 라이선스 구독(월/연 단위 구독)</td></tr>
+        <tr><td><strong>B2B2G</strong></td><td>금융/소비자 기관, 지방자치단체 등</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>기대효과</h3>
+  <ul class="tight">
+    <li><strong>연령대별 금융 이해력 향상</strong> — 금융 사기 인지율 기존 대비 <strong>75% 이상 향상</strong> ※ / 금융 사기 대응을 위한 안전 행동 실천율 <strong>20~30% 개선</strong> ※</li>
+    <li><strong>금융 사기 피해 감소</strong> — 개인 대상 연간 금융 사기 피해액 약 <strong>1,380억원 감소</strong> ※</li>
+  </ul>
+
+  <p class="tbl-note">※ 기대효과 수치는 팀 내부 추정치이며 외부 출처가 아직 확인되지 않았다. 산출 근거의 확인 상태는 부록 B에 기록해 두었다.</p>
+</section>
+
+<section aria-labelledby="s7">
+  <div class="sec-head"><span class="sec-num">07</span><h2 id="s7">향후 발전 방향</h2></div>
+
+  <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>구분</th><th>타겟 사용자</th><th>목표</th><th>실행 전략</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1단계</strong></td><td>시니어층</td><td>실제 행동 변화 입증 / PoC 성공 및 레퍼런스 확보</td><td>AI 기반 대화형 인터페이스 도입 / 밀착형 시나리오 미션 구성</td></tr>
+        <tr><td><strong>2단계</strong></td><td>청년층, 중장년층</td><td>사기 유형별 시나리오 다각화 / 플랫폼 체류 시간 증대</td><td>게이미피케이션 콘텐츠 도입 / 금융 서비스의 실질 혜택 연계</td></tr>
+        <tr><td><strong>3단계</strong></td><td>청소년층, 전 연령층</td><td>공공 교육 인프라 편입 / 사용자 데이터 기반 DaaS 구축</td><td>청소년층 특화 시나리오 개발 / 연령별 데이터 수집 및 가공</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section aria-labelledby="s8">
+  <div class="sec-head"><span class="sec-num">08</span><h2 id="s8">팀 역할 분담</h2></div>
+
+  <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>담당 영역</th><th>기획서 작성 과정에서의 기여 내용</th></tr></thead>
+      <tbody>
+        <tr><td><strong>기획 총괄</strong></td><td>아이디어 방향 설정, 서비스 핵심 콘셉트 정의, 전체 문서간 정합성 관리</td></tr>
+        <tr><td><strong>문제 정의 · 고객 정의</strong></td><td>문제 프레임 도출 · 타겟 사용자 정의 · 연령대별 우선 순위 도출</td></tr>
+        <tr><td><strong>서비스 설계</strong></td><td>학습 루프 설계, 3대 학습 영역(기초금융·금융안전·생활금융) 구조화</td></tr>
+        <tr><td><strong>AI 기술 조사</strong></td><td>개인화 추천 등 적용 가능한 AI 기술 조사</td></tr>
+        <tr><td><strong>시스템 설계</strong></td><td>데이터 아키텍처 설계, AI 적용 시스템 구성도 작성</td></tr>
+        <tr><td><strong>사업화 방향 · 발표</strong></td><td>비즈니스 모델·기대 효과 정리 및 발표 자료 구성, 발표 준비 진행</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="tbl-note">팀원 전원이 기획 과정에 참여했다. 영역별 참여자 명단은 팀 최종 기획서에 기재되어 있으며, 본 공개 웹버전에서는 표기하지 않는다.</p>
+</section>
+
+<section aria-labelledby="s9">
+  <div class="sec-head"><span class="sec-num">09</span><h2 id="s9">상세 자료</h2></div>
+
+  <div class="linkcards">
+    <a class="linkcard" href="부록_용어와_아키텍처.html">
+      <b>용어·아키텍처 부록</b>
+      <span>용어집, AI 3기능 명세, 시스템 구성 재현, 금융위 AI 활용 7대 원칙 대응, 개인정보·안전 설계, 금융안전 영역 심화 설계</span>
+    </a>
+    <a class="linkcard" href="부록_출처.html">
+      <b>인용 출처 전체</b>
+      <span>기획서 인용 통계 대조표, 22건의 기관·기준 시점·원문 주소, 내부 추정 수치의 검증 상태</span>
+    </a>
+    <a class="linkcard" href="부록_경쟁서비스_조사.html">
+      <b>경쟁 서비스 조사</b>
+      <span>진단 유무 · 개인화 단위 · 진단–학습 연결 · 무엇을 지키는가 4개 축의 비교 근거</span>
+    </a>
+  </div>
+
+  <div class="cta-row">
+    <a class="cta" href="app/">🛡️ 금융안전 실습 프로토타입(정적)</a>
+    <a class="cta ghost" href="pitch-deck/">발표자료 보기</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>금융 학습 AI 플랫폼: 금융 코디세이 — AI Fintech 텀 프로젝트 기획안 · 팀 6조(포디세이) · 본 페이지는 팀 최종 기획서의 웹버전이다.</p>
+  <p><a href="app/">금융안전 실습 프로토타입(정적)</a> · <a href="pitch-deck/">발표자료</a> · <a href="부록_인덱스.html">상세 자료 모음</a></p>
+  <p>인용 통계의 기관·기준 시점과 원문 주소는 <a href="부록_출처.html">부록 B</a>에 정리했다.</p>
+</footer>
+
+</div>
+</body>
+</html>

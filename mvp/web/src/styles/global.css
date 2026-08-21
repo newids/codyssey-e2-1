@@ -174,6 +174,92 @@ h2 { font-size: 1.25rem; letter-spacing: -0.01em; margin-bottom: 0.75rem; }
   line-height: 1.1;
 }
 
+/* ---- 대응 수칙 카드 ---- */
+.rule-list { list-style: none; display: grid; gap: 0.9rem; }
+.rule-list li { display: grid; gap: 0.2rem; }
+.rule-list strong { font-size: 1rem; }
+.rule-list span { color: var(--ink-soft); font-size: 0.92rem; }
+
+/* ---- 패널 (취약도·공유·리포트) ---- */
+.panel {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.15rem;
+  display: grid;
+  gap: 0.7rem;
+}
+.panel h3 { font-size: 1.05rem; letter-spacing: -0.01em; }
+
+/* ---- 취약도 막대 ---- */
+.lure-list { list-style: none; display: grid; gap: 0.85rem; }
+.lure-row { display: grid; gap: 0.3rem; }
+.lure-head { display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem; }
+.lure-score { font-weight: 800; font-size: 1.1rem; color: var(--danger); font-variant-numeric: tabular-nums; }
+.lure-pending { font-size: 0.8rem; color: var(--ink-soft); }
+.bar {
+  height: 0.6rem;
+  background: var(--rule);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.bar-fill { height: 100%; background: var(--danger); border-radius: 999px; }
+.bar-fill.pending { background: transparent; }
+.delta {
+  justify-self: start;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  background: var(--accent-soft);
+  border-radius: 999px;
+  padding: 0.1rem 0.55rem;
+}
+.delta.good { color: var(--ok); background: var(--ok-soft); }
+.delta.flat { background: var(--rule); }
+.formula {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  background: var(--bubble);
+  border-radius: 0.5rem;
+  padding: 0.6rem 0.7rem;
+  word-break: break-word;
+}
+
+/* ---- 결과 공유 카드 ---- */
+.share-preview {
+  font-family: inherit;
+  font-size: 0.85rem;
+  line-height: 1.65;
+  white-space: pre-wrap;
+  background: var(--bubble);
+  border-radius: 0.5rem;
+  padding: 0.8rem 0.9rem;
+}
+.share-status.ok { color: var(--ok); }
+.share-status.bad { color: var(--danger); }
+
+/* ---- 기관 리포트(합성 데이터) ---- */
+.synthetic-badge {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--danger);
+  background: var(--danger-soft);
+  border: 1px dashed var(--danger);
+  border-radius: 999px;
+  padding: 0.25rem 0.7rem;
+  margin-bottom: 0.75rem;
+}
+.report-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.report-table caption { text-align: left; margin-bottom: 0.6rem; caption-side: top; }
+.report-table th, .report-table td { padding: 0.5rem 0.35rem; text-align: right; }
+.report-table thead th { font-size: 0.78rem; color: var(--ink-soft); border-bottom: 2px solid var(--ink); }
+.report-table tbody th { text-align: left; font-weight: 700; }
+.report-table tbody tr { border-bottom: 1px solid var(--rule); }
+.report-table .row-muted { color: var(--ink-soft); }
+
 @media (prefers-reduced-motion: no-preference) {
   .fade-in { animation: rise 0.35s var(--ease-out) both; }
   @keyframes rise {
