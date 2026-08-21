@@ -1,4 +1,4 @@
-// 훈련 루프 통합 검증 — 진단(1회차) → 집중 노출(2회차) → 재측정 델타
+// 실습 루프 통합 검증 — 진단(1회차) → 집중 노출(2회차) → 재측정 델타
 import { describe, test, expect } from 'vitest';
 import dataset from '@data/scam_dataset_v0.1.json';
 import { deriveProfile } from './profile.js';
@@ -29,7 +29,7 @@ function playSession(profile, lures, rng, mode) {
   return { exposures, score, total: rounds.length, rulesViewed: true };
 }
 
-describe('훈련 루프 — 회차 델타', () => {
+describe('실습 루프 — 회차 델타', () => {
   const profile = deriveProfile({ banking: 2 });
 
   test('1회차 진단만으로 두 자극 유형의 취약도가 산출된다', () => {
